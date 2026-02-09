@@ -1,0 +1,193 @@
+# context_data.py
+
+RESUME_TEXT = """
+Justin Stutler
+StutlerJustin@gmail.com | Tampa, Fl | https://resumellm.netlify.app/
+
+Education
+Bachelor of Information Science, Concentration in Web Development Graduated
+May 2024
+University of South Florida
+3.67 GPA
+
+Skills
+Full Stack Development: Figma, Javascript, HTML, CSS, React, Redux, Tailwind, Node, Express, MongoDB, SQL, mySQL, Python, Django, Flask, Go, PHP
+AI & Data Science: Python(numpy, pandas, Pytorch, matplotlib), OpenCV, PyTesseract, R
+Project Management: Agile, Kanban, JIRA, Confluence, Git
+Enterprise Tools: Microsoft Suite, Google Suite
+
+Experience
+MagMutual Insurance - Software Developer Intern/ Contractor
+May 2020 - December 2020
+- Contributed as a key full-stack developer on a 4-person team for 6 months, developing a dynamic internal web application.
+- Leveraged Agile methodologies with JIRA and Confluence to ensure timely project completion, enhance team collaboration, and maintain clear documentation.
+- Applied full-stack development skills using modern technologies to build and deploy the software.
+
+PieHole - Operations Manager
+May 2016 - July 2018
+- Managed daily operations, including customer service, inventory management, and baking, consistently producing and selling approximately 150 pies per week.
+- Led and managed a team of 2 in daily business operations from June 2017.
+- Successfully trained 4 new bakers between June 2017 and July 2018, ensuring consistent product quality.
+- Directed a team of 4 to produce thousands of pies within a week for peak holiday seasons (e.g., Thanksgiving), maintaining high standards for consistency and efficiency.
+
+Student Organizations
+Member of USF Brazilian Jiu-Jitsu Club (August 2023 - May 2024)
+Member of USF Chess Club (August 2022 - May 2024)
+Member of USF Pottery Club (August 2022 - May 2023)
+Coach and Player of Overwatch Team at KSU (August 2019 - May 2021)
+"""
+
+SOP_TEXT = """
+My fascination with artificial intelligence sparked in high school (2015-2016) when I began coding via Milton High School’s programming pathway—a rare and fortunate opportunity. Witnessing Google DeepMind’s AlphaGo defeat a world Go champion was a profound revelation of AI’s potential, shattering my perceived technological limits and igniting a lasting interest in developing such intelligent machines, decisively setting my academic and professional trajectory.
+To explore these interests, I pursued computer science at Kennesaw State University (KSU). A transformative summer internship which turned into a contract role at MagMutual Insurance. Despite limited initial full-stack knowledge, I quickly integrated into a professional team, contributing meaningfully to a significant web application. This immersive experience provided a comprehensive education in agile processes, diverse development technologies, and real-world software practicalities.
+The COVID-19 pandemic prompted my move from Georgia to Florida, and in 2022, I joined the University of South Florida (USF) Information Science program. After debating between web development and data science concentrations, my MagMutual experience steered me towards Web Development Technologies. I graduated Cum Laude in May 2024 (GPA: 3.67). My Senior Capstone involved building a full-stack PHP/MySQL application with comprehensive CRUD data handling.
+Post-graduation, observing AI-powered tools like Cursor seamlessly integrating into full-stack workflows crystallized my desire to specialize in AI. My core interest is in leveraging AI to modernize and enhance the software development process. The new Master of Science in Data Intelligence (MSDI) program at USF presents the ideal opportunity to acquire the specialized knowledge needed for this vision.
+The USF MSDI program is my clear choice. The programs focus on "data synthesis, modeling and computational skills... [to] extract intelligence...and utilize them in business decision making" and "solving large-scale problems" directly supports my ambition to architect AI-driven development solutions. As a USF alumnus familiar with its excellent academic environment, and having built a strong community in Tampa over three years, continuing at USF feels like a natural progression. I am interested in potentially combining the computational and decision-making tracks to earn both the MSDI degree and an AI Graduate Certificate within two years.
+My primary objective is to become an AI Engineer focused on innovative AI solutions to revolutionize the full-stack development lifecycle. I aim to contribute to a future where AI intelligently assists in application creation. The MSDI program is the crucial catalyst to transform my foundational interest and practical experience into specialized expertise. I am confident in my capacity to excel and contribute valuably to the USF graduate community and the AI field.
+Thank you for your consideration.
+"""
+
+TELL_ME_ABOUT_TEXT = """I'm **Justin Stutler**, a Web Development specialist passionate about the intersection of full-stack development and artificial intelligence.
+
+* **Recent USF Graduate:** Bachelor of Information Science (Web Development) - 3.67 GPA.
+* **Full-Stack Experience:** Gained practical skills in Agile environments and modern web technologies during an internship at MagMutual Insurance.
+* **AI-Driven Future:** Keen to leverage AI to innovate and streamline the software development lifecycle.
+* **Proactive & Collaborative:** Eager to contribute to challenging projects in the tech industry."""
+
+GRE_SCORES_TEXT = """
+Your Scores for the General Test Taken on May 7, 2025:
+
+Verbal Reasoning:
+- Your Scaled Score: 162
+- Percentile: 89th
+
+Quantitative Reasoning:
+- Your Scaled Score: 160
+- Percentile: 53rd
+
+Analytical Writing:
+- Your Score: 4.0
+- Percentile: 59th
+
+Test Score History Table Confirmation (May 7, 2025):
+- Verbal Reasoning: Scaled Score 162, Percentile 89
+- Quantitative Reasoning: Scaled Score 160, Percentile 53
+- Analytical Writing: Score 4.0, Percentile 59
+"""
+
+ACADEMIC_AND_COURSE_HISTORY_TEXT = """
+**Comprehensive Course History:**
+**Institution: Milton Highschool (MHS)**
+- Term: AP Credit
+  - Course: CSE 1300: Intro to Computing Principles, Credits: 3.00, Description: General introduction to computing principles, often covering basic hardware, software concepts, algorithmic thinking, and an overview of the impact of computers on society.
+  - Course: CSE 1321: Programming Problem Solving I, Credits: 3.00, Description: Introduction to programming problem solving, typically covering fundamental programming constructs like variables, control structures (loops, conditionals), data types, and an introduction to object-oriented concepts or procedural programming. Often taught using a language like Java or C++.
+  - Course: CSE 1321L: Program Problem Solving I Lab, Credits: 1.00,Description: Laboratory component for an introductory programming course, providing hands-on practice with the concepts taught in the lecture, involving coding exercises and small projects.
+  - Course: ECON 2200: Principles of Economics-Macro, Credits: 3.00,Description: Introduction to macroeconomic principles, covering topics like national income, inflation, unemployment, fiscal policy, monetary policy, and economic growth.
+  - Course: MATH 1113: Precalculus, Credits: 3.00, Description: Covers topics in algebra and trigonometry essential for calculus, including functions, graphing, logarithms, exponents, trigonometric functions, identities, and equations.
+  - Course: MATH 1190: Calculus I, Credits: 4.00, Description: Introduction to differential calculus, including limits, continuity, derivatives of algebraic and transcendental functions, and applications of derivatives such as optimization and related rates. May also include an introduction to integration.
+  - Course: PSYC 1101: Introductory Psychology, Credits: 3.00, Description: Broad overview of the field of psychology, covering major topics such as research methods, biological bases of behavior, sensation and perception, learning, memory, motivation, emotion, development, personality, psychological disorders, and social psychology.
+  - Course: SCI 1102: Science, Society & Environ II, Credits: 3.00, Description: An interdisciplinary science course focusing on the relationship between science, society, and the environment. May cover topics such as ecological principles, environmental issues, resource management, and the scientific process in addressing societal challenges.
+
+**Institution: University of North Georgia:**
+- Term: Fall 2018
+  - Course: ENGL 1101: English Composition I, Credits: 3, Grade: C, Description: Based on general catalog information, this course focuses on developing academic and professional written communication through a variety of rhetorical strategies. It emphasizes critical thinking, analysis, and introductory academic research skills.
+  - Course: HIST 2111: American History I, Credits: 3, Grade: B, Description: This course typically surveys United States history from exploration and colonization through the Reconstruction era, emphasizing the social, cultural, political, and economic evolution of the U.S.
+  - Course: PHIL 2200: Global Ethics, Credits: 3, Grade: A, Description: "This course introduces the student to the major, traditional ethical theories, their foundational arguments, strengths, weaknesses, and meaning for life as lived. The course explores both the major Western and Non-western ethical theories."
+  - Course: POLS 1101: American Government, Credits: 3, Grade: C, Description: "An introductory course that provides an overview of the Constitutional foundations of the nation, government institutions, and political processes." It generally also satisfies legislative requirements concerning the United States and Georgia Constitutions.
+  - GPA for term: 2.75
+
+**Institution: Kennesaw State University (KSU):**
+- Term: Spring 2020 (GPA: 3.75)
+  - Course: CSE 1322: Programming Problem Solving II, Credits: 3.00, Grade: B, Description: "The second course in computing provides coverage of advanced topics in programming. This includes the use of inheritance and polymorphism, abstract classes and interfaces, file input/output, exception handling, recursion, and parameterized types. Linear data structures (lists, stacks, and queues) are introduced to solve a variety of problems. Concepts related to the design of programs using Graphical User Interfaces (GUIs), event-driven programming, and threaded and parallel programming, are also introduced. Students will use good programming style including proper documentation."
+  - Course: CSE 1322L: Program Problem Solving II Lab, Credits: 1.00, Grade: A, Description: "The second lab course in computer science provides coverage of more advanced topics of object-oriented programming practices. This includes the use of static variables and classes, multi-dimensional arrays, inheritance and polymorphism, text files and exception handling, recursion, and parameterized types. Elementary data structures (linked lists, stacks, and queues) are introduced to solve application problems. Graphical user interfaces and event driven programming are also introduced. Students must continue to use good programming style including proper documentation." This is the required and supervised lab course to accompany CSE 1322.
+  - Course: ECON 1000: Contemporary Economic Issues, Credits: 2.00, Grade: A, Description: "This course provides students with the knowledge and tools necessary to critically examine social and policy issues from an economic perspective. Fundamental economic questions – as they relate to individuals, firms, and society in the modern global world – are addressed. Students learn about different economic systems, how markets function, the role of government in the economy, the basis for international trade, measurement of macroeconomic performance, and the impact of globalization on living standards and economic growth."
+  - Course: HIST 1112: Modern World History, Credits: 3.00, Grade: A, Description: "A survey of World History from early modern times (approx. 1500) to the present." It provides an introduction to the origin and development of the world's societies and their political, cultural, and economic traditions.
+  - Course: STAT 1401: Elementary Statistics, Credits: 3.00, Grade: A, Description: "This is a non-calculus based introduction to statistics. Course content includes descriptive statistics, probability theory, confidence intervals, hypothesis testing, and other selected statistical topics."
+- Term: Fall 2020 (GPA: 3.75)
+  - Course: CS 3503: Computer Organization & Arch, Credits: 3.00, Grade: A, Description: "An introduction to the theory and fundamentals of computer organization and architecture. The course covers computer architecture which overviews the structure and operational units of the computer used to implement a software program. Topics include data representation and encoding, binary arithmetic, fixed- and floating-point representation, numbering systems, error-control, instruction set architecture, assembly language and programming, microcode, memory organization and addressing, I/O, interrupts, internal architecture, instruction pipelining, multi-core architectures and CPU/ALU basics. The course also covers computer organization which overviews the computer's fundamental building blocks, hardware units, and their interconnection. Topics include Boolean algebra, logic gates, flip-flops, counters, registers, combinational and sequential circuits, K-maps, circuit design, and various digital components."
+  - Course: MATH 2345: Discrete Mathematics, Credits: 3.00, Grade: B, Description: "An introduction to the fundamentals of discrete mathematics. Topics include sets, formal logic, methods of proof, counting relations, functions, graphs and trees, and finite state automata."
+  - Course: PHIL 2010: Intro to Philosophy, Credits: 3.00, Grade: A, Description: This course provides an "Introduction to the central issues, questions, and theories of Western Philosophy. Topics covered include logic & critical thinking; religion; knowledge & skepticism; philosophy of mind; freedom and determinism; and ethics." KSU's description aligns with this general focus.
+  - Course: STAT 3010: Computer Appl. of Statistics, Credits: 3.00, Grade: A, Description: "This course is an introduction to the use of computer-based statistical software packages and applications in the analysis and interpretation of data. Topics include both descriptive statistics and inference methods. Software packages include SAS, Excel, and R, and one of JMP, SPSS, or Minitab."
+- KSU Institutional GPA: 3.75 (based on 24 GPA hours)
+
+**University of South Florida (USF):**
+(Bachelor of Information Science, Concentration in Web Development. Graduated May 2024, Cum Laude. Overall GPA: 3.67)
+- Term: Fall 2022 (GPA: 3.5)
+  - Course: LIS 2005: Information Literacy, Credits: 3, Grade: C, Description: "This course covers the development of undergraduate research and critical thinking skills to identify, evaluate, and use appropriate information sources to address educational, research, and other information needs." Some descriptions also mention that the course "teaches you how to find a research topic, identify keywords... use search engines better, use the USF online library including how to use databases, how to evaluate information... how to use the information you find in a research paper and how to cite that information correctly."
+  - Course: LIS 3261: Intro to Information Science, Credits: 3, Grade: A, Description: This course "Introduces the major concepts, principles, theories, issues and trends in information science." USF catalogs list it as a core course in Information Science.
+  - Course: LIS 4273: Adv Stats & Analytics, Credits: 3, Grade: A, Description: "Building on elementary statistics, this course focuses on the assumptions, mechanisms, and data science applications for advanced statistical topics, such as logistic regression, maximum likelihood, bootstrapping, nonparametrics, & Bayesian methods." It's noted as a course where a student obtained "advanced knowledge of statistical analysis in R."
+  - Course: MUC 2301: Intro to Electronic Music, Credits: 3, Grade: A, Description: "A study of the past century's technological explosion, which has affected the way in which music is performed, recorded, edited, composed, distributed, reproduced, and perceived worldwide. This course affords students the ability to think critically and includes selections from the western canon."
+- Term: Spring 2023 (GPA: 4.0)
+  - Course: CIS 3360: Prin of Information Security, Credits: 3, Grade: A, Description: This course "provides an overview of information systems security principles, practices, methods, and tools for organizational and institutional computing. Students will learn about the relationship between policy and security, the mechanisms used to implement policies, and the methodologies and technologies for assurance and vulnerability analysis and intrusion detection." Another description states it covers "Board review of Information Security and related elements. Includes terminology, history of the discipline, overview of information security program management."
+  - Course: ENC 1102: Composition II, Credits: 3, Grade: A+, Description: "This course emphasizes argument, research, and style. As students engage in creative and critical thinking, they learn to support assertions based on audience and purpose; students apply library research, strategies for revision, and peer response." Another USF description mentions, "Instruction and practice in the skills of writing and reading. This course affords students the ability to communicate effectively, including the ability to write clearly and engage in public speaking."
+  - Course: LIS 2780: Database Concepts, Credits: 3, Grade: A, Description: "This course examines Relational Database Management Systems using a typical commercial DBMS, such as Microsoft Access. Data modeling, database design, implementation, forms and reports, and remote access to databases are covered." Other descriptions for similar courses mention covering Structured Query Language (SQL).
+  - Course: LIS 3353: IT Concepts/Info Professionals, Credits: 3, Grade: A+, Description: "This course provides a fundamental understanding of Information Technology (IT) concepts and their practical application in various professional settings. Topics typically include hardware, software, networking, databases, cybersecurity, and current IT trends, geared towards information professionals." (General description based on similar courses, USF IT program outlines).
+  - Course: LIS 3361: WWW Page Design/Management, Credits: 3, Grade: A, Description: "Covers the principles of web page design and website management. Students learn to create and maintain websites using HTML, CSS, and potentially content management systems. Emphasis on usability, accessibility, and information architecture." (USF catalogs generally describe this as focusing on the design, creation, and management of web pages and sites).
+- Term: Summer 2023 (GPA: 3.89)
+  - Course: COP 2250: Obj. Orient Program (Java SE), Credits: 3, Grade: A, Description: "Introduction to object-oriented programming using the Java Standard Edition (SE) platform. Topics include classes, objects, inheritance, polymorphism, exception handling, and basic data structures. Focus on developing problem-solving skills through programming." (Standard description for an introductory Java OOP course at USF).
+  - Course: ENC 3250: Professional Writing, Credits: 3, Grade: A-, Description: "Focuses on the types of writing common in professional settings. Students learn to analyze audience and purpose, develop clear and concise writing styles, and create documents such as memos, reports, proposals, and professional correspondence." (USF English department often lists this with an emphasis on rhetoric in professional contexts).
+  - Course: HSC 2130: Sex, Health, & Decision-Making, Credits: 3, Grade: A, Description: "This course explores various aspects of human sexuality, reproductive health, and the decision-making processes related to personal health and relationships. Topics may include STIs, contraception, healthy relationships, and public health issues." (Description from USF College of Public Health course offerings or similar health sciences courses).
+- Term: Fall 2023 (GPA: 4.0)
+  - Course: ART 2500C: Beginning Painting, Credits: 3, Grade: A, Description: "An introduction to the fundamental concepts and techniques of painting. Students explore color theory, composition, paint application, and various painting media. Emphasis on developing observational skills and creative expression." (Standard description for an introductory painting course from USF School of Art & Art History).
+  - Course: LIS 4204: Information Behaviors, Credits: 3, Grade: A, Description: "Examines the theories and models of how people seek, use, and interact with information in different contexts. Topics include information needs, seeking strategies, user studies, and the impact of technology on information behavior." (Core topic in Information Science programs at USF).
+  - Course: LIS 4414: Information Policy and Ethics, Credits: 3, Grade: A, Description: "This course explores the legal, ethical, and societal issues related to information access and use. Topics include privacy, intellectual property, censorship, freedom of information, and the impact of information technologies on policy and ethics." (Generally listed as a key course in USF's Information Science curriculum).
+  - Course: LIS 4482: Networks and Communication, Credits: 3, Grade: A, Description: "Introduction to data communication and networking concepts. Covers network architectures, protocols, hardware, software, and security. Topics may include LANs, WANs, the Internet, and wireless networking, relevant to information professionals." (From USF Information Science course outlines).
+  - Course: MUS 2304: Intro to DJ, Credits: 3, Grade: A, Description: "An introductory course to the art and techniques of DJing. Students learn about equipment, mixing, beatmatching, music selection, and performance aspects of DJ culture." (Typically found in USF School of Music or Contemporary Music programs).
+- Term: Spring 2024 (GPA: 3.83)
+  - Course: LIS 3352: Interaction Design, Credits: 3, Grade: A+, Description: This course "provides students with an opportunity to acquire the resources, skills, and hands-on experience they need to design, develop, and evaluate information interfaces from a user-centered design perspective." Or, more generally, it's the "design of the interaction between users, systems and products," often with a focus on user experience (UX) and human-centered design. The USF catalog also lists it as a required course for the Web Development Technologies concentration.
+  - Course: LIS 3783: Information Architecture, Credits: 3, Grade: B+, Description: "Covers design, organization, implementation, and maintenance of digital information spaces for human access, navigation, and use. Examines core concepts and dominating technologies in Information Architecture." Another description states it provides "an overview of the information architecture design process, from assessing user needs, through organizing information resources, to documenting the design of information systems and spaces." It is also listed as a required course for the Web Development Technologies concentration at USF.
+  - Course: LIS 4365: Web Design Technologies, Credits: 3, Grade: A, Description: "This course will focus on two central web programming languages, JavaScript and PHP. In this class we will also learn open source MySQL as a database for the web. You will learn how to critically evaluate website quality; learn how to create and maintain a web page that connects and stores its data to the database; and learn how to display the results from a database display query." It's described as an "Exploration of advanced applications of key Web Technologies" and is a required course for the Web Development Technologies concentration.
+  - Course: LIS 4934: BSIS Senior Capstone, Credits: 3, Grade: A+, Description: "A culmination and application of Information Studies concepts and acquired skill sets. Students will be immersed in an exploration of contemporary issues that face information professionals." This course is designed to allow students to synthesize knowledge from their undergraduate coursework.
+  - Course: PEM 2930: Yoga, Credits: 2, Grade: S, Description: "Activities offered are selected to reflect student need and faculty interest." Yoga is listed as one of the activity options under this "Selected Topics" course number. More broadly, a yoga course like this is "designed to introduce students to yoga. The class includes theory and physical practice of body position, breathing and meditation."
+- USF Transcript Totals: Earned Hours: 120.0, GPA Hours: 99.0, Points: 364.0, Overall GPA: 3.67
+  - Total System (USF courses): Earned 65.0, GPA Hours 63.0, Points 243.0, GPA 3.85
+  - Total Transfer: Earned 55.0, GPA Hours 36.0, Points 121.0, GPA 3.36
+"""
+
+MISCELLANEOUS_INFO = """
+**Personal Background:**
+- Name: Justin Stutler
+- Age: 25
+- High School: Milton High School, Graduated 2018
+- High School Studies: Game Design, Animation, Programming. Participated in a programming pathway (2015-2018 mentioned in SOP).
+- Born in Atlanta, Georgia.
+- Graduated from Milton High School in 2018; studied game design, animation, and programming there.
+- Passionate about leveraging AI to improve software development workflows.
+- Enjoys learning new programming languages and frameworks.
+- Values teamwork and clear communication in projects.
+- Currently seeking opportunities related to AI engineering or advanced full-stack development.
+- Based in Tampa, Florida.
+- Believes continuous learning is key in the tech industry.
+- Attended Kennesaw State University (KSU) studying Computer Science with a focus on Artificial Intelligence before transferring, GPA 3.75 Honor Roll Student.
+- Graduated from University of South Florida (USF) with a Bachelor of Information Science (Conc: Web Development), GPA 3.67, Cum Laude.
+- Github Link: https://github.com/JustinStutler
+- Resume Link: https://resumellm.netlify.app/
+- LinkedIn: https://www.linkedin.com/in/justin-stutler-a72b961a8?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BvjpctvweSmmZwpnoGXR91w%3D%3D
+"""
+
+CONTEXT_CHUNKS = {
+    "resume": {
+        "description": "Justin Stutler's professional resume, including education, skills, work experience, and student organizations.",
+        "content": RESUME_TEXT
+    },
+    "sop": {
+        "description": "Justin Stutler's Statement of Purpose, detailing his academic and professional journey, motivations for pursuing AI, and future goals.",
+        "content": SOP_TEXT
+    },
+    "gre_scores": {
+        "description": "Justin Stutler's GRE General Test scores, including Verbal Reasoning, Quantitative Reasoning, and Analytical Writing sections.",
+        "content": GRE_SCORES_TEXT
+    },
+    "course_history": {
+        "description": "A comprehensive list of courses Justin Stutler has taken, including AP credits, courses from University of North Georgia, Kennesaw State University, and University of South Florida, with descriptions for many courses.",
+        "content": ACADEMIC_AND_COURSE_HISTORY_TEXT # This is still large, might need further chunking
+    },
+    "personal_background": {
+        "description": "General personal background information about Justin Stutler, including age, high school, interests, and summary of academic achievements.",
+        "content": MISCELLANEOUS_INFO # Note: TELL_ME_ABOUT_TEXT is already a summary, could be part of this or its own.
+    },
+    "tell_me_about": {
+        "description": "A concise summary about Justin Stutler, his skills, and aspirations. Good for a general overview.",
+        "content": TELL_ME_ABOUT_TEXT
+    }
+}

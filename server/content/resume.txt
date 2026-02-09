@@ -1,0 +1,34 @@
+Justin Stutler
+StutlerJustin@gmail.com | Tampa, Fl | https://resumellm.netlify.app/
+
+Education
+Bachelor of Information Science, Concentration in Web Development Graduated
+May 2024
+University of South Florida
+3.67 GPA
+
+Skills
+Full Stack Development: Figma, Javascript, HTML, CSS, React, Redux, Tailwind, Node, Express, MongoDB, SQL, mySQL, Python, Django, Flask, Go, PHP
+AI & Data Science: Python(numpy, pandas, Pytorch, matplotlib), OpenCV, PyTesseract, R
+Project Management: Agile, Kanban, JIRA, Confluence, Git
+Enterprise Tools: Microsoft Suite, Google Suite
+
+Experience
+MagMutual Insurance - Software Developer Intern/ Contractor
+May 2020 - December 2020
+- Contributed as a key full-stack developer on a 4-person team for 6 months, developing a dynamic internal web application.
+- Leveraged Agile methodologies with JIRA and Confluence to ensure timely project completion, enhance team collaboration, and maintain clear documentation.
+- Applied full-stack development skills using modern technologies to build and deploy the software.
+
+PieHole - Operations Manager
+May 2016 - July 2018
+- Managed daily operations, including customer service, inventory management, and baking, consistently producing and selling approximately 150 pies per week.
+- Led and managed a team of 2 in daily business operations from June 2017.
+- Successfully trained 4 new bakers between June 2017 and July 2018, ensuring consistent product quality.
+- Directed a team of 4 to produce thousands of pies within a week for peak holiday seasons (e.g., Thanksgiving), maintaining high standards for consistency and efficiency.
+
+Student Organizations
+Member of USF Brazilian Jiu-Jitsu Club (August 2023 - May 2024)
+Member of USF Chess Club (August 2022 - May 2024)
+Member of USF Pottery Club (August 2022 - May 2023)
+Coach and Player of Overwatch Team at KSU (August 2019 - May 2021)

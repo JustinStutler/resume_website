@@ -1,0 +1,67 @@
+<script type="module" src="js/main.js"></script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Justin's Portfolio Chat</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="greeting">
+            <h1 class="gemini-hello">Hello I'm Justin's AI Assistant</h1>
+            <p class="gemini-powered-by">Powered by Gemini</p>
+        </div>
+
+        <div id="chat-window">
+            </div>
+
+        <div class="suggestions-area-wrapper">
+            <button id="suggestions-toggle-btn" class="suggestions-toggle-icon" aria-label="Toggle more suggestions" aria-expanded="false" title="More suggestions">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
+            
+            <div class="suggestions-container" id="suggestions-container">
+                <button class="suggestion-btn" 
+                    data-type="local-markdown" 
+                    data-local-file="content/tell_me_about.txt" 
+                    data-user-display-message="Tell me about Justin">
+                Tell me about Justin
+                </button>    
+                <button class="suggestion-btn"
+                        id="viewRandomClassBtn" 
+                        data-type="ai-query-random-class"
+                        data-user-display-message="Tell me about a class Justin has taken.">
+                    Tell me about a class
+                </button>
+                
+                <button class="suggestion-btn" data-type="pdf" data-pdf="resume">View Resume</button>
+                <button class="suggestion-btn" data-type="pdf" data-pdf="sop">View Statement of Purpose</button>
+                
+                <button class="suggestion-btn"
+                        data-type="local-markdown" 
+                        data-user-display-message="What are Justin's GRE scores?"
+                        data-local-file="content/gre_scores.txt">
+                    View GRE Scores
+                </button>
+                
+                <button class="suggestion-btn" data-type="random-image">View Justin</button>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Ask about Justin..." autocomplete="off">
+            <button id="send-btn" title="Send message">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+Justin Stutler
+Statement of Purpose
+
+My fascination with artificial intelligence sparked in high school (2015-2016) when I began
+coding via Milton High School's programming pathway-a rare and fortunate opportunity.
+Witnessing Google DeepMind's AlphaGo defeat a world Go champion was a profound
+revelation of Al's potential, shattering my perceived technological limits and igniting a lasting
+interest in developing such intelligent machines, decisively setting my academic and
+professional trajectory.
+
+To explore these interests, I pursued computer science at Kennesaw State University (KSU). A
+transformative summer internship which turned into a contract role at MagMutual Insurance.
+Despite limited initial full-stack knowledge, I quickly integrated into a professional team,
+contributing meaningfully to a significant web application. This immersive experience provided a
+comprehensive education in agile processes, diverse development technologies, and real-world
+software practicalities.
+
+The COVID-19 pandemic prompted my move from Georgia to Florida, and in 2022, I joined the
+University of South Florida (USF) Information Science program. After debating between web
+development and data science concentrations, my MagMutual experience steered me towards
+Web Development Technologies. I graduated Cum Laude in May 2024 (GPA: 3.67). My Senior
+Capstone involved building a full-stack PHP/MySQL application with comprehensive CRUD data
+handling..
+
+Post-graduation, observing Al-powered tools like Cursor seamlessly integrating into full-stack
+workflows crystallized my desire to specialize in Al. My core interest is in leveraging Al to
+modernize and enhance the software development process. The new Master of Science in Data
+Intelligence (MSDI) program at USF presents the ideal opportunity to acquire the specialized
+knowledge needed for this vision.
+
+The USF MSDI program is my clear choice. The programs focus on "data synthesis, modeling
+and computational skills... [to] extract intelligence...and utilize them in business decision
+making" and "solving large-scale problems" directly supports my ambition to architect Al-driven
+development solutions. As a USF alumnus familiar with its excellent academic environment, and
+having built a strong community in Tampa over three years, continuing at USF feels like a
+natural progression. I am interested in potentially combining the computational and
+decision-making tracks to earn both the MSDI degree and an Al Graduate Certificate within two
+years.
+
+My primary objective is to become an Al Engineer focused on innovative Al solutions to
+revolutionize the full-stack development lifecycle. I aim to contribute to a future where Al
+intelligently assists in application creation. The MSDI program is the crucial catalyst to transform
+my foundational interest and practical experience into specialized expertise. I am confident in
+my capacity to excel and contribute valuably to the USF graduate community and the Al field.
+
+Thank you for your consideration.
