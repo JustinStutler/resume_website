@@ -2,39 +2,40 @@
 
 RESUME_TEXT = """
 Justin Stutler
-StutlerJustin@gmail.com | Tampa, Fl | https://resumellm.netlify.app/
+StutlerJustin@gmail.com	Tampa, Fl	           https://JustinStutlerAI.netlify.app/
 
-Education
-Bachelor of Information Science, Concentration in Web Development Graduated
-May 2024
-University of South Florida
-3.67 GPA
+Education | University of South Florida | Tampa, FL
+Master of Science in Data Intelligence			          August 2025 - December 2026 (Expected)
+Graduate Certificate of Artificial Intelligence		          August 2025 - December 2026 (Expected)
+Bachelor of Information Science | Web Development Concentration | 3.67 GPA | May 2024 (Graduated)
 
-Skills
-Full Stack Development: Figma, Javascript, HTML, CSS, React, Redux, Tailwind, Node, Express, MongoDB, SQL, mySQL, Python, Django, Flask, Go, PHP
-AI & Data Science: Python(numpy, pandas, Pytorch, matplotlib), OpenCV, PyTesseract, R
-Project Management: Agile, Kanban, JIRA, Confluence, Git
-Enterprise Tools: Microsoft Suite, Google Suite
+Technical Skills
+AI & Machine Learning: Deep Learning, Computer Vision, ResNets, PyTorch, TensorFlow, Scikit-learn, Pandas, NumPy, Ablation Studies, Natural Language Processing(NLP), OpenCV, YOLO
+Data Science & Math: Statistical Modeling, Regression Analysis, Bayesian Statistics, Monte Carlo Methods, Hypothesis Testing, Data Visualization (Matplotlib/Seaborn)
+Software Engineering: Python, SQL, MySQL, MongoDB, Git, Agile/Scrum, JIRA, Confluence
+Web & Deployment: React, Node.js, JavaScript, HTML/CSS, RESTful APIs, PHP, Go, Django, Flask
 
-Experience
-MagMutual Insurance - Software Developer Intern/ Contractor
-May 2020 - December 2020
-- Contributed as a key full-stack developer on a 4-person team for 6 months, developing a dynamic internal web application.
-- Leveraged Agile methodologies with JIRA and Confluence to ensure timely project completion, enhance team collaboration, and maintain clear documentation.
-- Applied full-stack development skills using modern technologies to build and deploy the software.
+Academic Projects
+Deep Learning Computer Vision Capstone | Music Genre Classification | Current Work
+Conducting an ablation study on ResNets vs. standard CNNs to analyze vanishing gradients and optimize image classification performance.
+Developing a CNN pipeline to predict musical genres from album art, demonstrating the efficacy of residual connections in deep networks.
+Predictive Housing Market Analysis | Data Science Project | Fall 2025
+Engineered statistical regression models on high-dimensional real estate data, performing feature engineering to isolate key market drivers.
+Optimized model selection based on RMSE and R-squared metrics, utilizing EDA to identify and mitigate multicollinearity.
+Robotics Localization Algorithm | Intro to AI Project | Fall 2025
+Implemented a Particle Filter (Monte Carlo Localization) algorithm to simulate robot state estimation.
+Modeled motion and sensor uncertainty using Bayesian statistics to iteratively update belief states, successfully tracking a robot's position within a 2D map.
 
-PieHole - Operations Manager
-May 2016 - July 2018
-- Managed daily operations, including customer service, inventory management, and baking, consistently producing and selling approximately 150 pies per week.
-- Led and managed a team of 2 in daily business operations from June 2017.
-- Successfully trained 4 new bakers between June 2017 and July 2018, ensuring consistent product quality.
-- Directed a team of 4 to produce thousands of pies within a week for peak holiday seasons (e.g., Thanksgiving), maintaining high standards for consistency and efficiency.
+Professional Experience
+MagMutual Insurance | Software Developer Intern → Contractor | May - December 2020
+Collaborated within a team of 4 to engineer scalable Python/Go backend solutions and deploy full-stack architectures, optimizing enterprise workflows in an Agile environment.
+
+PieHole | Operations Manager | May 2016 - July 2018
+Managed daily operations and inventory for a high-volume food service business, overseeing a team to ensure consistent product quality and efficiency.
 
 Student Organizations
-Member of USF Brazilian Jiu-Jitsu Club (August 2023 - May 2024)
-Member of USF Chess Club (August 2022 - May 2024)
-Member of USF Pottery Club (August 2022 - May 2023)
-Coach and Player of Overwatch Team at KSU (August 2019 - May 2021)
+USF Brazilian Jiu-Jitsu Club: Member (August 2023 – Current)
+KSU Overwatch Team: Coach & Player (August 2019 – May 2021)
 """
 
 SOP_TEXT = """
@@ -47,12 +48,19 @@ My primary objective is to become an AI Engineer focused on innovative AI soluti
 Thank you for your consideration.
 """
 
-TELL_ME_ABOUT_TEXT = """I'm **Justin Stutler**, a Web Development specialist passionate about the intersection of full-stack development and artificial intelligence.
+TELL_ME_ABOUT_TEXT = """
+I'm **Justin Stutler**, an aspiring AI Engineer currently pursuing a Master of Science in Data Intelligence at the University of South Florida, Tampa.
 
-* **Recent USF Graduate:** Bachelor of Information Science (Web Development) - 3.67 GPA.
-* **Full-Stack Experience:** Gained practical skills in Agile environments and modern web technologies during an internship at MagMutual Insurance.
-* **AI-Driven Future:** Keen to leverage AI to innovate and streamline the software development lifecycle.
-* **Proactive & Collaborative:** Eager to contribute to challenging projects in the tech industry."""
+* **Academic Background:** I graduated Cum Laude in May 2024 with a Bachelor of Information Science, concentrating in Web Development from USF, maintaining a 3.67 GPA. Prior to that, I studied Computer Science at Kennesaw State University with a focus on Artificial Intelligence, earning a 3.75 GPA.
+
+* **Professional Background:** I have experience as a Software Developer Intern/Contractor at MagMutual Insurance, where I contributed to a significant web application project using Agile methodologies. Additionally, I managed operations at PieHole, overseeing production and team management.
+
+* **Problem-Solving Mindset:** I view every passion as a distinct puzzle to solve.
+In DJing, it’s the technical challenge of selecting the perfect track and manipulating frequencies to create a seamless mix.
+In Brazilian Jiu-Jitsu, it’s the persistence of trial and error, constantly adapting leverage strategies to overcome opponents with different styles and body types.
+Every day, I utilize these skills to develop algorithms that automate and simplify my work.
+Whether I am optimizing an AI model or my daily routine, I approach the problem equipped with years of diverse problem-solving experience.
+"""
 
 GRE_SCORES_TEXT = """
 Your Scores for the General Test Taken on May 7, 2025:
