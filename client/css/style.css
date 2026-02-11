@@ -71,9 +71,11 @@ body::-webkit-scrollbar-thumb:hover,
 .message.bot.large-content-message { max-width: 98%; width: 100%; box-sizing: border-box; padding: 10px; background-color: #202124; align-self: stretch; flex-shrink: 0; }
 .message.bot.large-content-message .preview-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-right: 5px; }
 .message.bot.large-content-message .preview-header > p { margin: 0; font-size: 0.9em; color: #bdc1c6; flex-grow: 1; padding-right: 10px; }
-.message.bot.large-content-message .icon-download-button-header { color: #9aa0a6; text-decoration: none; cursor: pointer; display: flex; align-items: center; padding: 5px; border-radius: 4px; transition: color 0.2s, background-color 0.2s; }
-.message.bot.large-content-message .icon-download-button-header:hover { color: #e8eaed; background-color: rgba(232, 234, 237, 0.1); }
-.message.bot.large-content-message .icon-download-button-header svg { width: 22px; height: 22px; fill: currentColor; }
+.message.bot.large-content-message .preview-header-actions { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 6px; }
+.message.bot.large-content-message .icon-download-button-header { color: #9aa0a6; text-decoration: none; cursor: pointer; display: flex; align-items: center; padding: 5px 10px; border-radius: 999px; border: 1px solid transparent; transition: color 0.2s, background-color 0.2s, border-color 0.2s; font-size: 0.85em; }
+.message.bot.large-content-message .icon-download-button-header:hover { color: #e8eaed; background-color: rgba(232, 234, 237, 0.1); border-color: rgba(232, 234, 237, 0.15); }
+.message.bot.large-content-message .icon-download-button-header svg { width: 20px; height: 20px; fill: currentColor; }
+.message.bot.large-content-message .view-pdf-link { font-weight: 500; white-space: nowrap; }
 .message.bot.large-content-message .document-image-preview { width: 100%; max-width: 80%; height: auto; aspect-ratio: 816 / 1056; object-fit: contain; border-radius: 8px; border: 1px solid #3c4043; display: block; background-color: #fff; margin-left: auto; margin-right: auto; }
 .message.bot.large-content-message.message-contains-random-image { padding: 0 !important; background-color: transparent !important; border: none !important; max-width: 100%; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
 .random-image-display-container { width: 100%; display: flex; align-items: center; justify-content: center; line-height: 0; border-radius: inherit; overflow: hidden; flex-shrink: 0; background-color: #202124; }
