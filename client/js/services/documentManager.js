@@ -6,14 +6,14 @@ export class DocumentManager {
             return {
                 friendlyName: "Justin's Resume",
                 pdfPath: 'pdfs/Resume - Justin Stutler.pdf',
-                imagePath: 'pdfs/Resume - Justin Stutler.png',
+                imagePath: 'pngs/Resume - Justin Stutler.png',
                 downloadFileName: 'Resume - Justin Stutler.pdf'
             };
         } else if (type === 'sop') {
             return {
                 friendlyName: "Justin's Statement of Purpose",
                 pdfPath: 'pdfs/Statement of Purpose - Justin Stutler.pdf',
-                imagePath: 'pdfs/Statement of Purpose - Justin Stutler.png',
+                imagePath: 'pngs/Statement of Purpose - Justin Stutler.png',
                 downloadFileName: 'Statement of Purpose - Justin Stutler.pdf'
             };
         }

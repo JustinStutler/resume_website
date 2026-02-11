@@ -23,7 +23,7 @@ export function handleUserQueryInput(queryText, mainContext, shouldFocusAfterCom
         state.setBotBusy(true, false); 
         const loadingElement = ui.showLoadingIndicator();
         
-        fetch('pdfs/GRE_Scores_Formatted.md')
+        fetch('content/GRE_Scores_Formatted.md')
             .then(res => res.ok ? res.text() : Promise.reject(res.status))
             .then(text => {
                 ui.removeLoadingIndicator(loadingElement);
@@ -117,7 +117,7 @@ export function handleSuggestionButtonClick(btn, mainContext) {
                 
                 const html = `
                     <div class="random-image-display-container">
-                        <img src="images/${imgResult.imageName}" 
+                        <img src="portraits/${imgResult.imageName}" 
                              alt="Random: ${imgResult.imageName}" 
                              class="random-image-content"
                              onload="this.scrollIntoView({behavior: 'smooth', block: 'nearest'})">

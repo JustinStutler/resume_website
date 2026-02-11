@@ -27,7 +27,7 @@ export function handleUserQueryInput(queryText, mainContext, shouldFocusAfterCom
     if (isGreQuery) {
         state.setBotBusy(true, false); // Disable UI, don't plan to focus yet
         const loadingElement = ui.showLoadingIndicator();
-        const greFilePath = 'pdfs/GRE_Scores_Formatted.md';
+        const greFilePath = 'content/GRE_Scores_Formatted.md';
 
         fetch(greFilePath)
             .then(response => {
@@ -145,12 +145,12 @@ function handlePdfSuggestion(btn, mainContext) {
     if (pdfType === 'resume') {
         friendlyName = "Justin's Resume";
         pdfPath = 'pdfs/Resume - Justin Stutler.pdf';
-        imagePath = 'pdfs/Resume - Justin Stutler.png';
+        imagePath = 'pngs/Resume - Justin Stutler.png';
         downloadFileName = 'Resume - Justin Stutler.pdf';
     } else if (pdfType === 'sop') {
         friendlyName = "Justin's Statement of Purpose";
         pdfPath = 'pdfs/Statement of Purpose - Justin Stutler.pdf';
-        imagePath = 'pdfs/Statement of Purpose - Justin Stutler.png';
+        imagePath = 'pngs/Statement of Purpose - Justin Stutler.png';
         downloadFileName = 'Statement of Purpose - Justin Stutler.pdf';
     } else {
         console.error("Unknown PDF type:", pdfType);
@@ -251,7 +251,7 @@ function handleRandomImageSuggestion(btn, mainContext) {
     state.addViewedImage(imageToDisplay);
     state.setLastImageShown(imageToDisplay);
 
-    const imagePath = `images/${imageToDisplay}`;
+    const imagePath = `portraits/${imageToDisplay}`;
     const imageId = `randomImage_${Date.now()}`;
     
     const imageDisplayHtml = `
