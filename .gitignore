@@ -32,7 +32,6 @@ server/env/
 .env
 *.env
 env.py
-config.py
 # If you have a specific secrets file, add it here
 
 # --- IDE / Editor Settings ---
