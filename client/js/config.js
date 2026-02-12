@@ -8,7 +8,7 @@ export const BUTTON_COOLDOWN_MS = 1000;
 
 // API Endpoints
 // Note: In production, you might want to switch this automatically
-export const RENDER_BACKEND_URL = 'https://resumellm.onrender.com/ask';
+export const RENDER_BACKEND_URL = 'https://resume-website-c625.onrender.com/ask';
 export const LOCAL_BACKEND_URL = 'http://localhost:5001/ask';
 export const IS_LOCAL_DEVELOPMENT = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
 
