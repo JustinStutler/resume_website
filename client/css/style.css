@@ -567,16 +567,24 @@ body::-webkit-scrollbar-thumb:hover,
     }
 
     .suggestions-toggle-icon {
+        /* Show hamburger on mobile for tap-to-toggle */
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin-top: 0;
-        /* Aligns with header flex */
+        margin-right: 8px;
+        width: 32px;
+        height: 32px;
+        padding: 6px;
+        border-radius: 999px;
+        border: 1px solid transparent;
     }
 
     .suggestions-container {
         flex-direction: column;
-        /* Stack columns vertically on mobile */
-        align-items: center;
-        /* Center items for pyramid look */
-        gap: 8px;
+        /* Stack categories vertically on mobile */
+        align-items: stretch;
+        gap: 12px;
         max-height: 0;
         overflow: hidden;
         padding-top: 0;
@@ -591,29 +599,44 @@ body::-webkit-scrollbar-thumb:hover,
         overflow: visible;
     }
 
-    /* Flatten the columns */
+    /* Keep suggestion columns as sections with labels on mobile */
     .suggestion-column {
-        display: contents;
-        /* Children become direct flex items of suggestions-container */
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: center;
+        padding: 8px 12px;
+        border-right: none;
+        border-bottom: 1px solid #3c4043;
     }
 
-    /* Hide headers on mobile */
+    .suggestion-column:last-child {
+        border-bottom: none;
+    }
+
     .suggestion-column h3 {
-        display: none;
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 5px 0 10px 0;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #3c4043;
     }
 
+    /* Two buttons per row inside each category on mobile */
     .suggestion-btn {
         font-size: 0.85em;
-        padding: 8px 14px;
+        padding: 8px 10px;
         border-radius: 20px;
-        margin-bottom: 0;
+        margin-bottom: 8px;
 
         /* Pyramid Sort Implementation */
         order: var(--mobile-order, 0);
 
-        /* Do not stretch */
-        width: max-content;
-        max-width: 100%;
+        flex: 0 1 48%;
+        max-width: 48%;
+        box-sizing: border-box;
     }
 
     .input-area {
