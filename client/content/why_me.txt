@@ -1,0 +1,7 @@
+Why choose me?
+
+I am a dedicated and versatile software engineer with a strong foundation in Computer Science and a passion for Artificial Intelligence. My academic background, including a Master's in Computer Science (GPA 4.0), has equipped me with deep theoretical knowledge in algorithms, machine learning, and systems design.
+
+Beyond the classroom, I have hands-on experience building complex projects, from full-stack web applications to AI-driven systems like robot localization and facial recognition. I thrive on solving difficult problems and am constantly learning new technologies to stay at the forefront of the industry.
+
+I bring a unique blend of technical expertise, creativity, and a collaborative spirit to every team I join. I am eager to apply my skills to real-world challenges and contribute to innovative solutions in the field of AI.

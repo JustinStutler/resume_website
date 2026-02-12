@@ -47,7 +47,7 @@ body::-webkit-scrollbar-thumb:hover,
 .chat-container {
     width: 90%;
     max-width: 1080px;
-    height: calc(100vh - 40px); 
+    height: calc(100vh - 40px);
     background-color: #1e1f20;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
@@ -58,86 +58,350 @@ body::-webkit-scrollbar-thumb:hover,
 }
 
 /* --- Greeting Styles --- */
-.greeting { text-align: center; padding: 30px 20px 25px 20px; background-color: transparent; color: #e8eaed; border-bottom: 1px solid #3c4043; flex-shrink: 0; }
-.greeting .gemini-hello { margin-top: 0; margin-bottom: 8px; font-size: 2.8em; font-weight: 500; background: linear-gradient(to right, #8ab4f8, #c58af9, #f28b82); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent; display: inline-block; line-height: 1.2; }
-.greeting .gemini-powered-by { font-size: 0.85em; color: #9aa0a6; margin-top: 10px; margin-bottom: 0; font-weight: 400; }
+.greeting {
+    text-align: center;
+    padding: 30px 20px 25px 20px;
+    background-color: transparent;
+    color: #e8eaed;
+    border-bottom: 1px solid #3c4043;
+    flex-shrink: 0;
+}
+
+.greeting .gemini-hello {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 2.8em;
+    font-weight: 500;
+    background: linear-gradient(to right, #8ab4f8, #c58af9, #f28b82);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    /* Standard fallbacks */
+    display: inline-block;
+    line-height: 1.2;
+}
+
+.greeting .gemini-powered-by {
+    font-size: 0.85em;
+    color: #9aa0a6;
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-weight: 400;
+}
 
 /* --- Chat Window & Messages --- */
-#chat-window { flex-grow: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; position: relative; }
-.message { margin-bottom: 15px; padding: 10px 15px; border-radius: 18px; max-width: 75%; word-wrap: break-word; line-height: 1.5; font-size: 0.95em; animation: fadeIn 0.3s ease-out; }
-.message.user { background-color: #3c4043; color: #e8eaed; align-self: flex-end; border-bottom-right-radius: 5px; }
-.message.bot { background-color: #282a2c; color: #bdc1c6; align-self: flex-start; border-bottom-left-radius: 5px; }
-.message.bot.warm-up-message { font-style: italic; font-size: 0.85em; color: #9aa0a6; background-color: #202124; padding: 8px 12px; border-radius: 10px; align-self: center; max-width: 60%; text-align: center; }
-.message.bot.large-content-message { max-width: 98%; width: 100%; box-sizing: border-box; padding: 10px; background-color: #202124; align-self: stretch; flex-shrink: 0; }
-.message.bot.large-content-message .preview-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding-right: 5px; }
-.message.bot.large-content-message .preview-header > p { margin: 0; font-size: 0.9em; color: #bdc1c6; flex-grow: 1; padding-right: 10px; }
-.message.bot.large-content-message .preview-header-actions { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; gap: 6px; }
-.message.bot.large-content-message .icon-download-button-header { color: #9aa0a6; text-decoration: none; cursor: pointer; display: flex; align-items: center; padding: 5px 10px; border-radius: 999px; border: 1px solid transparent; transition: color 0.2s, background-color 0.2s, border-color 0.2s; font-size: 0.85em; }
-.message.bot.large-content-message .icon-download-button-header:hover { color: #e8eaed; background-color: rgba(232, 234, 237, 0.1); border-color: rgba(232, 234, 237, 0.15); }
-.message.bot.large-content-message .icon-download-button-header svg { width: 20px; height: 20px; fill: currentColor; }
-.message.bot.large-content-message .view-pdf-link { font-weight: 500; white-space: nowrap; }
-.message.bot.large-content-message .document-image-preview { width: 100%; max-width: 80%; height: auto; aspect-ratio: 816 / 1056; object-fit: contain; border-radius: 8px; border: 1px solid #3c4043; display: block; background-color: #fff; margin-left: auto; margin-right: auto; }
-.message.bot.large-content-message.message-contains-random-image { padding: 0 !important; background-color: transparent !important; border: none !important; max-width: 100%; border-radius: 8px; overflow: hidden; flex-shrink: 0; }
-.random-image-display-container { width: 100%; display: flex; align-items: center; justify-content: center; line-height: 0; border-radius: inherit; overflow: hidden; flex-shrink: 0; background-color: #202124; }
-.random-image-content { width: 100%; height: auto; max-height: 70vh; object-fit: contain; display: block; border-radius: inherit; }
-.message.bot.image-counter-message { font-size: 0.8em; color: #9aa0a6; background-color: #202124; padding: 5px 10px; border-radius: 10px; align-self: center; max-width: fit-content; margin-top: 5px; margin-bottom: 10px; }
-.message.bot .loading-dots span { display: inline-block; width: 8px; height: 8px; background-color: #9aa0a6; border-radius: 50%; margin: 0 2px; animation: blink 1.4s infinite both; }
-.message.bot .loading-dots span:nth-child(1) { animation-delay: 0s; }
-.message.bot .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
-.message.bot .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+#chat-window {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.message {
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    border-radius: 18px;
+    max-width: 75%;
+    word-wrap: break-word;
+    line-height: 1.5;
+    font-size: 0.95em;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.message.user {
+    background-color: #3c4043;
+    color: #e8eaed;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+.message.bot {
+    background-color: #282a2c;
+    color: #bdc1c6;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+.message.bot.warm-up-message {
+    font-style: italic;
+    font-size: 0.85em;
+    color: #9aa0a6;
+    background-color: #202124;
+    padding: 8px 12px;
+    border-radius: 10px;
+    align-self: center;
+    max-width: 60%;
+    text-align: center;
+}
+
+.message.bot.large-content-message {
+    max-width: 98%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #202124;
+    align-self: stretch;
+    flex-shrink: 0;
+}
+
+.message.bot.large-content-message .preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-right: 5px;
+}
+
+.message.bot.large-content-message .preview-header>p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #bdc1c6;
+    flex-grow: 1;
+    padding-right: 10px;
+}
+
+.message.bot.large-content-message .preview-header-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.message.bot.large-content-message .icon-download-button-header {
+    color: #9aa0a6;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+    font-size: 0.85em;
+}
+
+.message.bot.large-content-message .icon-download-button-header:hover {
+    color: #e8eaed;
+    background-color: rgba(232, 234, 237, 0.1);
+    border-color: rgba(232, 234, 237, 0.15);
+}
+
+.message.bot.large-content-message .icon-download-button-header svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.message.bot.large-content-message .view-pdf-link {
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.message.bot.large-content-message .document-image-preview {
+    width: 100%;
+    max-width: 80%;
+    height: auto;
+    aspect-ratio: 816 / 1056;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 1px solid #3c4043;
+    display: block;
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.message.bot.large-content-message.message-contains-random-image {
+    padding: 0 !important;
+    background-color: transparent !important;
+    border: none !important;
+    max-width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.random-image-display-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    border-radius: inherit;
+    overflow: hidden;
+    flex-shrink: 0;
+    background-color: #202124;
+}
+
+.random-image-content {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: contain;
+    display: block;
+    border-radius: inherit;
+}
+
+.message.bot.image-counter-message {
+    font-size: 0.8em;
+    color: #9aa0a6;
+    background-color: #202124;
+    padding: 5px 10px;
+    border-radius: 10px;
+    align-self: center;
+    max-width: fit-content;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.message.bot .loading-dots span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #9aa0a6;
+    border-radius: 50%;
+    margin: 0 2px;
+    animation: blink 1.4s infinite both;
+}
+
+.message.bot .loading-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.message.bot .loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.message.bot .loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
 
 
 /* --- Suggestions Area --- */
+/* --- Suggestions Area --- */
+/* --- Suggestions Area --- */
 .suggestions-area-wrapper {
-    padding: 10px 15px;
-    border-top: 1px solid #3c4043;
+    padding: 0;
+    /* No padding for flush alignment with input area */
     flex-shrink: 0;
-    /* Default: toggle is hidden, container takes full width */
+    border-top: 1px solid #3c4043;
+    /* Separator line above suggestions - full width */
+}
+
+.suggestions-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0;
+    padding: 1px 15px 7px 15px;
+}
+
+/* Full-width bottom border when expanded, using pseudo-element so it doesn't affect padding/centering */
+.suggestions-header:has(+ .suggestions-container.expanded)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -15px;
+    right: -15px;
+    height: 1px;
+    background: #3c4043;
 }
 
 .suggestions-toggle-icon {
-    display: none; /* Hidden by default (for desktop) */
-    flex-direction: column;
-    justify-content: space-around;
-    width: 30px; 
-    height: 30px; 
-    background: #303134;
-    border: 1px solid #3c4043;
-    border-radius: 6px; 
-    cursor: pointer;
-    padding: 6px; 
-    box-sizing: border-box;
-    flex-shrink: 0; 
-    transition: background-color 0.2s;
+    display: none;
+    /* Hamburger button removed - hover controls expand/collapse */
 }
+
 .suggestions-toggle-icon:hover {
     background-color: #3c4043;
 }
+
 .suggestions-toggle-icon .hamburger-bar {
     display: block;
-    width: 100%; 
-    height: 2px; 
+    width: 100%;
+    height: 2px;
     background-color: #bdc1c6;
     border-radius: 1px;
     transition: all 0.3s ease-in-out;
 }
-.suggestions-toggle-icon .hamburger-bar + .hamburger-bar {
-    margin-top: 4px; 
-}
-.suggestions-toggle-icon.open .hamburger-bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-.suggestions-toggle-icon.open .hamburger-bar:nth-child(2) { opacity: 0; }
-.suggestions-toggle-icon.open .hamburger-bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
+.suggestions-toggle-icon .hamburger-bar+.hamburger-bar {
+    margin-top: 4px;
+}
+
+.suggestions-toggle-icon.open .hamburger-bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.suggestions-toggle-icon.open .hamburger-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.suggestions-toggle-icon.open .hamburger-bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+.suggestions-title {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #e8eaed;
+    line-height: normal;
+}
 
 .suggestions-container {
     display: flex;
-    flex-wrap: wrap; 
-    justify-content: center; /* Center the row of buttons for desktop */
-    gap: 8px;
-    flex-grow: 1; 
-    overflow: hidden; 
+    flex-direction: row;
+    justify-content: center;
+    gap: 0;
+    flex-grow: 1;
+    overflow: hidden;
     transition: max-height 0.35s ease-in-out;
-    max-height: none; /* Desktop: show all */
+
+    /* Default collapsed state styles */
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.suggestions-container.expanded {
+    max-height: 1000px;
+    opacity: 1;
+    visibility: visible;
+    overflow: visible;
+}
+
+.suggestion-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    border-right: 1px solid #3c4043;
+}
+
+.suggestion-column:last-child {
+    border-right: none;
+}
+
+.suggestion-column h3 {
+    width: 100%;
+    text-align: center;
+    margin: 5px 0 10px 0;
+    padding-bottom: 5px;
+    /* Space for line */
+    border-bottom: 1px solid #3c4043;
+    /* Horizontal line below column header */
+    font-size: 1em;
+    font-weight: 500;
+    color: #9aa0a6;
+    letter-spacing: 0.5px;
 }
 
 /* Default button style (for desktop) */
@@ -152,146 +416,273 @@ body::-webkit-scrollbar-thumb:hover,
     white-space: nowrap;
     text-align: center;
     box-sizing: border-box;
-    flex-grow: 0;  /* Don't grow by default, let them size to content */
-    flex-shrink: 1; /* Allow shrinking if needed before wrapping */
-    flex-basis: auto; /* Size based on content */
-    min-width: auto; /* No fixed min-width, let content dictate (or a small one if desired) */
+    flex-grow: 0;
+    flex-shrink: 1;
+
+    order: var(--desktop-order, 0);
+
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, opacity 0.2s;
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: center;
 }
-.suggestion-btn:hover:not(:disabled) { background-color: #3c4043; border-color: #5f6368; color: #e8eaed; }
-.suggestion-btn:disabled { opacity: 0.5 !important; cursor: not-allowed !important; background-color: #303134 !important; color: #70757a !important; border-color: #3c4043 !important; }
+
+.suggestion-btn:hover:not(:disabled) {
+    background-color: #3c4043;
+    border-color: #5f6368;
+    color: #e8eaed;
+}
+
+.suggestion-btn:disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    background-color: #303134 !important;
+    color: #70757a !important;
+    border-color: #3c4043 !important;
+}
 
 /* --- Input Area --- */
-.input-area { display: flex; align-items: center; padding: 12px 15px; border-top: 1px solid #3c4043; background-color: transparent; flex-shrink: 0; }
-#user-input { flex-grow: 1; padding: 10px 15px; border: 1px solid #5f6368; border-radius: 20px; background-color: #202124; color: #e8eaed; font-size: 0.95em; margin-right: 10px; outline: none; transition: border-color 0.2s, box-shadow 0.2s, opacity 0.2s; }
-#user-input::placeholder { color: #9aa0a6; }
-#user-input:focus { border-color: #8ab4f8; box-shadow: 0 0 0 1px #8ab4f8; }
-#user-input:disabled { opacity: 0.7; cursor: not-allowed; }
-#send-btn { background-color: #8ab4f8; color: #202124; border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; padding: 0; flex-shrink: 0; transition: background-color 0.2s, opacity 0.2s; }
-#send-btn svg { width: 20px; height: 20px; fill: #202124; }
-#send-btn:hover:not(:disabled) { background-color: #9ac0f9; }
-#send-btn:disabled { opacity: 0.7; cursor: not-allowed; background-color: #5f6368 !important; }
+.input-area {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-top: 1px solid #3c4043;
+    background-color: transparent;
+    flex-shrink: 0;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #5f6368;
+    border-radius: 20px;
+    background-color: #202124;
+    color: #e8eaed;
+    font-size: 0.95em;
+    margin-right: 10px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+
+#user-input::placeholder {
+    color: #9aa0a6;
+}
+
+#user-input:focus {
+    border-color: #8ab4f8;
+    box-shadow: 0 0 0 1px #8ab4f8;
+}
+
+#user-input:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+#send-btn {
+    background-color: #8ab4f8;
+    color: #202124;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    flex-shrink: 0;
+    transition: background-color 0.2s, opacity 0.2s;
+}
+
+#send-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: #202124;
+}
+
+#send-btn:hover:not(:disabled) {
+    background-color: #9ac0f9;
+}
+
+#send-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background-color: #5f6368 !important;
+}
 
 
 /* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
-@media (max-width: 768px) {
-    body { padding: 0; min-height: -webkit-fill-available; min-height: fill-available; height: 100vh; }
-    .chat-container { width: 100%; height: 100%; max-width: none; border-radius: 0; border-left: none; border-right: none; }
-    .greeting { padding-top: 15px; padding-bottom: 10px; }
-    .greeting .gemini-hello { font-size: 1.8em; }
-    #chat-window { padding: 10px 8px; }
-    .message { font-size: 0.85em; max-width: 90%; padding: 8px 12px; }
+@media (max-width: 900px) {
+
+    /* Breakpoint for when 3 columns are too squished */
+    body {
+        padding: 0;
+        min-height: -webkit-fill-available;
+        min-height: fill-available;
+        height: 100vh;
+    }
+
+    .chat-container {
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    .greeting {
+        padding-top: 15px;
+        padding-bottom: 10px;
+    }
+
+    .greeting .gemini-hello {
+        font-size: 1.8em;
+    }
+
+    #chat-window {
+        padding: 10px 8px;
+    }
+
+    .message {
+        font-size: 0.85em;
+        max-width: 90%;
+        padding: 8px 12px;
+    }
 
     .suggestions-area-wrapper {
-        padding: 8px 10px;
-        display: flex; 
-        align-items: flex-start; 
-        gap: 8px; 
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .suggestions-header {
+        margin-bottom: 0;
+        justify-content: center;
+    }
+
+    .suggestions-title {
+        font-size: 1em;
     }
 
     .suggestions-toggle-icon {
-        display: flex; 
-        align-self: flex-start; /* Align to the top of the flex line */
-        margin-top: 2px; /* Small adjustment to visually align with buttons that have padding */
+        margin-top: 0;
+        /* Aligns with header flex */
     }
 
     .suggestions-container {
-        flex-grow: 1; 
-        max-height: 38px; /* CRITICAL: Tune this for ONE ROW of mobile buttons (e.g., button height + small buffer) */
+        flex-direction: column;
+        /* Stack columns vertically on mobile */
+        align-items: center;
+        /* Center items for pyramid look */
+        gap: 8px;
+        max-height: 0;
         overflow: hidden;
-        justify-content: space-between; 
-        gap: 6px; 
+        padding-top: 0;
     }
+
+    /* When expanded, show full height */
     .suggestions-container.expanded {
-        max-height: 280px; /* Or desired height to show all buttons */
-        overflow-y: auto;
+        max-height: 1000px;
+        padding-top: 5px;
+        opacity: 1;
+        visibility: visible;
+        overflow: visible;
+    }
+
+    /* Flatten the columns */
+    .suggestion-column {
+        display: contents;
+        /* Children become direct flex items of suggestions-container */
+    }
+
+    /* Hide headers on mobile */
+    .suggestion-column h3 {
+        display: none;
     }
 
     .suggestion-btn {
-        font-size: 0.72em; 
-        padding: 6px 8px;  
-        border-radius: 16px;
-        min-width: 0; /* Allow shrinking */
-        flex-grow: 1; /* Allow growing to fill space in 2-column */
-        flex-basis: calc(50% - 3px); /* 2 buttons per row (6px gap / 2 = 3px) */
-        max-width: calc(50% - 3px);
-        margin-bottom: 6px; 
-        white-space: normal; /* Allow text to wrap */
-        text-align: center;
-        height: 36px; /* Fixed height for mobile buttons for uniformity */
-    }
-    
-    .input-area { padding: 8px; }
-    #user-input { font-size: 0.9em; padding: 8px 12px; }
-    #send-btn { width: 36px; height: 36px; }
-    #send-btn svg { width: 18px; height: 18px; }
-}
-
-@media (min-width: 769px) { /* Desktop styles override */
-    .suggestions-area-wrapper {
-        display: block; /* Revert from flex used for mobile toggle layout */
-         padding: 10px 15px; /* Restore desktop padding for the wrapper */
-    }
-    .suggestions-toggle-icon {
-        display: none !important; 
-    }
-    .suggestions-container {
-        max-height: none; 
-        overflow: visible; 
-        justify-content: center; /* Or space-around for desktop */
-        gap: 8px; 
-    }
-    .suggestion-btn {
-        font-size: 0.82em;
+        font-size: 0.85em;
         padding: 8px 14px;
-        min-width: auto;    /* Let content define width */
-        flex-basis: auto;   /* Natural width */
-        flex-grow: 0;       /* Don't grow by default, allows them to be different sizes */
-                            /* If you want them to try and fill space and be more equal: flex-grow: 1; min-width: 100px; */
-        max-width: none; 
-        white-space: nowrap; 
-        margin-bottom: 0; 
-        height: auto; /* Revert fixed height from mobile */
+        border-radius: 20px;
+        margin-bottom: 0;
+
+        /* Pyramid Sort Implementation */
+        order: var(--mobile-order, 0);
+
+        /* Do not stretch */
+        width: max-content;
+        max-width: 100%;
+    }
+
+    .input-area {
+        padding: 8px;
+    }
+
+    #user-input {
+        font-size: 0.9em;
+        padding: 8px 12px;
+    }
+
+    #send-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    #send-btn svg {
+        width: 18px;
+        height: 18px;
     }
 }
 
-@media (max-width: 380px) { 
-    .greeting .gemini-hello { font-size: 1.6em; }
-    #chat-window { padding: 8px 5px; }
-    .message { font-size: 0.8em; max-width: 92%; }
-    
+@media (min-width: 901px) {
+
+    /* Desktop styles override */
+    .suggestions-area-wrapper {
+        display: block;
+        padding: 10px 15px;
+    }
+
+    /* suggestions-toggle-icon is now flex/displayed by default in general styles */
+
+    /* .suggestions-container styles removed to allow collapsing via base styles */
+}
+
+@media (max-width: 380px) {
+    .greeting .gemini-hello {
+        font-size: 1.6em;
+    }
+
     .suggestions-toggle-icon {
-        width: 28px; height: 28px; padding: 5px; margin-top: 1px;
+        width: 28px;
+        height: 28px;
+        padding: 5px;
     }
-    .suggestions-toggle-icon .hamburger-bar { width: 100%;}
-    .suggestions-toggle-icon.open .hamburger-bar:nth-child(1) { transform: translateY(5px) rotate(45deg); }
-    .suggestions-toggle-icon.open .hamburger-bar:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
-
-    .suggestions-container {
-        max-height: 34px; 
-        gap: 4px;
-    }
-    .suggestions-container.expanded {
-        max-height: 200px; 
-    }
-    .suggestion-btn {
-        font-size: 0.68em; 
-        padding: 5px 6px; 
-        flex-basis: calc(50% - 2px); 
-        max-width: calc(50% - 2px);
-        margin-bottom: 4px;
-        height: 32px; 
-    }
-
-    .input-area { padding: 6px; }
-    #user-input { font-size: 0.85em; padding: 7px 10px; }
-    #send-btn { width: 32px; height: 32px; }
-    #send-btn svg { width: 16px; height: 16px; }
 }
 
 /* --- ANIMATIONS --- */
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes blink { 0%, 80%, 100% { opacity: 0; } 40% { opacity: 1; } }
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    80%,
+    100% {
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 1;
+    }
+}
