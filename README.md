@@ -10,7 +10,7 @@ Welcome to Justin's interactive resume! This project is a unique take on the tra
 
 The goal is to provide a more engaging and dynamic way for you to get to know Justin. Ask anything you'd typically ask in an interview or while reviewing a resume, or use the quick action buttons!
 
-**Live Demo:** <https://resumellm.netlify.app/>
+**Live Demo:** <https://justinstutlerai.netlify.app/>
 
 ## 🖼️ Screenshot
 
