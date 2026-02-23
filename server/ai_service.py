@@ -16,7 +16,7 @@ else:
 # 2. Config
 # We use the specific '002' version which is stable on the new v1beta API
 # Use the exact ID from your list
-MODEL_NAME = "gemini-2.0-flash-lite"
+MODEL_NAME = "gemini-2.5-flash-lite"
 
 ANSWER_SYSTEM_INSTRUCTION = """You are an AI assistant for Justin Stutler's portfolio.
 Base your answers *exclusively* on the provided CONTEXT CHUNK(S) and conversation history.
