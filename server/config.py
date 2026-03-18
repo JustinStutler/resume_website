@@ -7,7 +7,15 @@ load_dotenv()
 class Config:
     # API Keys
     GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
-    
+
+    # Rate Limiting — per IP
+    RATE_LIMIT_PER_MINUTE = "20 per minute"
+    RATE_LIMIT_PER_DAY = "100 per day"
+
+    # Rate Limiting — global (all users combined)
+    RATE_LIMIT_GLOBAL_PER_MINUTE = "50 per minute"
+    RATE_LIMIT_GLOBAL_PER_DAY = "500 per day"
+
     # CORS Settings
     # Add your production URL here when you deploy
     ALLOWED_ORIGINS = [

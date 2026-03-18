@@ -1,6 +1,8 @@
 # server/app.py
 from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 import ai_service
 from config import Config
 
@@ -9,7 +11,27 @@ app = Flask(__name__)
 # Basic CORS setup (allows everything by default, but we fine-tune in handlers)
 CORS(app)
 
+# Rate limiter — uses X-Forwarded-For on Render (proxy), falls back to remote addr
+limiter = Limiter(
+    key_func=get_remote_address,
+    app=app,
+    default_limits=[],
+    headers_enabled=True,
+)
+
+@app.errorhandler(429)
+def rate_limit_exceeded(e):
+    response = jsonify({"error": "Too many requests. Please wait a moment before asking again."})
+    origin = request.headers.get('Origin')
+    if origin in Config.ALLOWED_ORIGINS:
+        response.headers['Access-Control-Allow-Origin'] = origin
+    return response, 429
+
 @app.route('/ask', methods=['POST', 'OPTIONS'])
+@limiter.limit(Config.RATE_LIMIT_PER_MINUTE)
+@limiter.limit(Config.RATE_LIMIT_PER_DAY)
+@limiter.limit(Config.RATE_LIMIT_GLOBAL_PER_MINUTE, key_func=lambda: "global")
+@limiter.limit(Config.RATE_LIMIT_GLOBAL_PER_DAY, key_func=lambda: "global")
 def ask_justin_ai():
     # --- 1. CORS Preflight Handling ---
     if request.method == 'OPTIONS':

@@ -99,6 +99,10 @@ export async function callJustinAI(queryText, callback, currentButton, mainConte
 
         if (fetchResult.success) {
             callback(fetchResult.data.response || "I received an empty response. Please try again.", currentButton);
+        } else if (fetchResult.errorStatus === 429) {
+            const rateLimitMessage = "You've sent a lot of messages! Please wait a moment before asking again.";
+            ui.addMessage(rateLimitMessage, 'bot');
+            state.addMessageToHistory('model', rateLimitMessage);
         } else {
             let failureMessage = "Sorry, I couldn't connect to the AI assistant. ";
             // ... (failure message logic)
