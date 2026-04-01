@@ -59,6 +59,7 @@ run.bat
 .claude-flow/
 .swarm/
 .mcp.json
+CLAUDE.md
 
 # --- Personal ---
 _me/
