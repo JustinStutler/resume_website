@@ -70,6 +70,13 @@ export function handleSuggestionButtonClick(btn, mainContext) {
     state.addMessageToHistory('user', userMsg);
 
     switch(type) {
+        case 'in-progress': {
+            const msg = "In Process of Being Added - Please be Patient";
+            ui.addMessage(msg, 'bot');
+            state.addMessageToHistory('model', msg);
+            break;
+        }
+
         case 'ai-query-random-class':
             const result = services.courseManager.getRandomCourse();
             
@@ -117,10 +124,9 @@ export function handleSuggestionButtonClick(btn, mainContext) {
                 
                 const html = `
                     <div class="random-image-display-container">
-                        <img src="portraits/${imgResult.imageName}" 
-                             alt="Random: ${imgResult.imageName}" 
-                             class="random-image-content"
-                             onload="this.scrollIntoView({behavior: 'smooth', block: 'nearest'})">
+                        <img src="portraits/${imgResult.imageName}"
+                             alt="Random: ${imgResult.imageName}"
+                             class="random-image-content">
                     </div>`;
                 
                 ui.addMessage(html, 'bot', true, true, ['message-contains-random-image']);

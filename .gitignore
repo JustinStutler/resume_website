@@ -48,3 +48,14 @@ yarn-error.log*
 dist/
 build/
 .parcel-cache/
+
+# --- Local Notes ---
+tips.txt
+next_changes.txt
+run.bat
+
+# --- Claude Code / Agent Tooling ---
+.claude/
+.claude-flow/
+.swarm/
+.mcp.json

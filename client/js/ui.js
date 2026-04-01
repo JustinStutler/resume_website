@@ -2,6 +2,7 @@
 
 let chatWindowRef, userInputRef, sendBtnRef, suggestionBtnsRef;
 let appContextRef;
+let lastUserMessageRef = null;
 
 export function initUIElements(elements) {
     chatWindowRef = elements.chatWindow;
@@ -18,9 +19,12 @@ export function scrollMessageToTop(messageElement) {
     if (!messageElement || !chatWindowRef) return;
     const chatWindowRect = chatWindowRef.getBoundingClientRect();
     const messageRect = messageElement.getBoundingClientRect();
-    const offsetFromTop = 70; 
+    const offsetFromTop = 8;
     const scrollBy = messageRect.top - chatWindowRect.top - offsetFromTop;
-    chatWindowRef.scrollTop += scrollBy;
+    chatWindowRef.scrollTo({
+        top: chatWindowRef.scrollTop + scrollBy,
+        behavior: 'smooth'
+    });
 }
 
 export function scrollImageMessageIntoView(messageContainerElement, imageElement) {
@@ -88,17 +92,21 @@ export function addMessage(text, sender, isHtml = false, isLargeContentMsg = fal
         // Textual representation for image messages added to history by event handler
     }
     
-    if (!additionalClasses.includes('message-contains-random-image')) {
-        requestAnimationFrame(() => {
-            setTimeout(() => {
-                if (isLargeContentMsg && !additionalClasses.includes('image-counter-message')) {
-                    scrollMessageToTop(messageDiv); 
-                } else if (!additionalClasses.includes('image-counter-message')) {
-                    chatWindowRef.scrollTop = chatWindowRef.scrollHeight; 
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            if (sender === 'user') {
+                lastUserMessageRef = messageDiv;
+                scrollMessageToTop(messageDiv);
+            } else if (!additionalClasses.includes('image-counter-message')) {
+                // For bot/content responses, scroll so the user's query is at the top
+                if (lastUserMessageRef) {
+                    scrollMessageToTop(lastUserMessageRef);
+                } else {
+                    scrollMessageToTop(messageDiv);
                 }
-            }, 0);
-        });
-    }
+            }
+        }, 0);
+    });
     return messageDiv;
 }
 

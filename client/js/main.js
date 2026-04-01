@@ -10,14 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. DOM Elements Cache
     const domElements = {
         chatWindow: document.getElementById('chat-window'),
+        chatContainer: document.getElementById('chat-container'),
+        aiLogo: document.getElementById('ai-logo'),
         userInput: document.getElementById('user-input'),
         sendBtn: document.getElementById('send-btn'),
         suggestionsContainer: document.getElementById('suggestions-container'),
         suggestionsWrapper: document.querySelector('.suggestions-area-wrapper'),
-        suggestionsHeader: document.querySelector('.suggestions-header'),
-        suggestionsToggleBtn: document.getElementById('suggestions-toggle-btn'),
         allClickableSuggestionBtns: document.querySelectorAll('.suggestions-container .suggestion-btn'),
-        randomClassBtn: document.getElementById('viewRandomClassBtn')
+        randomClassBtn: document.getElementById('viewRandomClassBtn'),
+        greeting: document.querySelector('.greeting'),
+        columnTitles: document.getElementById('column-titles'),
+        warmupNotice: null  // created dynamically in chat
     };
 
     // 2. Initialize UI
@@ -33,6 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
         setBotBusy: (value, shouldFocus = true) => {
             isBotBusyInternal = value;
             UI.setUIDisabledState(value, !value ? shouldFocus : false);
+            // Logo spin/color control
+            const logo = domElements.aiLogo;
+            if (logo) {
+                if (value) {
+                    logo.classList.remove('done');
+                    logo.classList.add('processing');
+                } else {
+                    logo.classList.remove('processing');
+                    logo.classList.add('done');
+                }
+            }
         },
         buttonCooldowns: new Map(),
         chatHistory: chatHistoryArray,
@@ -42,8 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         getActiveBackendUrl: () => activeBackendUrl,
-        setActiveBackendUrl: (url) => activeBackendUrl = url,
-        isInitialMenuState: true  // Track if menu is in initial state (stays open until first interaction)
+        setActiveBackendUrl: (url) => activeBackendUrl = url
     };
 
     // 4. Initialize Logic Services
@@ -52,6 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
         galleryManager: new GalleryManager(),
         documentManager: new DocumentManager()
     };
+
+    DocumentManager.initDownloadHandler();
 
     // 5. Build Context
     const mainContext = {
@@ -68,39 +83,67 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Attach Events
     attachEventListeners(mainContext);
 
+    // 6b. Landing → Active transition + compact greeting
+    let hasLeftLanding = false;
+    const leaveLandingState = () => {
+        if (hasLeftLanding) return;
+        hasLeftLanding = true;
+        const container = domElements.chatContainer;
+        if (container && container.classList.contains('landing')) {
+            container.classList.remove('landing');
+            container.classList.add('chat-expanding');
+            // Remove expanding class after animation completes
+            container.addEventListener('animationend', () => {
+                container.classList.remove('chat-expanding');
+            }, { once: true });
+        }
+    };
+
+    const compactGreeting = () => {
+        if (domElements.greeting && !domElements.greeting.classList.contains('compact')) {
+            domElements.greeting.classList.add('compact');
+        }
+    };
+    // Hook into any user message to trigger landing exit + compact
+    const originalAddMessage = state.addMessageToHistory;
+    state.addMessageToHistory = (role, text) => {
+        if (role === 'user') {
+            leaveLandingState();
+            compactGreeting();
+        }
+        originalAddMessage(role, text);
+    };
+
+    // 6d. Hide warm-up notice after first AI query completes
+    state.hideWarmupNotice = () => {
+        if (domElements.warmupNotice) {
+            domElements.warmupNotice.classList.add('hidden');
+        }
+    };
+
     // 7. Startup
     UI.setUIDisabledState(false, false);
-    setTimeout(() => {
-        const initialText = "Hello! I'm an AI assistant for Justin's portfolio. You can ask me questions, or try one of the suggestions below.";
-        UI.addMessage(initialText, 'bot');
-        state.addMessageToHistory('model', initialText);
-    }, 300);
+
+    // Show welcome message immediately so it's the first message in every chat
+    const initialText = "Hello! I'm an AI assistant for Justin's portfolio. You can ask me questions, or try one of the suggestions below.";
+    UI.addMessage(initialText, 'bot');
+    chatHistoryArray.push({ role: 'model', parts: [{ text: initialText }] });
+
+    // Inject warm-up notice into the chat window
+    const warmupEl = document.createElement('div');
+    warmupEl.className = 'warmup-notice-chat';
+    warmupEl.id = 'warmup-notice';
+    warmupEl.textContent = 'First query may take ~1 minute while the Gemini server warms up';
+    domElements.chatWindow.appendChild(warmupEl);
+    domElements.warmupNotice = warmupEl;
 
     // 8. Mobile Behavior Setup
     const setupMobileBehavior = () => {
-        const { suggestionsContainer, suggestionsToggleBtn, allClickableSuggestionBtns } = domElements;
-        if (!suggestionsContainer || !suggestionsToggleBtn) return;
+        const { suggestionsContainer, columnTitles, allClickableSuggestionBtns } = domElements;
+        if (!suggestionsContainer) return;
 
-        // Initial Expansion (per user request)
-        suggestionsContainer.classList.add('expanded');
-        suggestionsToggleBtn.classList.add('open');
-        suggestionsToggleBtn.setAttribute('aria-expanded', 'true');
-
-        // Resize Logic
-        let wasSmall = window.innerWidth <= 900;
-
+        // Re-run sort on resize in case widths change
         window.addEventListener('resize', () => {
-            const isSmall = window.innerWidth <= 900;
-
-            // Auto-collapse only when transitioning from Desktop to Mobile
-            if (!wasSmall && isSmall) {
-                suggestionsContainer.classList.remove('expanded');
-                suggestionsToggleBtn.classList.remove('open');
-                suggestionsToggleBtn.setAttribute('aria-expanded', 'false');
-            }
-            wasSmall = isSmall;
-
-            // Re-run sort on resize in case widths change (optional but good for robustness)
             runPyramidSort();
         });
 

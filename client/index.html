@@ -1,4 +1,3 @@
-<script type="module" src="js/main.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,83 +10,127 @@
 </head>
 
 <body>
-    <div class="chat-container">
+    <div class="chat-container landing" id="chat-container">
         <div class="greeting">
-            <h1 class="gemini-hello">Hello I'm Justin's AI Assistant</h1>
-            <p class="gemini-powered-by">Powered by Gemini</p>
+            <div class="ai-logo" id="ai-logo">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/>
+                </svg>
+            </div>
+            <div class="greeting-text">
+                <h1 class="gemini-hello">Hello I'm Justin's Portfolio AI Assistant</h1>
+                <p class="gemini-powered-by">Powered by Gemini</p>
+            </div>
         </div>
 
         <div id="chat-window">
         </div>
 
         <div class="suggestions-area-wrapper">
-            <div class="suggestions-header">
-                <button id="suggestions-toggle-btn" class="suggestions-toggle-icon" aria-label="Toggle suggestions"
-                    aria-expanded="true" title="Toggle suggestions">
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                    <span class="hamburger-bar"></span>
-                </button>
-                <h2 class="suggestions-title">Suggestions</h2>
+            <!-- Column titles row — click to expand/collapse -->
+            <div class="column-titles" id="column-titles" role="button" tabindex="0" aria-expanded="true">
+                <span class="col-title col-title-green">Info</span>
+                <span class="col-title col-title-blue">Academics</span>
+                <span class="col-title col-title-amber">Projects</span>
+                <span class="col-title col-title-purple">Research</span>
+                <span class="col-title col-title-pink">Links</span>
+                <span class="col-title col-title-orange">Docs</span>
             </div>
 
+            <!-- Collapsible section — 6 columns -->
             <div class="suggestions-container expanded" id="suggestions-container">
-                <!-- Column 1: About Me -->
-                <div class="suggestion-column">
-                    <h3>About Me</h3>
+                <!-- Green: Info -->
+                <div class="suggestion-column col-info">
+                    <span class="col-label col-label-green"><span class="key-dot key-green"></span>Info</span>
                     <button class="suggestion-btn" data-type="local-markdown"
-                        data-local-file="content/tell_me_about.txt" data-user-display-message="Tell me about Justin">
-                        Tell me about Justin
+                        data-local-file="content/tell_me_about.txt"
+                        data-user-display-message="Tell me about Justin">
+                        About Justin
                     </button>
-
-                    <button class="suggestion-btn" data-type="random-image">View Justin</button>
-
-                    <button class="suggestion-btn" data-type="local-markdown" data-local-file="content/why_me.txt"
-                        data-user-display-message="Why is Justin a good candidate?">
-                        Why Me?
+                    <button class="suggestion-btn" data-type="local-markdown"
+                        data-local-file="content/how_this_works.txt"
+                        data-user-display-message="How does this app work?">
+                        How This Works
+                    </button>
+                    <button class="suggestion-btn" data-type="random-image">
+                        Photo Gallery
                     </button>
                 </div>
 
-                <!-- Column 2: Projects -->
-                <div class="suggestion-column">
-                    <h3>Projects</h3>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="housing-prices">Housing Prices
-                        Project</button>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="facial-recognition">Facial
-                        Recognition</button>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="robot-localization">Robot
-                        Localization</button>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="uninformed-informed-search">Uninformed and
-                        Informed Search</button>
-                </div>
-
-                <!-- Column 3: Background -->
-                <div class="suggestion-column">
-                    <h3>Background</h3>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="resume">View Resume</button>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="sop">View Statement of Purpose</button>
-
-                    <button class="suggestion-btn" id="viewRandomClassBtn" data-type="ai-query-random-class"
-                        data-user-display-message="Tell me about a class Justin has taken.">
-                        Tell me about a class
-                    </button>
-
+                <!-- Blue: Academics -->
+                <div class="suggestion-column col-academics">
+                    <span class="col-label col-label-blue"><span class="key-dot key-blue"></span>Academics</span>
                     <button class="suggestion-btn" data-type="local-markdown"
                         data-user-display-message="What are Justin's GRE scores?"
                         data-local-file="content/gre_scores.txt">
-                        View GRE Scores
+                        GRE Scores
+                    </button>
+                    <button class="suggestion-btn" data-type="ai-query-random-class"
+                        id="viewRandomClassBtn"
+                        data-user-display-message="Tell me about a class Justin has taken.">
+                        About a Class
+                    </button>
+                </div>
+
+                <!-- Amber: Projects -->
+                <div class="suggestion-column col-projects">
+                    <span class="col-label col-label-amber"><span class="key-dot key-amber"></span>Projects</span>
+                    <button class="suggestion-btn" data-type="in-progress">
+                        AI Interface
+                    </button>
+                    <button class="suggestion-btn" data-type="pdf" data-pdf="housing-prices">
+                        Housing Prices
+                    </button>
+                    <button class="suggestion-btn" data-type="pdf" data-pdf="facial-recognition">
+                        Facial Recognition
+                    </button>
+                </div>
+
+                <!-- Purple: Research -->
+                <div class="suggestion-column col-research">
+                    <span class="col-label col-label-purple"><span class="key-dot key-purple"></span>Research</span>
+                    <button class="suggestion-btn" data-type="in-progress">
+                        Song Genre from Album Art
+                    </button>
+                    <button class="suggestion-btn" data-type="pdf" data-pdf="robot-localization">
+                        Robot Localization
+                    </button>
+                    <button class="suggestion-btn" data-type="pdf" data-pdf="uninformed-informed-search">
+                        Uninformed & Informed Search
+                    </button>
+                </div>
+
+                <!-- Pink: Links -->
+                <div class="suggestion-column col-links">
+                    <span class="col-label col-label-pink"><span class="key-dot key-pink"></span>Links</span>
+                    <a href="https://github.com/JustinStutler" target="_blank" rel="noopener noreferrer"
+                        class="suggestion-btn github-link-btn" data-type="external-link">
+                        GitHub
+                    </a>
+                </div>
+
+                <!-- Orange/Coral: Docs -->
+                <div class="suggestion-column col-docs">
+                    <span class="col-label col-label-orange"><span class="key-dot key-orange"></span>Docs</span>
+                    <button class="suggestion-btn" data-type="pdf" data-pdf="resume">
+                        Resume
+                    </button>
+                    <button class="suggestion-btn" data-type="pdf" data-pdf="sop">
+                        Statement of Purpose
                     </button>
                 </div>
             </div>
         </div>
 
-        <div class="input-area">
-            <input type="text" id="user-input" placeholder="Ask about Justin..." autocomplete="off">
-            <button id="send-btn" title="Send message">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-                </svg>
-            </button>
+        <div class="input-row">
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Ask about Justin..." autocomplete="off">
+                <button id="send-btn" title="Send message">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 

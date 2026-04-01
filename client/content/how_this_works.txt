@@ -1,0 +1,27 @@
+How This App Works
+
+This portfolio site doubles as a live demo of a technique called Retrieval-Augmented Generation, or RAG. Instead of dumping everything I know into one massive prompt, the system picks out only the pieces that are relevant to your question and feeds those to the language model. The result is faster, more focused answers that stay grounded in real information.
+
+The Two-Stage Pipeline
+
+When you type a question or tap one of the suggestion chips, two things happen on the backend, one after the other.
+
+First, your question goes to Google Gemini (the gemini-2.5-flash-lite model) in a special JSON-only mode. Gemini looks at all the available content chunks, things like my resume, project write-ups, academic background, and course list, and returns just the IDs of the chunks that actually matter for your question. Think of it as a smart filter.
+
+Second, those selected chunks get bundled into a new prompt along with a system instruction that tells the model to answer only from the provided context. That constraint is what keeps responses accurate and prevents the model from making things up.
+
+Where the Content Comes From
+
+On startup the backend loads a set of plain text files, each one covering a different topic. Every file is a self-contained knowledge chunk with its own description so the retrieval step knows what it contains. This is a scaled-down version of the same pattern used in enterprise knowledge bases, just without the vector database.
+
+Prompt Engineering
+
+A few layers of prompting hold the whole thing together. The retrieval prompt is structured to produce clean JSON so the backend can parse it reliably. The generation prompt locks the model to the retrieved context and sets the tone. And the last four turns of conversation history travel with each request so the model can follow along across multiple questions.
+
+The Tech Stack
+
+The backend is a Python Flask API hosted on Render, with Gunicorn handling production traffic and rate limiting on the endpoint. The AI calls go through Google's genai SDK. The frontend is plain JavaScript with ES6 modules, no build tools, no framework, deployed to Netlify. Version control lives on GitHub.
+
+Why It Matters
+
+This is not a class project or a sandbox experiment. It is a real, publicly deployed application that handles retrieval, generation, prompt engineering, API design, and a conversational interface, all wired together end to end. The same architectural pattern powers production AI assistants at much larger scale.
