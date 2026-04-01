@@ -4,54 +4,63 @@
 [![Generic badge](https://img.shields.io/badge/Interface-Chatbot-green.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/Purpose-Resume/Portfolio-orange.svg)](https://shields.io/)
 
-## Introduction
+## About
 
-An AI-powered interactive portfolio where visitors chat with a Gemini-powered assistant to learn about Justin Stutler's skills, experience, projects, and research. Rather than static pages, the interface provides a conversational way to explore everything you'd find in a traditional portfolio — and more.
+This is my personal portfolio site, but instead of static pages I built it around an AI chatbot. You can ask it questions about my background, projects, coursework, or anything you'd normally look for in a resume. It pulls from my actual resume content and responds conversationally using Google's Gemini.
 
-**Live Demo:** <https://justinstutlerai.netlify.app/>
+I wanted something more engaging than a typical portfolio and also wanted to get hands on with building a full stack AI application from scratch.
 
-## Screenshot
+**Live Demo:** https://justinstutlerai.netlify.app/
 
-![Portfolio AI Assistant — Home Screen](wide.png)
+## Preview
 
-## What's New
-
-**Latest Update — UI Redesign & Overhaul:**
-The interface has been completely redesigned with a modern dark theme, streamlined navigation tabs (Info, Academics, Projects, Research, Links, Docs), and a cleaner chat experience.
-
-**Upcoming:**
-- Latest project integrations (AI interface, song genre from album art, and more)
-- Continued interface improvements and user experience refinements
+![Portfolio AI Assistant](readme_image.png)
 
 ## Features
 
-* **AI-Powered Chat:** Ask anything about Justin's background, skills, projects, or education. The Gemini-powered assistant responds with context-aware answers.
-* **Navigation Tabs:**
-    * **Info** — Personal background and summary
-    * **Academics** — Courses, GRE scores, and academic history
-    * **Projects** — Technical project showcases and write-ups
-    * **Research** — Research papers and publications
-    * **Links** — External profiles and resources
-    * **Docs** — Resume, statement of purpose, and other documents
-* **Conversational Interface:** Natural language chat for an engaging way to learn about a candidate.
-* **Responsive Design:** Works across desktop and mobile devices.
+The interface is organized into tabs so you can quickly find what you're looking for:
 
-## Technologies Used
+* **Info** Personal background, a photo gallery, and a page explaining how the site works
+* **Academics** Courses I've taken, GRE scores, and academic history
+* **Projects** Technical projects like housing price prediction, facial recognition, and music genre classification from album art
+* **Research** Research papers including robot localization with particle filtering and uninformed/informed search
+* **Links** GitHub and other external profiles
+* **Docs** Resume, statement of purpose, and other documents
 
-* **LLM:** Google Gemini (gemini-2.5-flash-lite)
-* **Frontend:** HTML, CSS, vanilla JavaScript (ES6 modules)
-* **Backend:** Python Flask
-* **API Integration:** Gemini API (two-stage context selection + answer generation)
-* **Deployment:** Netlify (frontend), Render (backend)
+You can also just type a question in the chat box and the AI will answer based on my actual resume data.
+
+## Tech Stack
+
+This project touches a lot of what I work with day to day:
+
+* **Python, Flask** for the backend API server
+* **JavaScript (ES6), HTML, CSS** for the frontend (no frameworks, vanilla JS modules)
+* **Google Gemini API** for the LLM powering the chatbot
+* **RESTful API** design connecting the frontend and backend
+* **Git** for version control
+* **Netlify** for frontend deployment, **Render** for backend deployment
 
 ## How It Works
 
-1. User types a question or selects a navigation tab.
-2. The query is sent to the backend, which runs a two-stage Gemini pipeline:
-   - **Context selection** — identifies which content chunks are relevant
-   - **Answer generation** — produces a response constrained to the selected context
-3. The response is rendered in the chat interface with markdown formatting.
+The backend uses a two stage pipeline when you ask a question:
+
+1. Your question hits the Flask API
+2. A first Gemini call figures out which pieces of my resume content are relevant to your question (context selection)
+3. A second Gemini call generates an answer using only the relevant content
+4. The response comes back to the frontend and renders with markdown formatting
+
+This keeps answers grounded in real data rather than letting the model make things up.
+
+## What's New
+
+**Latest: UI Redesign**
+Rebuilt the entire interface with a dark theme, navigation tabs, and a cleaner chat experience. Much more intuitive to browse through different sections now.
+
+**Coming Up**
+* Integrating the latest projects (AI interface, song genre from album art, and more)
+* Continued interface and UX improvements
+* Improving RAG (retrieval augmented generation) for better context selection and more accurate responses
 
 ## Acknowledgements
 
-* Google for the Gemini API.
+* Google for the Gemini API
