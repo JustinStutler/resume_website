@@ -6,9 +6,11 @@
 
 ## About
 
-This is my personal portfolio site, but instead of static pages I built it around an AI chatbot. You can ask it questions about my background, projects, coursework, or anything you'd normally look for in a resume. It pulls from my actual resume content and responds conversationally using Google's Gemini.
+This is my twist on a porfolio website, as it is styled as an AI chatbot. You can ask it questions about my background, projects, coursework, or anything you'd normally look for in a resume. It pulls from my actual resume content and responds conversationally using Gemini.
 
-I wanted something more engaging than a typical portfolio and also wanted to get hands on with building a full stack AI application from scratch.
+## Purpose
+
+I wanted to enhance my porfolio website to be more engaging than my previous one, and I also wanted to learn more about integrating AI into web applications. 
 
 **Live Demo:** https://justinstutlerai.netlify.app/
 
@@ -18,20 +20,52 @@ I wanted something more engaging than a typical portfolio and also wanted to get
 
 ## Features
 
-The interface is organized into tabs so you can quickly find what you're looking for:
+### Chips: Quick Queries
 
-* **Info** Personal background, a photo gallery, and a page explaining how the site works
-* **Academics** Courses I've taken, GRE scores, and academic history
-* **Projects** Technical projects like housing price prediction, facial recognition, and music genre classification from album art
-* **Research** Research papers including robot localization with particle filtering and uninformed/informed search
-* **Links** GitHub and other external profiles
-* **Docs** Resume, statement of purpose, and other documents
+Click on a chip to send a Quick Query, common queries a user may have, which are displayed as chips and organized by category and color.
 
-You can also just type a question in the chat box and the AI will answer based on my actual resume data.
+#### 🟢 Info 
+- **About Justin**: Learn more about me
+- **How This Works**: Learn more about the website
+- **Photo Gallery**: View some photos of me
+
+#### 🔵 Academics
+- **GRE Scores**: View my GRE scores
+- **About a Class**: Learn more about a class I took during my undergraduate studies - graduate studies coming soon
+
+#### 🟡 Projects
+- **AI Interface**: View the AI interface project - coming soon
+- **Housing Prices**: View the housing prices project
+- **Facial Recognition**: View the facial recognition project
+
+#### 🟣 Research
+- **Song Genre from Album Art**: View the song genre from album art project - coming soon
+- **Robot Localization**: View the robot localization project
+- **Uninformed & Informed Search**: View the uninformed & informed search project
+
+#### 🩷 Links
+- **GitHub**: Navigate to my GitHub profile
+
+#### 🟠 Docs
+- **Resume**: View my resume
+- **Statement of Purpose**: View my statement of purpose
+
+### Chat Queries
+
+The user can freely ask questions about me, my education, projects, work experience, or any other questions they have and receive a catered response if the information is available.
+AI and RAG are used to retrieve information about me and respond accordingly.
+
+## How It Works
+
+The Quick Query Chips are hard-coded to give a preset response to handle common queries.
+
+The Chat Queries are sent to an llm (Currently using Google's best free model: 2.5 Flash). In my first implementation of RAG, I received poor results, so I changed the setup and received success. The first llm call is used to determine which group of context is relevant to the query. Then, the relevant context is sent to the second llm call that uses it to generate a response that is rendered to the frontend chat ui. This double llm call technique made gemini 1.5 provide acceptable responses that were grounded in the context provided. Now that Google has improved the baseline free model, this technique may not be necessary. In the future, I plan to investigate RAG techniques and see if I can improve the responses further.
+
+Render deploys the backend, and Netlify deploys the frontend. The free aspect of the service is used, but this leads to a 1 minute warm up period for the backend if it has not been used recently. This means the user must wait at least a minute for their first chat query to render which is not ideal, but it is a fair tradeoff.
 
 ## Tech Stack
 
-This project touches a lot of what I work with day to day:
+This project utilizes a tech stack that I frequently use for personal projects:
 
 * **Python, Flask** for the backend API server
 * **JavaScript (ES6), HTML, CSS** for the frontend (no frameworks, vanilla JS modules)
@@ -39,17 +73,6 @@ This project touches a lot of what I work with day to day:
 * **RESTful API** design connecting the frontend and backend
 * **Git** for version control
 * **Netlify** for frontend deployment, **Render** for backend deployment
-
-## How It Works
-
-The backend uses a two stage pipeline when you ask a question:
-
-1. Your question hits the Flask API
-2. A first Gemini call figures out which pieces of my resume content are relevant to your question (context selection)
-3. A second Gemini call generates an answer using only the relevant content
-4. The response comes back to the frontend and renders with markdown formatting
-
-This keeps answers grounded in real data rather than letting the model make things up.
 
 ## What's New
 
@@ -61,6 +84,5 @@ Rebuilt the entire interface with a dark theme, navigation tabs, and a cleaner c
 * Continued interface and UX improvements
 * Improving RAG (retrieval augmented generation) for better context selection and more accurate responses
 
-## Acknowledgements
-
-* Google for the Gemini API
+## Built With
+claude, gemini, my own brain, patience, curiosity, and iteration
