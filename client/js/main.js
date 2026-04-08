@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     UI.setUIDisabledState(false, false);
 
     // Show welcome message immediately so it's the first message in every chat
-    const initialText = "Hello! I'm an AI assistant for Justin's portfolio. You can ask me questions, or try one of the suggestions below.";
+    const initialText = "Hey there! I'm Justin's portfolio AI — ask me anything about his projects, skills, experience, or education. You can also try the suggestions below.";
     UI.addMessage(initialText, 'bot');
     chatHistoryArray.push({ role: 'model', parts: [{ text: initialText }] });
 

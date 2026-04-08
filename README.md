@@ -57,11 +57,35 @@ AI and RAG are used to retrieve information about me and respond accordingly.
 
 ## How It Works
 
-The Quick Query Chips are hard-coded to give a preset response to handle common queries.
+### LLM Wiki — Knowledge Base
 
-The Chat Queries are sent to an llm (Currently using Google's best free model: 2.5 Flash). In my first implementation of RAG, I received poor results, so I changed the setup and received success. The first llm call is used to determine which group of context is relevant to the query. Then, the relevant context is sent to the second llm call that uses it to generate a response that is rendered to the frontend chat ui. This double llm call technique made gemini 1.5 provide acceptable responses that were grounded in the context provided. Now that Google has improved the baseline free model, this technique may not be necessary. In the future, I plan to investigate RAG techniques and see if I can improve the responses further.
+The knowledge base uses what Andrej Karpathy calls an [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — a collection of markdown files organized in an Obsidian vault (`Portfolio_Website_Vault/`). Each page has YAML frontmatter with an `id`, `title`, `tags`, and `type`, making the content structured and easy for the LLM to index and retrieve.
 
-Render deploys the backend, and Netlify deploys the frontend. The free aspect of the service is used, but this leads to a 1 minute warm up period for the backend if it has not been used recently. This means the user must wait at least a minute for their first chat query to render which is not ideal, but it is a fair tradeoff.
+This replaces the original approach where context lived in a handful of plain `.txt` files inside `server/content/`. The old system used a single LLM call to pick from a small, hard-coded list of context groups. It worked, but adding new content meant editing Python code and the rigid structure made it hard to cross-reference topics.
+
+The vault approach is far more flexible: adding knowledge is just creating a new `.md` file with frontmatter and dropping it in the vault. The loader (`server/vault_loader.py`) walks the directory at startup and builds an in-memory index automatically — no code changes needed.
+
+This structured wiki approach produced drastically better response quality than traditional RAG. Rather than embedding and retrieving chunks from a vector database, the LLM reads a compact index of page titles and tags and selects the relevant pages by ID. The context it receives is complete, well-structured wiki pages — not fragmented chunks — so answers are more coherent and grounded.
+
+### Three-Stage Pipeline
+
+Chat queries go through three sequential LLM calls:
+
+1. **Scope Guard** (`server/scope_guard.py`) — A fast Gemini JSON-mode call classifies the query as in-scope (about Justin) or out-of-scope. Out-of-scope queries get a hard refusal without any context retrieval. Fails open on API error so legitimate queries are never blocked.
+
+2. **Context Selection** (`server/ai_service.py`) — A JSON-mode Gemini call reads the vault index summary (titles + tags of every page) and returns the IDs of relevant pages. This is the key upgrade from the old system: instead of picking from a few broad groups, it selects from individual wiki pages, giving the final answer much more targeted context.
+
+3. **Answer Generation** (`server/ai_service.py`) — A Gemini chat call with the selected vault page content injected as context blocks. System instructions enforce third-person references and context-only answers.
+
+The original version used a two-call pipeline (context selection + answer generation). Adding the scope guard as Stage 0 prevents the model from hallucinating answers to off-topic questions and saves unnecessary context retrieval.
+
+### Quick Query Chips
+
+The chips are hard-coded to give preset responses for common queries (about, photo gallery, GRE scores, etc.) without hitting the backend.
+
+### Deployment
+
+Render deploys the backend and Netlify deploys the frontend. The free tier is used, which means a ~1 minute cold start for the backend if it has not been called recently.
 
 ## Tech Stack
 
@@ -76,13 +100,15 @@ This project utilizes a tech stack that I frequently use for personal projects:
 
 ## What's New
 
-**Latest: UI Redesign**
-Rebuilt the entire interface with a dark theme, navigation tabs, and a cleaner chat experience. Much more intuitive to browse through different sections now.
+**Latest: LLM Wiki Knowledge Base**
+Replaced the old `server/content/*.txt` context system with an Obsidian vault knowledge base (LLM Wiki). Added a scope guard as a new first stage in the pipeline to reject off-topic queries before any context retrieval. The vault loader automatically indexes all markdown pages at startup — adding new content no longer requires code changes.
+
+**Previous: UI Redesign**
+Rebuilt the entire interface with a dark theme, navigation tabs, and a cleaner chat experience.
 
 **Coming Up**
 * Integrating the latest projects (AI interface, song genre from album art, and more)
 * Continued interface and UX improvements
-* Improving RAG (retrieval augmented generation) for better context selection and more accurate responses
 
 ## Built With
 claude, gemini, my own brain, patience, curiosity, and iteration

@@ -4,6 +4,8 @@ from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import ai_service
+import scope_guard
+from ai_service import client, MODEL_NAME
 from config import Config
 
 app = Flask(__name__)
@@ -62,14 +64,23 @@ def ask_justin_ai():
             if 'role' in item and 'parts' in item
         ]
 
-        # A. Select Context (The "Router")
+        # A. Scope Guard (Stage 0) — reject off-topic queries
+        if not scope_guard.check_scope(user_query, client, MODEL_NAME):
+            print(f"DEBUG: Query: '{user_query}' -> OUT OF SCOPE (rejected)")
+            response = jsonify({"response": scope_guard.HARD_REFUSAL})
+            origin = request.headers.get('Origin')
+            if origin in Config.ALLOWED_ORIGINS:
+                response.headers['Access-Control-Allow-Origin'] = origin
+            return response, 200
+
+        # B. Select Context (The "Router")
         selected_keys = ai_service.select_context(user_query, valid_history[-4:])
         print(f"DEBUG: Query: '{user_query}' -> Selected Context: {selected_keys}")
 
-        # B. Generate Answer (The "Generator")
+        # C. Generate Answer (The "Generator")
         bot_response = ai_service.generate_answer(user_query, valid_history, selected_keys)
 
-        # C. Construct Response
+        # D. Construct Response
         response = jsonify({"response": bot_response})
         
         # Add CORS header to the actual response

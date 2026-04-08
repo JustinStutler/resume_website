@@ -1,11 +1,41 @@
-I'm **Justin Stutler**, an aspiring AI Engineer currently pursuing a Master of Science in Data Intelligence at the University of South Florida, Tampa.
+## Justin Stutler
 
-* **Academic Background:** I graduated Cum Laude in May 2024 with a Bachelor of Information Science, concentrating in Web Development from USF, maintaining a 3.67 GPA. Prior to that, I studied Computer Science at Kennesaw State University with a focus on Artificial Intelligence, earning a 3.75 GPA.
+AI Engineer | M.S. Data Intelligence | University of South Florida, Tampa
 
-* **Professional Background:** I have experience as a Software Developer Intern/Contractor at MagMutual Insurance, where I contributed to a significant web application project using Agile methodologies. Additionally, I managed operations at PieHole, overseeing production and team management.
+---
 
-* **Problem-Solving Mindset:** I view every passion as a distinct puzzle to solve.
-In DJing, it’s the technical challenge of selecting the perfect track and manipulating frequencies to create a seamless mix.
-In Brazilian Jiu-Jitsu, it’s the persistence of trial and error, constantly adapting leverage strategies to overcome opponents with different styles and body types.
-Every day, I utilize these skills to develop algorithms that automate and simplify my work.
-Whether I am optimizing an AI model or my daily routine, I approach the problem equipped with years of diverse problem-solving experience.
+Justin is currently pursuing a Master of Science in Data Intelligence at USF, alongside a Graduate Certificate in Artificial Intelligence. He graduated Cum Laude in May 2024 with a Bachelor of Information Science in Web Development (3.67 GPA), and previously studied Computer Science with an AI focus at Kennesaw State University (3.75 GPA).
+
+---
+
+### What He Builds
+
+Justin's project work spans deep learning, computer vision, robotics, and full stack AI systems.
+
+| Project | What It Does |
+|---|---|
+| Used Album Art to Predict Song Genre | Ablation study comparing ResNets vs. standard CNNs for image classification, built with PyTorch |
+| Taught a Robot Where It Is | Particle Filter algorithm for robot state estimation using Bayesian statistics and Monte Carlo methods |
+| Predicted Housing Prices from Data | Regression models on high dimensional real estate data with feature engineering and model optimization |
+| Built This AI Portfolio | Conversational portfolio using an LLM Wiki architecture, a three stage Gemini pipeline, and an Obsidian vault |
+
+---
+
+### Professional Experience
+
+Justin worked as a Software Developer at MagMutual Insurance, starting as an intern and converting to contractor. He built scalable Python and Go backend solutions and deployed full stack architectures in an Agile environment. Before that, he ran daily operations and managed a team at PieHole.
+
+---
+
+### Beyond Engineering
+
+Justin approaches everything as a puzzle to solve. In DJing, it's selecting the right track and shaping frequencies into a seamless mix. In Brazilian Jiu Jitsu, it's reading an opponent and adapting leverage on the fly. The same instincts, pattern recognition, systematic iteration, adaptive strategy, show up in how he approaches AI engineering.
+
+---
+
+| | |
+|---|---|
+| GitHub | [github.com/JustinStutler](https://github.com/JustinStutler) |
+| LinkedIn | [linkedin.com/in/justin-stutler](https://www.linkedin.com/in/justin-stutler-a72b961a8) |
+| Email | StutlerJustin@gmail.com |
+| Portfolio | [JustinStutlerAI.netlify.app](https://JustinStutlerAI.netlify.app/) |

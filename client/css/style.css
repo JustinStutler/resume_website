@@ -109,8 +109,7 @@ body::-webkit-scrollbar-thumb:hover,
 }
 
 .ai-logo.processing {
-    color: #f0c040;
-    animation: logoSpin 1.2s linear infinite;
+    animation: logoSpin 1.2s linear infinite, logoColorCycle 3s linear infinite;
 }
 
 .ai-logo.done {
@@ -121,6 +120,16 @@ body::-webkit-scrollbar-thumb:hover,
 @keyframes logoSpin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+@keyframes logoColorCycle {
+    0%      { color: #81c995; }  /* green */
+    16.67%  { color: #8ab4f8; }  /* blue */
+    33.33%  { color: #f0c040; }  /* amber */
+    50%     { color: #c58af9; }  /* purple */
+    66.67%  { color: #f48fb1; }  /* pink */
+    83.33%  { color: #f28b54; }  /* orange */
+    100%    { color: #81c995; }  /* back to green */
 }
 
 /* --- Color Key Dots (used in column headers) --- */
@@ -231,6 +240,16 @@ body::-webkit-scrollbar-thumb:hover,
     color: #bdc1c6;
     align-self: flex-start;
     border-bottom-left-radius: 5px;
+}
+
+.message.bot a {
+    color: #80e5e5;
+    text-decoration: none;
+}
+
+.message.bot a:hover {
+    color: #a0f0f0;
+    text-decoration: underline;
 }
 
 .message.bot.warm-up-message {

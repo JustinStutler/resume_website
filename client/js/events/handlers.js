@@ -121,19 +121,41 @@ export function handleSuggestionButtonClick(btn, mainContext) {
                     ui.addMessage(msg, 'bot');
                     state.addMessageToHistory('model', msg);
                 }
-                
+
                 const html = `
                     <div class="random-image-display-container">
                         <img src="portraits/${imgResult.imageName}"
                              alt="Random: ${imgResult.imageName}"
                              class="random-image-content">
                     </div>`;
-                
-                ui.addMessage(html, 'bot', true, true, ['message-contains-random-image']);
+
+                const imageMessageEl = ui.addMessage(html, 'bot', true, true, ['message-contains-random-image']);
                 state.addMessageToHistory('model', `Displayed image: ${imgResult.imageName}`);
                 ui.addMessage(`${imgResult.count}/${imgResult.total}`, 'bot', false, false, ['image-counter-message']);
+
+                // Scroll image to top once it loads (layout dimensions are correct after load)
+                if (imageMessageEl) {
+                    const imgTag = imageMessageEl.querySelector('img.random-image-content');
+                    if (imgTag) {
+                        const scrollAfterReady = () => ui.scrollImageMessageIntoView(imageMessageEl, imgTag);
+                        if (imgTag.complete) {
+                            requestAnimationFrame(scrollAfterReady);
+                        } else {
+                            imgTag.addEventListener('load', scrollAfterReady, { once: true });
+                            imgTag.addEventListener('error', scrollAfterReady, { once: true });
+                        }
+                    }
+                }
             }
             break;
+
+        case 'ai-query': {
+            const { api } = mainContext;
+            api.callJustinAI(userMsg, (response) => {
+                ui.renderMarkdown(response, 'bot', mainContext);
+            }, null, mainContext, false);
+            break;
+        }
 
         case 'local-markdown':
             state.setBotBusy(true, false);

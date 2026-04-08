@@ -97,8 +97,9 @@ export function addMessage(text, sender, isHtml = false, isLargeContentMsg = fal
             if (sender === 'user') {
                 lastUserMessageRef = messageDiv;
                 scrollMessageToTop(messageDiv);
-            } else if (!additionalClasses.includes('image-counter-message')) {
+            } else if (!additionalClasses.includes('image-counter-message') && !additionalClasses.includes('message-contains-random-image')) {
                 // For bot/content responses, scroll so the user's query is at the top
+                // Skip random-image messages — they handle their own scroll after img load
                 if (lastUserMessageRef) {
                     scrollMessageToTop(lastUserMessageRef);
                 } else {

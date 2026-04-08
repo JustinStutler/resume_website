@@ -5,3 +5,4 @@ Flask-CORS
 gunicorn
 google-genai
 Flask-Limiter
+python-frontmatter
