@@ -1,0 +1,49 @@
+---
+id: resume
+title: Justin Stutler - Professional Resume
+tags: [resume, education, skills, work-experience, projects, python, ai, ml, flask, react, usf]
+type: source
+last_updated: 2026-04-08
+---
+
+# Justin Stutler
+
+StutlerJustin@gmail.com | Tampa, FL | https://JustinStutlerAI.netlify.app/
+
+## Education
+
+**University of South Florida | Tampa, FL**
+- Master of Science in Data Intelligence — August 2025 - December 2026 (Expected)
+- Graduate Certificate of Artificial Intelligence — August 2025 - December 2026 (Expected)
+- Bachelor of Information Science | Web Development Concentration | 3.67 GPA | May 2024 (Graduated)
+
+## Technical Skills
+
+- **AI & Machine Learning:** Deep Learning, Computer Vision, ResNets, PyTorch, TensorFlow, Scikit-learn, Pandas, NumPy, Ablation Studies, Natural Language Processing (NLP), OpenCV, YOLO
+- **Data Science & Math:** Statistical Modeling, Regression Analysis, Bayesian Statistics, Monte Carlo Methods, Hypothesis Testing, Data Visualization (Matplotlib/Seaborn)
+- **Software Engineering:** Python, SQL, MySQL, MongoDB, Git, Agile/Scrum, JIRA, Confluence
+- **Web & Deployment:** React, Node.js, JavaScript, HTML/CSS, RESTful APIs, PHP, Go, Django, Flask
+
+## Academic Projects
+
+**Deep Learning Computer Vision Capstone | Music Genre Classification | Current Work**
+Conducting an ablation study on ResNets vs. standard CNNs to analyze vanishing gradients and optimize image classification performance. Developing a CNN pipeline to predict musical genres from album art, demonstrating the efficacy of residual connections in deep networks.
+
+**Predictive Housing Market Analysis | Data Science Project | Fall 2025**
+Engineered statistical regression models on high-dimensional real estate data, performing feature engineering to isolate key market drivers. Optimized model selection based on RMSE and R-squared metrics, utilizing EDA to identify and mitigate multicollinearity.
+
+**Robotics Localization Algorithm | Intro to AI Project | Fall 2025**
+Implemented a Particle Filter (Monte Carlo Localization) algorithm to simulate robot state estimation. Modeled motion and sensor uncertainty using Bayesian statistics to iteratively update belief states, successfully tracking a robot's position within a 2D map.
+
+## Professional Experience
+
+**MagMutual Insurance | Software Developer Intern to Contractor | May - December 2020**
+Collaborated within a team of 4 to engineer scalable Python/Go backend solutions and deploy full-stack architectures, optimizing enterprise workflows in an Agile environment.
+
+**PieHole | Operations Manager | May 2016 - July 2018**
+Managed daily operations and inventory for a high-volume food service business, overseeing a team to ensure consistent product quality and efficiency.
+
+## Student Organizations
+
+- USF Brazilian Jiu-Jitsu Club: Member (August 2023 - Current)
+- KSU Overwatch Team: Coach & Player (August 2019 - May 2021)
