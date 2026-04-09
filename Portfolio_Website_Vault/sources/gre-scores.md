@@ -6,18 +6,14 @@ type: source
 last_updated: 2026-04-08
 ---
 
-# GRE General Test Scores
+# Justin's GRE Scores
 
 **Test Date:** May 7, 2025
 
-## Verbal Reasoning
-- **Scaled Score:** 162
-- **Percentile:** 89th
+| Section | Score | Percentile |
+|---|---|---|
+| Verbal Reasoning | 162 | 89th |
+| Quantitative Reasoning | 160 | 53rd |
+| Analytical Writing | 4.0 | 59th |
 
-## Quantitative Reasoning
-- **Scaled Score:** 160
-- **Percentile:** 53rd
-
-## Analytical Writing
-- **Score:** 4.0
-- **Percentile:** 59th
+Justin's Verbal Reasoning score places him in the top 11% of test takers. His combined profile reflects strong analytical reading and communication skills alongside solid quantitative ability.

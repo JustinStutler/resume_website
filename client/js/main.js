@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isBotBusyInternal = false;
     let chatHistoryArray = [];
     let activeBackendUrl = null;
+    let queuedAction = null;
 
     const state = {
         get isBotBusy() { return isBotBusyInternal; },
@@ -47,7 +48,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     logo.classList.add('done');
                 }
             }
+
+            // If we just finished (busy -> not busy), check for queued actions
+            if (value === false && queuedAction) {
+                const action = queuedAction;
+                queuedAction = null;
+                // Execute in next frame to ensure UI has updated
+                requestAnimationFrame(() => action());
+            }
         },
+        get queuedAction() { return queuedAction; },
+        set queuedAction(val) { queuedAction = val; },
         buttonCooldowns: new Map(),
         chatHistory: chatHistoryArray,
         addMessageToHistory: (role, text) => {
@@ -67,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     DocumentManager.initDownloadHandler();
+    DocumentManager.initTabHandler();
 
     // 5. Build Context
     const mainContext = {

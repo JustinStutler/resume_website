@@ -1,41 +1,23 @@
 ## Justin Stutler
 
-AI Engineer | M.S. Data Intelligence | University of South Florida, Tampa
+AI Engineer | M.S. Data Intelligence Candidate | USF
 
----
+Justin Stutler is an aspiring AI Engineer currently pursuing a Master of Science in Data Intelligence at the University of South Florida (USF), Tampa. He also holds a Graduate Certificate in Artificial Intelligence.
 
-Justin is currently pursuing a Master of Science in Data Intelligence at USF, alongside a Graduate Certificate in Artificial Intelligence. He graduated Cum Laude in May 2024 with a Bachelor of Information Science in Web Development (3.67 GPA), and previously studied Computer Science with an AI focus at Kennesaw State University (3.75 GPA).
+### Academic Journey
 
----
-
-### What He Builds
-
-Justin's project work spans deep learning, computer vision, robotics, and full stack AI systems.
-
-| Project | What It Does |
-|---|---|
-| Used Album Art to Predict Song Genre | Ablation study comparing ResNets vs. standard CNNs for image classification, built with PyTorch |
-| Taught a Robot Where It Is | Particle Filter algorithm for robot state estimation using Bayesian statistics and Monte Carlo methods |
-| Predicted Housing Prices from Data | Regression models on high dimensional real estate data with feature engineering and model optimization |
-| Built This AI Portfolio | Conversational portfolio using an LLM Wiki architecture, a three stage Gemini pipeline, and an Obsidian vault |
-
----
+Justin graduated Cum Laude from USF in May 2024 with a Bachelor of Information Science, concentrating in Web Development, and achieved a 3.67 GPA. Before his time at USF, he studied Computer Science with a focus on Artificial Intelligence at Kennesaw State University, where he maintained a 3.75 GPA.
 
 ### Professional Experience
 
-Justin worked as a Software Developer at MagMutual Insurance, starting as an intern and converting to contractor. He built scalable Python and Go backend solutions and deployed full stack architectures in an Agile environment. Before that, he ran daily operations and managed a team at PieHole.
+He has experience as a Software Developer Intern and Contractor at MagMutual Insurance, where he contributed to a major web application project within an Agile framework. Justin also managed operations and team leadership at PieHole.
 
----
+### Approach to Problem-Solving
 
-### Beyond Engineering
+Justin approaches every passion as a puzzle to solve, a mindset he applies to developing AI algorithms and simplifying workflows. This methodical approach is evident in his hobbies, such as DJing, where he focuses on track selection and sound manipulation, and Brazilian Jiu-Jitsu, where he continuously adapts strategies. His goal is to leverage AI to enhance software development processes.
 
-Justin approaches everything as a puzzle to solve. In DJing, it's selecting the right track and shaping frequencies into a seamless mix. In Brazilian Jiu Jitsu, it's reading an opponent and adapting leverage on the fly. The same instincts, pattern recognition, systematic iteration, adaptive strategy, show up in how he approaches AI engineering.
+### Contact Information
 
----
-
-| | |
-|---|---|
-| GitHub | [github.com/JustinStutler](https://github.com/JustinStutler) |
-| LinkedIn | [linkedin.com/in/justin-stutler](https://www.linkedin.com/in/justin-stutler-a72b961a8) |
-| Email | StutlerJustin@gmail.com |
-| Portfolio | [JustinStutlerAI.netlify.app](https://JustinStutlerAI.netlify.app/) |
+- **GitHub:** [github.com/JustinStutler](https://github.com/JustinStutler)
+- **LinkedIn:** [linkedin.com/in/justin-stutler](https://www.linkedin.com/in/justin-stutler-a72b961a8)
+- **Email:** StutlerJustin@gmail.com

@@ -30,7 +30,7 @@ scope: meta
 | facial-recognition | Facial Recognition: LDA vs SVM vs CNN | facial-recognition, lda, svm, cnn, computer-vision, olivetti-faces |
 | robot-localization | Robot Localization with Particle Filtering | robotics, particle-filter, monte-carlo, bayesian, localization |
 | uninformed-informed-search | Uninformed and Informed Search: Dominoes Puzzle | search-algorithms, a-star, iterative-deepening, heuristic, dominoes |
-| deep-learning-capstone | Deep Learning Computer Vision Capstone | deep-learning, cnn, resnet, pytorch, ablation-study, music-genre |
-| transformer-rl-agent | Transformer-Based Reinforcement Learning Agent | reinforcement-learning, transformer, deep-learning, decision-transformer |
+| deep-learning-capstone | Deep Learning Computer Vision Capstone: Song Genre from Album Art | deep-learning, cnn, resnet, pytorch, ablation-study, music-genre, clip, album-art, image-classification, kaggle |
+| transformer-rl-agent | Transformer-Based Reinforcement Learning Agent: Connect 4 | reinforcement-learning, transformer, deep-learning, decision-transformer, connect-4, dqn, self-play, pettingzoo |
 | ai-personal-assistant | AI Personal Assistant with OpenClaw | ai-assistant, openclaw, agentic-ai |
 | portfolio-website | How This Portfolio Website Works | portfolio, website, llm-wiki, obsidian, gemini, architecture, rag |

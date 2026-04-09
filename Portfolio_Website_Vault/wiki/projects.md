@@ -1,7 +1,7 @@
 ---
 id: projects
 title: Academic and Personal Projects
-tags: [projects, computer-vision, deep-learning, housing, robotics, capstone, cnn, resnet, particle-filter, search, kaggle, facial-recognition, reinforcement-learning, transformer, openclaw]
+tags: [projects, computer-vision, deep-learning, housing, robotics, capstone, cnn, resnet, particle-filter, search, kaggle, facial-recognition, reinforcement-learning, transformer, openclaw, clip, album-art, connect-4, dqn, self-play, pettingzoo]
 type: wiki
 sources: [resume, sop]
 last_updated: 2026-04-08
@@ -11,13 +11,13 @@ last_updated: 2026-04-08
 
 Justin has completed numerous technical projects spanning AI, machine learning, data science, computer vision, and web development. Each project below has a dedicated detailed page in this knowledge base with full technical breakdowns.
 
-## Deep Learning Computer Vision Capstone (Spring 2026 - Current)
+## Deep Learning Computer Vision Capstone: Song Genre from Album Art (Spring 2026)
 
-**Music Genre Classification** -- Justin's current graduate capstone project at USF. Conducting an ablation study comparing ResNets vs. standard CNNs to analyze vanishing gradients and optimize image classification from album artwork. **Technologies:** PyTorch, Computer Vision, Deep Learning, ResNets, CNNs. *See detailed page: deep-learning-capstone*
+**Music Genre Classification from Album Art** -- Justin's graduate capstone project at USF. Systematic ablation study comparing ResNets vs. standard CNNs (CNN-10, CNN-18, ResNet-10, ResNet-18) across four training conditions (baseline, batch normalization, data augmentation, dropout) on the 20k Album Covers dataset (20 genres). 17 total model runs. Best custom model: CNN-18 with Dropout (Top-1 ~0.198). CLIP linear probing foundation model comparison achieved Top-1 ~0.4445. **Technologies:** PyTorch, Computer Vision, Deep Learning, ResNets, CNNs, CLIP, Kaggle. *See detailed page: deep-learning-capstone*
 
-## Transformer-Based Reinforcement Learning Agent (Spring 2026 - Current)
+## Transformer-Based Reinforcement Learning Agent: Connect 4 (Spring 2026 - Current)
 
-Building an RL agent leveraging transformer architectures for sequential decision-making. Applies attention mechanisms from LLMs to reinforcement learning control problems. **Technologies:** Python, PyTorch, Transformers, Reinforcement Learning. *See detailed page: transformer-rl-agent*
+Building a Transformer DQN agent to play Connect 4 through self-play using Deep Q-Learning. Compares Transformer DQN vs. MLP DQN baseline, heuristic agent, random agent, and a pretrained Decision Transformer foundation model. Evaluates reward shaping, history stacking, and prioritized experience replay techniques via round-robin tournament with Elo ratings. Uses PettingZoo Connect 4 environment with 42-token board sequence input and self-attention for spatial pattern learning. **Technologies:** Python, PyTorch, Transformers, Reinforcement Learning, DQN, PettingZoo. *See detailed page: transformer-rl-agent*
 
 ## AI Personal Assistant with OpenClaw (Current)
 

@@ -12,7 +12,7 @@ export function handleUserQueryInput(queryText, mainContext, shouldFocusAfterCom
     if (!trimmedQuery) return;
 
     // UI Updates
-    ui.addMessage(trimmedQuery, 'user'); 
+    ui.addMessage(trimmedQuery, 'user');
     state.addMessageToHistory('user', trimmedQuery);
     if (dom.userInput) dom.userInput.value = '';
 
@@ -20,14 +20,14 @@ export function handleUserQueryInput(queryText, mainContext, shouldFocusAfterCom
     const isGreQuery = /\bgre\b/i.test(trimmedQuery);
 
     if (isGreQuery) {
-        state.setBotBusy(true, false); 
+        state.setBotBusy(true, false);
         const loadingElement = ui.showLoadingIndicator();
-        
-        fetch('content/GRE_Scores_Formatted.md')
+
+        fetch('content/GRE_Scores_Formatted.md?v=' + Date.now())
             .then(res => res.ok ? res.text() : Promise.reject(res.status))
             .then(text => {
                 ui.removeLoadingIndicator(loadingElement);
-                ui.renderMarkdown(text, 'bot', mainContext); 
+                ui.renderMarkdown(text, 'bot', mainContext);
             })
             .catch(err => {
                 ui.removeLoadingIndicator(loadingElement);
@@ -49,9 +49,21 @@ export function handleSuggestionButtonClick(btn, mainContext) {
     const { state, ui, services, config, dom } = mainContext;
     const type = btn.dataset.type;
 
+    // Queue gate: if bot is busy, queue this chip (max 1 queued)
+    if (state.isBotBusy) {
+        if (!state.queuedAction) {
+            console.log("Bot is busy. Queuing chip action.");
+            state.queuedAction = () => handleSuggestionButtonClick(btn, mainContext);
+        } else {
+            console.log("Bot is busy and an action is already queued. Ignoring click.");
+        }
+        return;
+    }
+
     // Cooldown check
-    if (state.isBotBusy && type === 'ai-query') return;
-    if (state.buttonCooldowns.has(btn) || btn.disabled) return;
+    if (state.buttonCooldowns.has(btn) || btn.disabled) {
+        return;
+    }
 
     // Apply visual cooldown
     btn.style.opacity = "0.5";
@@ -77,14 +89,13 @@ export function handleSuggestionButtonClick(btn, mainContext) {
             break;
         }
 
-        case 'ai-query-random-class':
+        case 'ai-query-random-class': {
             const result = services.courseManager.getRandomCourse();
-            
+
             if (result.resetOccurred) {
                 const msg = "You've heard about all of Justin's university and AP courses! The list has been reset.";
                 ui.addMessage(msg, 'bot');
                 state.addMessageToHistory('model', msg);
-                // Re-enable button
                 btn.textContent = "Tell me about a class Justin has taken";
                 btn.disabled = false;
                 btn.dataset.allShown = 'false';
@@ -92,7 +103,7 @@ export function handleSuggestionButtonClick(btn, mainContext) {
                 const c = result.course;
                 const md = `**Course:** ${c.name}\n\n**Institution:** ${c.institution} - ${c.term}\n\n**Description:** ${c.description}`;
                 ui.renderMarkdown(md, 'bot', mainContext);
-                
+
                 if (result.allShown) {
                     btn.textContent = "All Classes Shown";
                     btn.disabled = true;
@@ -100,8 +111,9 @@ export function handleSuggestionButtonClick(btn, mainContext) {
                 }
             }
             break;
+        }
 
-        case 'pdf':
+        case 'pdf': {
             const details = services.documentManager.getPdfDetails(btn.dataset.pdf);
             if (details) {
                 ui.addMessage(services.documentManager.generatePreviewHtml(details), 'bot', true, true);
@@ -110,8 +122,9 @@ export function handleSuggestionButtonClick(btn, mainContext) {
                 ui.addMessage("Sorry, document not found.", 'bot');
             }
             break;
+        }
 
-        case 'random-image':
+        case 'random-image': {
             const imgResult = services.galleryManager.getRandomImage();
             if (imgResult.error) {
                 ui.addMessage(imgResult.error, 'bot');
@@ -133,7 +146,6 @@ export function handleSuggestionButtonClick(btn, mainContext) {
                 state.addMessageToHistory('model', `Displayed image: ${imgResult.imageName}`);
                 ui.addMessage(`${imgResult.count}/${imgResult.total}`, 'bot', false, false, ['image-counter-message']);
 
-                // Scroll image to top once it loads (layout dimensions are correct after load)
                 if (imageMessageEl) {
                     const imgTag = imageMessageEl.querySelector('img.random-image-content');
                     if (imgTag) {
@@ -148,6 +160,7 @@ export function handleSuggestionButtonClick(btn, mainContext) {
                 }
             }
             break;
+        }
 
         case 'ai-query': {
             const { api } = mainContext;
@@ -157,16 +170,22 @@ export function handleSuggestionButtonClick(btn, mainContext) {
             break;
         }
 
-        case 'local-markdown':
+        case 'local-markdown': {
             state.setBotBusy(true, false);
             const loading = ui.showLoadingIndicator();
-            fetch(btn.dataset.localFile)
+            fetch(btn.dataset.localFile + '?v=' + Date.now())
                 .then(r => r.text())
                 .then(text => {
                     ui.removeLoadingIndicator(loading);
                     ui.renderMarkdown(text, 'bot', mainContext);
                 })
-                .finally(() => state.setBotBusy(false, false));
+                .finally(() => {
+                    state.setBotBusy(false, false);
+                });
+            break;
+        }
+
+        default:
             break;
     }
 }
