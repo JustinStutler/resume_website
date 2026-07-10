@@ -1,6 +1,6 @@
 # server/scope_guard.py
 import json
-from google.genai import types
+import re
 
 SCOPE_CHECK_INSTRUCTION = """You are a scope classifier for Justin Stutler's portfolio website AI assistant.
 Your ONLY job is to determine if a user query relates to Justin Stutler or could be answered using information about him.
@@ -45,6 +45,11 @@ HARD_REFUSAL = (
     "Justin I can help you with?"
 )
 
+def extract_json(text):
+    match = re.search(r'\{.*\}', text, re.DOTALL)
+    if match:
+        return match.group(0)
+    return text
 
 def check_scope(user_query, client, model_name):
     """Classify whether a user query is in-scope for this portfolio assistant.
@@ -56,15 +61,16 @@ def check_scope(user_query, client, model_name):
         return True
 
     try:
-        response = client.models.generate_content(
+        response = client.chat.completions.create(
             model=model_name,
-            contents=f'User query: "{user_query}"',
-            config=types.GenerateContentConfig(
-                system_instruction=SCOPE_CHECK_INSTRUCTION,
-                response_mime_type="application/json",
-            ),
+            messages=[
+                {"role": "system", "content": SCOPE_CHECK_INSTRUCTION},
+                {"role": "user", "content": f'User query: "{user_query}"'}
+            ]
         )
-        result = json.loads(response.text)
+        content = response.choices[0].message.content.strip()
+        content = extract_json(content)
+        result = json.loads(content)
         return result.get("in_scope", True)
     except Exception as e:
         print(f"Scope check error (failing open): {e}")

@@ -1,8 +1,7 @@
 Flask
 python-dotenv
-google-generativeai
 Flask-CORS
 gunicorn
-google-genai
+openai
 Flask-Limiter
 python-frontmatter

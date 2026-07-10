@@ -3,9 +3,11 @@ id: personal-background
 title: Personal Background
 tags: [personal, hobbies, social-links, contact, djing, bjj, atlanta, tampa]
 type: source
-last_updated: 2026-04-08
+parent: personal
+related: [interests-and-values, hobbies, contact-and-links]
+summary: Raw personal background — basic facts, interests and values, hobbies, education summary, career goals, and links.
+last_updated: 2026-07-10
 ---
-
 # Personal Background
 
 - **Name:** Justin Stutler
@@ -30,12 +32,13 @@ last_updated: 2026-04-08
 
 ## Education Summary
 
-- Attended Kennesaw State University (KSU) studying Computer Science with a focus on Artificial Intelligence, GPA 3.75 Honor Roll Student
-- Graduated from University of South Florida (USF) with a Bachelor of Information Science (Concentration: Web Development), GPA 3.67, Cum Laude
+- Computer Science (Artificial Intelligence) - Kennesaw State University - 3.75 GPA - Honor Roll
+- Bachelor of Information Science (Web Development) - USF - 3.67 GPA - Cum Laude
+- Masters of Data Intelligence & Graduate Certificate of Artificial Intelligence - USF - Current
 
 ## Career Goals
 
-Currently seeking opportunities related to AI engineering or advanced full-stack development. Pursuing a Master of Science in Data Intelligence and Graduate Certificate in AI at USF.
+Currently seeking opportunities related to Information and AI.  Pursuing a Master of Science in Data Intelligence and Graduate Certificate in AI at USF.
 
 ## Links
 

@@ -3,9 +3,11 @@ id: courses
 title: Comprehensive Course History
 tags: [courses, transcript, mhs, ksu, usf, ung, ap-credit, computer-science, information-science]
 type: source
-last_updated: 2026-04-08
+parent: academics
+related: [education-milton-high-school, education-kennesaw-state-university, education-usf-undergraduate, skills-academic-foundations]
+summary: Complete course-by-course transcript across MHS, UNG, KSU, and USF with credits, grades, and descriptions.
+last_updated: 2026-07-10
 ---
-
 # Comprehensive Course History
 
 ## Milton High School (MHS) - AP Credit

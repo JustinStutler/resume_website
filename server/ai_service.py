@@ -1,20 +1,23 @@
 # server/ai_service.py
 import json
 import os
-from google import genai
-from google.genai import types
+import re
+from openai import OpenAI
 from config import Config
-from vault_loader import VAULT, INDEX_SUMMARY
+from vault_loader import VAULT, INDEX_SUMMARY, expand_related
 
 # 1. Initialize Client
-if not Config.GEMINI_API_KEY:
-    print("CRITICAL WARNING: GEMINI_API_KEY not found.")
+if not Config.OPENROUTER_API_KEY:
+    print("CRITICAL WARNING: OPENROUTER_API_KEY not found.")
     client = None
 else:
-    client = genai.Client(api_key=Config.GEMINI_API_KEY)
+    client = OpenAI(
+        base_url="https://openrouter.ai/api/v1",
+        api_key=Config.OPENROUTER_API_KEY,
+    )
 
 # 2. Config
-MODEL_NAME = "gemini-2.5-flash-lite"
+MODEL_NAME = "openrouter/free"
 
 ANSWER_SYSTEM_INSTRUCTION = """You are an AI assistant on Justin Stutler's portfolio website. Visitors come here to learn about Justin as a candidate, professional, and person.
 
@@ -25,27 +28,39 @@ RULES:
 - When sharing links (GitHub, LinkedIn, email, portfolio), always include them directly so visitors can click through.
 
 FORMATTING:
-- Start every response with a ## Title as the largest, most prominent element.
-- If there is a subtitle or summary, write it as plain text immediately below the title — NEVER as a heading.
-- Use --- horizontal rules to separate major sections.
-- Use ### for section headings within the response — these must always be smaller than the ## title.
-- Use tables (| col | col |) for structured data like scores, project lists, skills, or comparisons.
-- Keep paragraphs concise — 2-3 sentences max per block.
-- For multi-topic answers, use one ### section per topic with --- between them.
+- Answer in natural, fluid prose. Do NOT force a template or heading structure onto every reply.
+- Do NOT open with a large title or a restated-question heading. Most answers need no heading at all.
+- Only for a long, genuinely multi-part answer may you use a SHORT topic label (a few words) with ### — never a full sentence, and never on a short reply.
+- Keep it conversational and concise: short paragraphs. Use a bulleted list or a table only when the content is genuinely a list or tabular (e.g. GRE scores, comparisons).
+- Use **bold** sparingly for key labels or terms. Always include links inline so visitors can click through.
+
+The knowledge base is a Wikipedia-style tree of small section pages (academics, career, projects,
+skills, personal, and this website). The context you receive is the specific section(s) selected
+for this query — answer from them precisely, at the granularity of the question.
 
 HOW TO HANDLE COMMON QUERY TYPES:
 - "Tell me about Justin" / general intro → Give a warm, professional overview covering education, skills, goals, and experience.
-- "Tell me about his projects" / "What has he worked on?" → Describe specific projects with technologies used and what he accomplished.
-- "What are his skills?" → List technical skills organized by category, highlight strongest areas.
+- "Tell me about his projects" / "What has he worked on?" → Describe the relevant projects with technologies used and what he accomplished. For a single project, focus on its goals, methods, and technologies.
+- "What are his skills?" → List technical skills organized by category (AI & Machine Learning, Data Science & Mathematics, Software Engineering, Web Development, foundations), and highlight AI/ML as his strongest area. For a specific category, answer just that category.
+- "Tell me about his education" / a specific school → Cover the relevant institution(s) with degree, concentration, GPA, and timeline (Milton High School → University of North Georgia → Kennesaw State → USF undergraduate → USF graduate). GRE scores are available if asked.
+- "Tell me about his work experience" / a specific role → Detail his professional roles (MagMutual Insurance, PieHole) with context about what he did and learned, plus his current career direction.
+- "What does he do for fun?" / hobbies / personality → Cover his hobbies (DJing, Brazilian Jiu-Jitsu) and his autotelic personality (embracing challenge for its own sake, including sourdough baking).
 - "Is Justin a good fit for [job role]?" → Match Justin's skills, experience, and education against what that role typically requires. Be honest and specific about what aligns and what he's still building. Always be professional and positive.
 - "GitHub" / "LinkedIn" / "contact" / "links" → Provide the relevant links: GitHub (https://github.com/JustinStutler), LinkedIn (https://www.linkedin.com/in/justin-stutler-a72b961a8), Email (StutlerJustin@gmail.com), Portfolio (https://JustinStutlerAI.netlify.app/).
-- "Tell me about his work experience" → Detail his professional roles with context about what he did and learned.
 - "Tell me about [specific project]" → Give a focused description of that project including goals, methods, and technologies.
-- "How does this work?" / "How does this website work?" / "How does his portfolio work?" / "What powers this?" → Explain the portfolio website's architecture: the LLM Wiki approach (inspired by Andrej Karpathy's gist), the Obsidian vault knowledge base, the three-stage pipeline (scope guard → context selection → answer generation), and the tech stack. Link to the Karpathy gist: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+- "How does this work?" / "tech stack" / "What powers this?" → Explain the portfolio website's architecture: the LLM Wiki approach (inspired by Andrej Karpathy's gist), the Obsidian-style vault organized as a navigable Wikipedia-style tree of sections, the three-stage pipeline (scope guard → context selection → answer generation), and the tech stack (Flask on Render, OpenRouter free-tier models, vanilla-JS frontend on Netlify). Link to the Karpathy gist: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+
+SEE ALSO:
+- End every substantive answer with a final line that starts with "**See also:**" suggesting 1-2 closely related topics the visitor could ask about next — but ONLY topics actually present in the provided CONTEXT CHUNKS. Keep it to one line. Omit it entirely for greetings, link-only replies, or when the context does not contain the answer.
 
 If the context does not contain the answer, say: "I don't have specific information about that in my knowledge base. You can reach Justin directly at StutlerJustin@gmail.com."
 """
 
+def extract_json(text):
+    match = re.search(r'\[.*\]', text, re.DOTALL)
+    if match:
+        return match.group(0)
+    return text
 
 def select_context(user_query, history_last_4):
     """Select relevant vault page IDs for the given query.
@@ -62,39 +77,36 @@ def select_context(user_query, history_last_4):
         return []
 
     prompt = f"""Based on the user's query, identify which knowledge pages are relevant.
-Respond ONLY with a valid JSON array of page ID strings.
-Select the most relevant pages (typically 1-4). Do not select all pages.
 
-Available Pages:
+The knowledge base is organized as a wiki tree (indentation shows parent -> child).
+Prefer the most specific page(s) that answer the query rather than a broad hub page.
+Respond ONLY with a valid JSON array of page ID strings (e.g., ["id1", "id2"]).
+Select the most relevant pages (typically 1-3). Do not select all pages. Do not include markdown formatting or explanation.
+
+Knowledge Base Map:
 {INDEX_SUMMARY}
 
 User Query: "{user_query}"
 """
 
     try:
-        response = client.models.generate_content(
+        response = client.chat.completions.create(
             model=MODEL_NAME,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json"
-            )
+            messages=[{"role": "user", "content": prompt}]
         )
-        selected = json.loads(response.text)
-        # Validate that returned IDs actually exist in the vault
-        return [pid for pid in selected if pid in VAULT]
+        content = response.choices[0].message.content.strip()
+        content = extract_json(content)
+        selected = json.loads(content)
+
+        # Validate returned IDs, then pull in 1-hop related neighbours (bounded)
+        valid = [pid for pid in selected if pid in VAULT]
+        return expand_related(VAULT, valid)
     except Exception as e:
         print(f"Context selection error: {e}")
         return ["tell-me-about"]
 
-
 def generate_answer(user_query, history, page_ids):
-    """Generate an answer using selected vault pages as context.
-
-    Args:
-        user_query: The user's question.
-        history: Conversation history as list of {role, parts} dicts.
-        page_ids: List of vault page IDs to use as context.
-    """
+    """Generate an answer using selected vault pages as context."""
     if not client:
         return "Error: API Key missing."
 
@@ -120,32 +132,26 @@ def generate_answer(user_query, history, page_ids):
     final_prompt = f"{context_text}\n\nUser's current query: \"{user_query}\""
 
     # 2. Convert history to SDK format
-    formatted_history = []
+    messages = [{"role": "system", "content": ANSWER_SYSTEM_INSTRUCTION}]
+    
     if history:
         for turn in history:
-            role = 'user' if turn.get('role') == 'user' else 'model'
+            role = 'user' if turn.get('role') == 'user' else 'assistant'
             text_content = ""
             if 'parts' in turn and len(turn['parts']) > 0:
                 text_content = turn['parts'][0].get('text', "")
-
             if text_content:
-                formatted_history.append(types.Content(
-                    role=role,
-                    parts=[types.Part.from_text(text=text_content)]
-                ))
+                messages.append({"role": role, "content": text_content})
+                
+    messages.append({"role": "user", "content": final_prompt})
 
     # 3. Generate
     try:
-        chat = client.chats.create(
+        response = client.chat.completions.create(
             model=MODEL_NAME,
-            config=types.GenerateContentConfig(
-                system_instruction=ANSWER_SYSTEM_INSTRUCTION
-            ),
-            history=formatted_history
+            messages=messages
         )
-
-        response = chat.send_message(final_prompt)
-        return response.text
+        return response.choices[0].message.content
     except Exception as e:
         print(f"Generation error details: {e}")
         return "I encountered an error while communicating with the AI service."

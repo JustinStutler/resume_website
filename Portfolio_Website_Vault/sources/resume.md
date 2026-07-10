@@ -3,9 +3,11 @@ id: resume
 title: Justin Stutler - Professional Resume
 tags: [resume, education, skills, work-experience, projects, python, ai, ml, flask, react, usf]
 type: source
-last_updated: 2026-04-08
+parent: justin-stutler
+related: [skills, education-usf-undergraduate, magmutual-insurance, projects]
+summary: Justin's professional resume — education, technical skills, academic projects, and work experience in one document.
+last_updated: 2026-07-10
 ---
-
 # Justin Stutler
 
 StutlerJustin@gmail.com | Tampa, FL | https://JustinStutlerAI.netlify.app/
@@ -19,15 +21,15 @@ StutlerJustin@gmail.com | Tampa, FL | https://JustinStutlerAI.netlify.app/
 
 ## Technical Skills
 
-- **AI & Machine Learning:** Deep Learning, Computer Vision, ResNets, PyTorch, TensorFlow, Scikit-learn, Pandas, NumPy, Ablation Studies, Natural Language Processing (NLP), OpenCV, YOLO
+- **AI & Machine Learning:** Deep Learning, Computer Vision, ResNets, PyTorch, TensorFlow, Scikit-learn, Pandas, NumPy, Ablation Studies, Natural Language Processing (NLP), RAG, Information Retrieval, Grounded Truth, OpenCV, YOLO
 - **Data Science & Math:** Statistical Modeling, Regression Analysis, Bayesian Statistics, Monte Carlo Methods, Hypothesis Testing, Data Visualization (Matplotlib/Seaborn)
 - **Software Engineering:** Python, SQL, MySQL, MongoDB, Git, Agile/Scrum, JIRA, Confluence
 - **Web & Deployment:** React, Node.js, JavaScript, HTML/CSS, RESTful APIs, PHP, Go, Django, Flask
 
 ## Academic Projects
 
-**Deep Learning Computer Vision Capstone | Music Genre Classification | Current Work**
-Conducting an ablation study on ResNets vs. standard CNNs to analyze vanishing gradients and optimize image classification performance. Developing a CNN pipeline to predict musical genres from album art, demonstrating the efficacy of residual connections in deep networks.
+**Deep Learning Computer Vision Capstone | Music Genre Classification**
+Conducted an ablation study on ResNets vs. standard CNNs to analyze vanishing gradients and optimize image classification performance. Developed a CNN pipeline to predict musical genres from album art, demonstrating the efficacy of residual connections in deep networks.
 
 **Predictive Housing Market Analysis | Data Science Project | Fall 2025**
 Engineered statistical regression models on high-dimensional real estate data, performing feature engineering to isolate key market drivers. Optimized model selection based on RMSE and R-squared metrics, utilizing EDA to identify and mitigate multicollinearity.

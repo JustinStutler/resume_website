@@ -20,40 +20,18 @@ I wanted to enhance my porfolio website to be more engaging than my previous one
 
 ## Features
 
-### Chips: Quick Queries
+### Wikipedia-Style Interface
 
-Click on a chip to send a Quick Query, common queries a user may have, which are displayed as chips and organized by category and color.
+The frontend is designed as a Wikipedia-style single-page application.
+- **Top Navigation Bar:** Persistent search and section navigation (Academics, Career, Projects, Skills, Personal, About).
+- **Dynamic Articles:** Content is fetched seamlessly from an Obsidian vault and rendered as Markdown in the browser, complete with internal cross-references.
+- **Infobox:** The home page features a Wikipedia-style summary infobox.
 
-#### 🟢 Info 
-- **About Justin**: Learn more about me
-- **How This Works**: Learn more about the website
-- **Photo Gallery**: View some photos of me
+### Docked AI Assistant
 
-#### 🔵 Academics
-- **GRE Scores**: View my GRE scores
-- **About a Class**: Learn more about a class I took during my undergraduate studies - graduate studies coming soon
-
-#### 🟡 Projects
-- **AI Interface**: View the AI interface project - coming soon
-- **Housing Prices**: View the housing prices project
-- **Facial Recognition**: View the facial recognition project
-
-#### 🟣 Research
-- **Song Genre from Album Art**: View the song genre from album art project - coming soon
-- **Robot Localization**: View the robot localization project
-- **Uninformed & Informed Search**: View the uninformed & informed search project
-
-#### 🩷 Links
-- **GitHub**: Navigate to my GitHub profile
-
-#### 🟠 Docs
-- **Resume**: View my resume
-- **Statement of Purpose**: View my statement of purpose
-
-### Chat Queries
-
-The user can freely ask questions about me, my education, projects, work experience, or any other questions they have and receive a catered response if the information is available.
-AI and RAG are used to retrieve information about me and respond accordingly.
+Instead of a full-screen landing page, a dedicated AI chatbot is always accessible in a collapsible dock at the bottom of the screen.
+- You can freely ask questions about my education, projects, work experience, or anything else.
+- The chatbot uses advanced context retrieval from the wiki to provide accurate, third-person answers about me.
 
 ## How It Works
 
@@ -79,9 +57,6 @@ Chat queries go through three sequential LLM calls:
 
 The original version used a two-call pipeline (context selection + answer generation). Adding the scope guard as Stage 0 prevents the model from hallucinating answers to off-topic questions and saves unnecessary context retrieval.
 
-### Quick Query Chips
-
-The chips are hard-coded to give preset responses for common queries (about, photo gallery, GRE scores, etc.) without hitting the backend.
 
 ### Deployment
 
@@ -100,11 +75,11 @@ This project utilizes a tech stack that I frequently use for personal projects:
 
 ## What's New
 
-**Latest: LLM Wiki Knowledge Base**
-Replaced the old `server/content/*.txt` context system with an Obsidian vault knowledge base (LLM Wiki). Added a scope guard as a new first stage in the pipeline to reject off-topic queries before any context retrieval. The vault loader automatically indexes all markdown pages at startup — adding new content no longer requires code changes.
+**Latest: Wikipedia-Style Wiki Interface + Docked Chat**
+Replaced the old suggestion chips and full-screen chat with a Wikipedia-style single-page application. The UI now features a top navigation bar mapping directly to wiki sections, a main article area for dynamically rendering Markdown files, and a bottom-docked AI chat panel that is always accessible.
 
-**Previous: UI Redesign**
-Rebuilt the entire interface with a dark theme, navigation tabs, and a cleaner chat experience.
+**Previous: LLM Wiki Knowledge Base**
+Replaced the old `server/content/*.txt` context system with an Obsidian vault knowledge base (LLM Wiki). Added a scope guard as a new first stage in the pipeline to reject off-topic queries before any context retrieval.
 
 **Coming Up**
 * Integrating the latest projects (AI interface, song genre from album art, and more)

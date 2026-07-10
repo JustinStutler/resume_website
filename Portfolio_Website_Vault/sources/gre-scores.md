@@ -3,9 +3,11 @@ id: gre-scores
 title: GRE Test Scores
 tags: [gre, test-scores, verbal, quantitative, writing, graduate-admissions]
 type: source
-last_updated: 2026-04-08
+parent: academics
+related: [education-usf-graduate]
+summary: Justin's GRE scores (May 7, 2025) — Verbal 162 (89th), Quantitative 160 (53rd), Analytical Writing 4.0 (59th).
+last_updated: 2026-07-10
 ---
-
 # Justin's GRE Scores
 
 **Test Date:** May 7, 2025
@@ -16,4 +18,3 @@ last_updated: 2026-04-08
 | Quantitative Reasoning | 160 | 53rd |
 | Analytical Writing | 4.0 | 59th |
 
-Justin's Verbal Reasoning score places him in the top 11% of test takers. His combined profile reflects strong analytical reading and communication skills alongside solid quantitative ability.

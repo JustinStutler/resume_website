@@ -6,7 +6,7 @@ load_dotenv()
 
 class Config:
     # API Keys
-    GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+    OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY')
 
     # Rate Limiting — per IP
     RATE_LIMIT_PER_MINUTE = "20 per minute"

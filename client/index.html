@@ -4,140 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Justin's Portfolio Chat</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Justin Stutler — Wiki</title>
+    <link rel="stylesheet" href="css/wiki.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 
 <body>
-    <div class="chat-container landing" id="chat-container">
-        <div class="greeting">
-            <div class="ai-logo" id="ai-logo">
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 0L14.59 8.41L23 12L14.59 15.59L12 24L9.41 15.59L1 12L9.41 8.41Z"/>
-                </svg>
-            </div>
-            <div class="greeting-text">
-                <h1 class="gemini-hello">Hello I'm Justin's Portfolio AI Assistant</h1>
-                <p class="gemini-powered-by">Powered by Gemini</p>
-            </div>
-        </div>
+    <!-- Top bar: brand + section nav + search, all on one level (Wikipedia-style) -->
+    <header class="wiki-topbar">
+        <div class="topbar-inner">
+            <a class="site-brand" href="#/wiki/justin-stutler" data-wiki-id="justin-stutler">
+                Justin&nbsp;Stutler <span class="brand-tag">wiki</span>
+            </a>
 
-        <div id="chat-window">
-        </div>
+            <nav class="section-nav" id="section-nav" aria-label="Wiki sections">
+                <a class="sec sec-blue"   data-wiki-id="academics">Academics</a>
+                <a class="sec sec-green"  data-wiki-id="career">Career</a>
+                <a class="sec sec-amber"  data-wiki-id="projects">Projects</a>
+                <a class="sec sec-purple" data-wiki-id="skills">Skills</a>
+                <a class="sec sec-pink"   data-wiki-id="personal">Personal</a>
+                <a class="sec sec-orange" data-wiki-id="about-this-website">About</a>
+            </nav>
 
-        <div class="suggestions-area-wrapper">
-            <!-- Column titles row — click to expand/collapse -->
-            <div class="column-titles" id="column-titles" role="button" tabindex="0" aria-expanded="true">
-                <span class="col-title col-title-green">Info</span>
-                <span class="col-title col-title-blue">Academics</span>
-                <span class="col-title col-title-amber">Projects</span>
-                <span class="col-title col-title-purple">Research</span>
-                <span class="col-title col-title-pink">Links</span>
-                <span class="col-title col-title-orange">Docs</span>
-            </div>
-
-            <!-- Collapsible section — 6 columns -->
-            <div class="suggestions-container expanded" id="suggestions-container">
-                <!-- Green: Info -->
-                <div class="suggestion-column col-info">
-                    <span class="col-label col-label-green"><span class="key-dot key-green"></span>Info</span>
-                    <button class="suggestion-btn" data-type="local-markdown"
-                        data-local-file="content/tell_me_about.txt"
-                        data-user-display-message="Tell me about Justin">
-                        Who is Justin?
-                    </button>
-                    <button class="suggestion-btn" data-type="local-markdown"
-                        data-local-file="content/how_this_works.md"
-                        data-user-display-message="How does this work?">
-                        How This Works
-                    </button>
-                    <button class="suggestion-btn" data-type="random-image">
-                        Photo Gallery
-                    </button>
-                </div>
-
-                <!-- Blue: Academics -->
-                <div class="suggestion-column col-academics">
-                    <span class="col-label col-label-blue"><span class="key-dot key-blue"></span>Academics</span>
-                    <button class="suggestion-btn" data-type="local-markdown"
-                        data-user-display-message="What are Justin's GRE scores?"
-                        data-local-file="content/GRE_Scores_Formatted.md">
-                        GRE Scores
-                    </button>
-                    <button class="suggestion-btn" data-type="ai-query-random-class"
-                        id="viewRandomClassBtn"
-                        data-user-display-message="Tell me about a class Justin has taken.">
-                        Random Course
-                    </button>
-                </div>
-
-                <!-- Amber: Projects -->
-                <div class="suggestion-column col-projects">
-                    <span class="col-label col-label-amber"><span class="key-dot key-amber"></span>AI Projects</span>
-                    <button class="suggestion-btn" data-type="in-progress">
-                        AI Interface
-                    </button>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="housing-prices">
-                        Housing Price Prediction
-                    </button>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="facial-recognition">
-                        Facial Recognition
-                    </button>
-                </div>
-
-                <!-- Purple: Research -->
-                <div class="suggestion-column col-research">
-                    <span class="col-label col-label-purple"><span class="key-dot key-purple"></span>More Projects</span>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="cv-capstone">
-                        Song Genre from Album Art
-                    </button>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="connect-4">
-                        Connect 4
-                    </button>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="robot-localization">
-                        Robot Localization
-                    </button>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="uninformed-informed-search">
-                        Search Algorithms
-                    </button>
-                </div>
-
-                <!-- Pink: Links -->
-                <div class="suggestion-column col-links">
-                    <span class="col-label col-label-pink"><span class="key-dot key-pink"></span>Links</span>
-                    <a href="https://github.com/JustinStutler" target="_blank" rel="noopener noreferrer"
-                        class="suggestion-btn github-link-btn" data-type="external-link">
-                        GitHub
-                    </a>
-                </div>
-
-                <!-- Orange/Coral: Docs -->
-                <div class="suggestion-column col-docs">
-                    <span class="col-label col-label-orange"><span class="key-dot key-orange"></span>Docs</span>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="resume">
-                        Resume
-                    </button>
-                    <button class="suggestion-btn" data-type="pdf" data-pdf="sop">
-                        Statement of Purpose
-                    </button>
-                </div>
+            <div class="search-wrap">
+                <input type="text" id="wiki-search" placeholder="Search the wiki…"
+                    autocomplete="off" aria-label="Search the wiki">
+                <div class="search-results" id="search-results" role="listbox" hidden></div>
             </div>
         </div>
+    </header>
 
-        <div class="input-row">
-            <div class="input-area">
-                <input type="text" id="user-input" placeholder="Ask about Justin..." autocomplete="off">
-                <button id="send-btn" title="Send message">
+    <!-- Article -->
+    <main class="wiki-main">
+        <article class="wiki-article" id="wiki-article" aria-live="polite"></article>
+    </main>
+
+    <!-- Docked AI chat: input always visible at the bottom, messages panel collapses -->
+    <section class="chat-dock" id="chat-dock" aria-label="Ask the AI assistant">
+        <div class="chat-dock-panel" id="chat-dock-panel">
+            <div class="chat-dock-header">
+                <span class="chat-dock-title">
+                    <span class="ai-dot"></span> Ask about Justin
+                </span>
+                <button class="chat-dock-close" id="chat-dock-close" title="Collapse chat" aria-label="Collapse chat">✕</button>
+            </div>
+            <div class="chat-window" id="chat-window"></div>
+        </div>
+
+        <div class="chat-dock-bar">
+            <button class="chat-dock-toggle" id="chat-dock-toggle" title="Expand chat" aria-label="Expand chat" aria-expanded="false">▴</button>
+            <div class="chat-input-area">
+                <input type="text" id="user-input" placeholder="Ask the AI anything about Justin…" autocomplete="off">
+                <button id="send-btn" title="Send message" aria-label="Send message">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
                     </svg>
                 </button>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/app.js"></script>
 </body>
 
 </html>
