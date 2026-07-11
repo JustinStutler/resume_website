@@ -10,8 +10,6 @@ last_updated: 2026-07-10
 ---
 # Photos
 
-A few snapshots of Justin outside of work and school.
-
 ![Deer encountered on a hike](portraits/deer.jpg)
 ![At the gym, mid-training](portraits/gym_pic.jpg)
 ![Exploring an ice cave](portraits/ice_cave.JPG)

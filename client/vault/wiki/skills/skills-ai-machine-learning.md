@@ -11,8 +11,6 @@ last_updated: 2026-07-10
 ---
 # AI & Machine Learning
 
-Justin's primary focus area, supported by graduate coursework and extensive project work:
-
 - **Deep Learning:** ResNets, CNNs, ablation studies, vanishing gradient analysis, transformers
 - **Frameworks:** PyTorch, TensorFlow/Keras, Scikit-learn
 - **Computer Vision:** OpenCV, YOLO, image classification pipelines, facial recognition (LDA, SVM, CNN comparison)

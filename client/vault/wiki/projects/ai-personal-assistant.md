@@ -6,6 +6,7 @@ type: wiki
 parent: projects
 related: [about-this-website, skills-ai-machine-learning, projects]
 summary: Personal project building an AI assistant on the OpenClaw framework to explore agentic AI patterns — tool use, planning, and multi-step reasoning.
+hook: A personal AI assistant built on the OpenClaw agent framework to explore how AI can plan and use tools on its own.
 sources: [resume]
 last_updated: 2026-07-10
 ---
@@ -27,4 +28,4 @@ Justin is building a personal AI assistant using the OpenClaw framework. This pr
 
 ## Technologies Used
 
-Python, OpenClaw, Agentic AI, Large Language Models
+Python | OpenClaw | Agentic AI | Large Language Models

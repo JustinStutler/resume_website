@@ -6,6 +6,7 @@ type: wiki
 parent: projects
 related: [facial-recognition, uninformed-informed-search, skills-ai-machine-learning, projects]
 summary: Intro to AI project (USF, Fall 2025) implementing Monte Carlo particle-filter localization for Pacman (direct) vs. Ghost (noisy) tracking.
+hook: How a robot figures out where it is from noisy sensors — thousands of guessing "particles" that gradually converge on the truth.
 sources: [resume]
 last_updated: 2026-07-10
 ---
@@ -72,4 +73,4 @@ Particle filtering is a sequential Monte Carlo method for estimating the state o
 
 ## Technologies Used
 
-Python, NumPy, Bayesian Statistics, Monte Carlo Methods, Particle Filtering, Probability Theory
+Python | NumPy | Bayesian Statistics | Monte Carlo Methods | Particle Filtering | Probability Theory

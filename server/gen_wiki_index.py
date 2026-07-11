@@ -32,6 +32,7 @@ def build_manifest():
             'path': rel,
             'title': page['title'],
             'summary': page['summary'],
+            'hook': page.get('hook', ''),
             'tags': page['tags'],
             'parent': page['parent'],
             'related': page['related'],

@@ -10,5 +10,3 @@ sources: [resume, courses]
 last_updated: 2026-07-10
 ---
 # Academic Foundations
-
-Justin's coursework spans computing fundamentals (Computer Organization & Architecture at KSU), discrete mathematics, information security, database design, networking, and information architecture -- providing a well-rounded technical foundation.

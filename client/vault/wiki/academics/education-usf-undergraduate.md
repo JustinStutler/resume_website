@@ -9,10 +9,12 @@ tags: [education, usf, undergraduate, information-science, web-development, cum-
 sources: [resume, courses, sop]
 last_updated: 2026-07-10
 ---
-# University of South Florida — Undergraduate (Fall 2022 - May 2024)
+# University of South Florida — Undergraduate
 
-- **Degree:** Bachelor of Information Science, Concentration in Web Development
-- **GPA:** 3.67, graduated **Cum Laude**
+**Program:** Bachelor of Information Science (Web Development Concentration)
+**GPA:** 3.67 (Cum Laude)
+**Dates:** Fall 2022 - May 2024
+
 - Transferred after COVID-19 prompted move from Georgia to Florida
 - Key courses: Information Security, Database Concepts, Web Design Technologies, Interaction Design, Information Architecture
 - **Senior Capstone:** Full-stack PHP/MySQL application with CRUD functionality

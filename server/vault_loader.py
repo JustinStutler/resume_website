@@ -114,6 +114,7 @@ def load_vault(vault_path):
                 'related': _as_list(metadata.get('related', [])),
                 'sources': _as_list(metadata.get('sources', [])),
                 'summary': metadata.get('summary', ''),
+                'hook': metadata.get('hook', ''),
                 'file_path': file_path,
                 'content': body.strip(),
             }

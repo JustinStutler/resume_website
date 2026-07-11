@@ -6,6 +6,7 @@ type: wiki
 parent: projects
 related: [skills-data-science-mathematics, deep-learning-capstone, projects]
 summary: Kaggle House Prices regression project (USF, Fall 2025) — 8 models, Optuna tuning, outlier analysis, and a stacking ensemble reaching RMSLE 0.1031.
+hook: An end-to-end pipeline that predicts what a house sells for from 79 features — tuned, stacked, and squeezed to a top-tier Kaggle score.
 sources: [resume]
 last_updated: 2026-07-10
 ---
@@ -125,4 +126,4 @@ The project tracked RMSLE at every stage, showing continuous improvement from 0.
 
 ## Technologies Used
 
-Python, Scikit-learn, XGBoost, LightGBM, CatBoost, Optuna, Pandas, NumPy, Matplotlib, Seaborn, Kaggle, StackingRegressor, Pipeline, ColumnTransformer, GridSearchCV, Cross-Validation
+Python | Scikit-learn | XGBoost | LightGBM | CatBoost | Optuna | Pandas | NumPy | Matplotlib | Seaborn | Kaggle | StackingRegressor | Pipeline | ColumnTransformer | GridSearchCV | Cross-Validation

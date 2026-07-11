@@ -9,9 +9,11 @@ tags: [education, ksu, kennesaw-state, computer-science, ai, gpa, honor-roll]
 sources: [resume, courses, sop]
 last_updated: 2026-07-10
 ---
-# Kennesaw State University (Spring 2020 - Fall 2020)
+# Kennesaw State University
 
-- Studied Computer Science with a focus on Artificial Intelligence
-- **GPA: 3.75** (Honor Roll)
+**Program:** Computer Science (Focus on Artificial Intelligence)
+**GPA:** 3.75 (Honor Roll)
+**Dates:** Spring 2020 - Fall 2020
+
 - Key courses: Programming Problem Solving II, Computer Organization & Architecture, Discrete Mathematics, Statistics
 - This is where Justin deepened programming and CS fundamentals

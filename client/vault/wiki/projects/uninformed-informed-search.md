@@ -6,6 +6,7 @@ type: wiki
 parent: projects
 related: [robot-localization, facial-recognition, skills-ai-machine-learning, projects]
 summary: Intro to AI project (USF, Fall 2025) comparing Iterative Deepening vs. A* search on dominoes puzzles up to 4x4.
+hook: Why one smart hint lets A* solve a puzzle that blind search can't even finish before giving up.
 sources: [resume]
 last_updated: 2026-07-10
 ---
@@ -82,4 +83,4 @@ Each algorithm was run 10 times on each grid size with random initial states.
 
 ## Technologies Used
 
-Python, A* Search Algorithm, Iterative Deepening DFS, Heuristic Design, Search Space Analysis
+Python | A* Search Algorithm | Iterative Deepening DFS | Heuristic Design | Search Space Analysis

@@ -9,10 +9,12 @@ tags: [education, usf, graduate, data-intelligence, ai-certificate, gre, masters
 sources: [resume, courses, sop, gre-scores]
 last_updated: 2026-07-10
 ---
-# University of South Florida — Graduate (August 2025 - December 2026 Expected)
+# University of South Florida — Graduate
 
-- **Degree:** Master of Science in Data Intelligence
-- **Certificate:** Graduate Certificate of Artificial Intelligence
+**Program:** M.S. Data Intelligence & Graduate Certificate in AI
+**GPA:** N/A (Current)
+**Dates:** August 2025 - December 2026 (Expected)
+
 - Current projects: Deep Learning Computer Vision Capstone, Predictive Housing Analysis, Robotics Localization
 - Combining computational and decision-making tracks
 

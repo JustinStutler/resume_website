@@ -9,8 +9,11 @@ tags: [education, ung, university-of-north-georgia, general-education]
 sources: [resume, courses]
 last_updated: 2026-07-10
 ---
-# University of North Georgia (Fall 2018)
+# University of North Georgia
+
+**Program:** General Education
+**GPA:** 2.75
+**Dates:** Fall 2018
 
 - Brief attendance (one semester)
 - Courses in English, History, Ethics, Government
-- Term GPA: 2.75

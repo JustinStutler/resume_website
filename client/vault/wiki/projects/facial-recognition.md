@@ -6,6 +6,7 @@ type: wiki
 parent: projects
 related: [robot-localization, uninformed-informed-search, skills-ai-machine-learning, projects]
 summary: Intro to AI project (USF, Fall 2025) comparing LDA, SVM, and CNN on the Olivetti Faces dataset; SVM won at ~90.06%.
+hook: A head-to-head test of three ways to recognize a face — and proof that fancy deep learning doesn't always beat the classics.
 sources: [resume]
 last_updated: 2026-07-10
 ---
@@ -76,4 +77,4 @@ Justin conducted a comparative study of three machine learning approaches for fa
 
 ## Technologies Used
 
-Python, Scikit-learn, TensorFlow/Keras, NumPy, Matplotlib, PCA, GridSearchCV, Data Augmentation
+Python | Scikit-learn | TensorFlow/Keras | NumPy | Matplotlib | PCA | GridSearchCV | Data Augmentation

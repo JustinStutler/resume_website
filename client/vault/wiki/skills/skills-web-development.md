@@ -11,8 +11,6 @@ last_updated: 2026-07-10
 ---
 # Web Development
 
-Undergraduate concentration in Web Development at USF, plus professional experience:
-
 - **Frontend:** React, JavaScript, HTML/CSS
 - **Backend:** Flask, Django, Node.js, PHP
 - **APIs:** RESTful API design and implementation

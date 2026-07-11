@@ -9,7 +9,11 @@ tags: [education, mhs, high-school, ap-credit, alphago, georgia]
 sources: [resume, courses, sop]
 last_updated: 2026-07-10
 ---
-# Milton High School (2015-2018)
+# Milton High School
+
+**Program:** General Education & Programming Pathway
+**GPA:** N/A
+**Dates:** 2015 - 2018
 
 - Located in Georgia
 - Studied game design, animation, and programming

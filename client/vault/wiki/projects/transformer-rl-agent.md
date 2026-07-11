@@ -6,6 +6,7 @@ type: wiki
 parent: projects
 related: [deep-learning-capstone, skills-ai-machine-learning, projects]
 summary: Deep Learning project (USF, Spring 2026) — a Transformer-based DQN that learns Connect 4 via self-play, benchmarked against MLP DQN, heuristic, random, and a Decision Transformer.
+hook: A Connect 4 AI that teaches itself to play from scratch, using a transformer's attention to spot board threats no human ever showed it.
 sources: [resume]
 last_updated: 2026-07-10
 ---
@@ -54,15 +55,17 @@ Pretrained Decision Transformer (Chen et al., 2021) adapted for Connect 4. Refra
 
 ## Training Details
 
-- **Training Method:** Self-play with experience replay
-- **Optimizer:** Adam, learning rate 1e-4
-- **Batch Size:** 64 sampled from replay buffer
-- **Replay Buffer:** Up to 100,000 experiences, each as (state, action, reward, next_state, done)
-- **Exploration:** Epsilon-greedy policy with decaying epsilon
-- **Target Network:** Separate, slowly updating target network for stable Q-value targets via Bellman equation
-- **Invalid Action Masking:** Full columns masked by setting Q-values to negative infinity
-- **Hardware:** NVIDIA RTX 3080 GPU
-- **Framework:** PyTorch, PettingZoo
+| Setting | Value |
+|---|---|
+| Training Method | Self-play with experience replay |
+| Optimizer | Adam, learning rate 1e-4 |
+| Batch Size | 64 sampled from replay buffer |
+| Replay Buffer | Up to 100,000 experiences, each as (state, action, reward, next_state, done) |
+| Exploration | Epsilon-greedy policy with decaying epsilon |
+| Target Network | Separate, slowly updating target network for stable Q-value targets via Bellman equation |
+| Invalid Action Masking | Full columns masked by setting Q-values to negative infinity |
+| Hardware | NVIDIA RTX 3080 GPU |
+| Framework | PyTorch, PettingZoo |
 
 ## Improvement Techniques
 
@@ -89,4 +92,4 @@ Pretrained Decision Transformer (Chen et al., 2021) adapted for Connect 4. Refra
 
 ## Technologies Used
 
-Python, PyTorch, Transformers, Reinforcement Learning, Deep Q-Learning, PettingZoo, Self-Play, Decision Transformer, NVIDIA RTX 3080, CUDA
+Python | PyTorch | Transformers | Reinforcement Learning | Deep Q-Learning | PettingZoo | Self-Play | Decision Transformer | NVIDIA RTX 3080 | CUDA

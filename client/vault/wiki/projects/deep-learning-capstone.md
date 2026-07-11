@@ -6,6 +6,7 @@ type: wiki
 parent: projects
 related: [transformer-rl-agent, house-prices, skills-ai-machine-learning, projects]
 summary: Graduate capstone (USF, Spring 2026) — ablation study of CNNs vs. ResNets plus a CLIP baseline for predicting music genre from album art.
+hook: Can a neural network guess a song's genre just from its album cover? My grad capstone pits CNNs, ResNets, and CLIP against that question.
 sources: [resume, sop]
 last_updated: 2026-07-10
 ---
@@ -53,13 +54,15 @@ Each of the 4 architectures was trained under 4 conditions, yielding 16 custom m
 
 ## Training Configuration
 
-- **Optimizer:** Adam
-- **Learning Rate:** 0.001
-- **Batch Size:** 32
-- **Max Epochs:** 21
-- **Early Stopping:** Patience of 5 on validation loss
-- **Hardware:** NVIDIA GPU via CUDA
-- **Framework:** PyTorch
+| Setting | Value |
+|---|---|
+| Optimizer | Adam |
+| Learning Rate | 0.001 |
+| Batch Size | 32 |
+| Max Epochs | 21 |
+| Early Stopping | Patience of 5 on validation loss |
+| Hardware | NVIDIA GPU via CUDA |
+| Framework | PyTorch |
 
 ## Results
 
@@ -91,4 +94,4 @@ The CLIP foundation model significantly outperformed all custom models, demonstr
 
 ## Technologies Used
 
-PyTorch, Computer Vision, Deep Learning, CNNs, ResNets, CLIP, Image Classification, Ablation Studies, Kaggle, CUDA, Adam Optimizer, Early Stopping
+PyTorch | Computer Vision | Deep Learning | CNNs | ResNets | CLIP | Image Classification | Ablation Studies | Kaggle | CUDA | Adam Optimizer | Early Stopping

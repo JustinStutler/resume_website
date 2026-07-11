@@ -8,6 +8,7 @@
       "path": "vault/wiki/justin-stutler.md",
       "title": "Justin Stutler",
       "summary": "Root overview of Justin Stutler and the top-level map of this knowledge base; start here and follow links to the relevant section.",
+      "hook": "",
       "tags": [
         "overview",
         "root",
@@ -30,6 +31,7 @@
       "path": "vault/wiki/about-website/about-this-website.md",
       "title": "How This Portfolio Website Works",
       "summary": "Hub explaining this AI-powered portfolio — its LLM-wiki architecture, query flow, and tech stack.",
+      "hook": "",
       "tags": [
         "portfolio",
         "website",
@@ -53,6 +55,7 @@
       "path": "vault/wiki/about-website/architecture-and-story.md",
       "title": "Architecture and Story",
       "summary": "Overview of this site's LLM-wiki architecture and a pointer to the fuller development story.",
+      "hook": "",
       "tags": [
         "architecture",
         "llm-wiki",
@@ -74,6 +77,7 @@
       "path": "vault/wiki/about-website/query-flow.md",
       "title": "Query Flow",
       "summary": "How a visitor's question becomes a grounded answer — scope classification, context retrieval from the markdown knowledge base, and grounded generation, plus failure cases.",
+      "hook": "",
       "tags": [
         "query-flow",
         "pipeline",
@@ -93,6 +97,7 @@
       "path": "vault/wiki/about-website/tech-stack.md",
       "title": "Tech Stack",
       "summary": "The technologies powering this site — Python Flask backend on Render, OpenRouter free-tier LLMs, an Obsidian markdown vault, and a vanilla-JS frontend on Netlify.",
+      "hook": "",
       "tags": [
         "tech-stack",
         "flask",
@@ -115,6 +120,7 @@
       "path": "vault/wiki/about-website/the-journey.md",
       "title": "The Journey — From RAG to LLM-Wiki",
       "summary": "How this site's knowledge base evolved from traditional RAG to a Wikipedia-style LLM-wiki, roughly 6-8 months before Karpathy popularized the idea.",
+      "hook": "",
       "tags": [
         "architecture",
         "llm-wiki",
@@ -134,6 +140,7 @@
       "path": "vault/wiki/academics/academics.md",
       "title": "Academics",
       "summary": "Hub for Justin's education history; links to a page per institution plus full coursework and GRE scores.",
+      "hook": "",
       "tags": [
         "education",
         "academics",
@@ -161,6 +168,7 @@
       "path": "vault/wiki/academics/education-kennesaw-state-university.md",
       "title": "Kennesaw State University",
       "summary": "Justin's Computer Science study (AI focus) at Kennesaw State University (2020) — 3.75 GPA, Honor Roll, CS fundamentals.",
+      "hook": "",
       "tags": [
         "education",
         "ksu",
@@ -183,6 +191,7 @@
       "path": "vault/wiki/academics/education-milton-high-school.md",
       "title": "Milton High School",
       "summary": "Justin's high school (2015-2018) in Georgia — game design, animation, and programming; earned AP credits and first got interested in AI.",
+      "hook": "",
       "tags": [
         "education",
         "mhs",
@@ -202,6 +211,7 @@
       "path": "vault/wiki/academics/education-university-of-north-georgia.md",
       "title": "University of North Georgia",
       "summary": "Justin's one semester at the University of North Georgia (Fall 2018) — general education courses, term GPA 2.75.",
+      "hook": "",
       "tags": [
         "education",
         "ung",
@@ -220,6 +230,7 @@
       "path": "vault/wiki/academics/education-usf-graduate.md",
       "title": "University of South Florida — Graduate",
       "summary": "Justin's M.S. in Data Intelligence and Graduate Certificate in AI at USF (Aug 2025 - Dec 2026 expected), plus his May 2025 GRE scores.",
+      "hook": "",
       "tags": [
         "education",
         "usf",
@@ -242,6 +253,7 @@
       "path": "vault/wiki/academics/education-usf-undergraduate.md",
       "title": "University of South Florida — Undergraduate",
       "summary": "Justin's B.S. in Information Science (Web Development concentration) at USF, 2022-2024 — 3.67 GPA, Cum Laude.",
+      "hook": "",
       "tags": [
         "education",
         "usf",
@@ -265,6 +277,7 @@
       "path": "vault/wiki/career/career-direction.md",
       "title": "Current Career Direction",
       "summary": "Justin's current career direction — pursuing graduate AI studies with the goal of becoming an AI Engineer who improves the full-stack development lifecycle.",
+      "hook": "",
       "tags": [
         "career",
         "goals",
@@ -284,6 +297,7 @@
       "path": "vault/wiki/career/career.md",
       "title": "Career",
       "summary": "Hub for Justin's professional experience and current career direction; links to a page per role.",
+      "hook": "",
       "tags": [
         "work",
         "career",
@@ -304,6 +318,7 @@
       "path": "vault/wiki/career/magmutual-insurance.md",
       "title": "MagMutual Insurance",
       "summary": "Justin's 2020 role at MagMutual Insurance — Software Developer Intern who converted to Contractor, building Python/Go full-stack backend solutions in an Agile team.",
+      "hook": "",
       "tags": [
         "work",
         "magmutual",
@@ -327,6 +342,7 @@
       "path": "vault/wiki/career/piehole.md",
       "title": "PieHole",
       "summary": "Justin's role as Operations Manager at PieHole (2016-2018), a high-volume food service business — team, inventory, and operations management.",
+      "hook": "",
       "tags": [
         "work",
         "piehole",
@@ -345,6 +361,7 @@
       "path": "vault/wiki/personal/autotelic-personality.md",
       "title": "Autotelic Personality",
       "summary": "Justin's autotelic personality — pursuing challenge for its own sake across DJing, Brazilian Jiu-Jitsu, and sourdough baking.",
+      "hook": "",
       "tags": [
         "personality",
         "autotelic",
@@ -364,6 +381,7 @@
       "path": "vault/wiki/personal/contact-and-links.md",
       "title": "Contact and Links",
       "summary": "How to reach Justin and find him online — GitHub, LinkedIn, email, and resume, plus basic personal facts.",
+      "hook": "",
       "tags": [
         "contact",
         "links",
@@ -382,6 +400,7 @@
       "path": "vault/wiki/personal/hobbies.md",
       "title": "Hobbies",
       "summary": "Justin's hobbies — DJing and Brazilian Jiu-Jitsu (USF BJJ Club member).",
+      "hook": "",
       "tags": [
         "hobbies",
         "djing",
@@ -399,6 +418,7 @@
       "path": "vault/wiki/personal/interests-and-values.md",
       "title": "Interests and Values",
       "summary": "What Justin cares about — leveraging AI in software workflows, learning new tech, teamwork, continuous learning, and treating every passion as a puzzle.",
+      "hook": "",
       "tags": [
         "interests",
         "values",
@@ -418,6 +438,7 @@
       "path": "vault/wiki/personal/personal.md",
       "title": "Personal",
       "summary": "Hub for who Justin is beyond work and school — interests, hobbies, personality, contact links, and photos.",
+      "hook": "",
       "tags": [
         "personal",
         "interests",
@@ -442,6 +463,7 @@
       "path": "vault/wiki/personal/photos.md",
       "title": "Photos",
       "summary": "A small photo gallery of Justin outside of work and school — travel, hobbies, and everyday moments.",
+      "hook": "",
       "tags": [
         "personal",
         "photos",
@@ -460,6 +482,7 @@
       "path": "vault/wiki/projects/ai-personal-assistant.md",
       "title": "AI Personal Assistant with OpenClaw",
       "summary": "Personal project building an AI assistant on the OpenClaw framework to explore agentic AI patterns — tool use, planning, and multi-step reasoning.",
+      "hook": "A personal AI assistant built on the OpenClaw agent framework to explore how AI can plan and use tools on its own.",
       "tags": [
         "projects",
         "ai-assistant",
@@ -479,6 +502,7 @@
       "path": "vault/wiki/projects/deep-learning-capstone.md",
       "title": "Deep Learning Computer Vision Capstone: Song Genre from Album Art",
       "summary": "Graduate capstone (USF, Spring 2026) — ablation study of CNNs vs. ResNets plus a CLIP baseline for predicting music genre from album art.",
+      "hook": "Can a neural network guess a song's genre just from its album cover? My grad capstone pits CNNs, ResNets, and CLIP against that question.",
       "tags": [
         "projects",
         "deep-learning",
@@ -507,6 +531,7 @@
       "path": "vault/wiki/projects/facial-recognition.md",
       "title": "Facial Recognition: LDA vs SVM vs CNN",
       "summary": "Intro to AI project (USF, Fall 2025) comparing LDA, SVM, and CNN on the Olivetti Faces dataset; SVM won at ~90.06%.",
+      "hook": "A head-to-head test of three ways to recognize a face — and proof that fancy deep learning doesn't always beat the classics.",
       "tags": [
         "projects",
         "facial-recognition",
@@ -531,6 +556,7 @@
       "path": "vault/wiki/projects/house-prices.md",
       "title": "House Prices: Advanced Regression Techniques",
       "summary": "Kaggle House Prices regression project (USF, Fall 2025) — 8 models, Optuna tuning, outlier analysis, and a stacking ensemble reaching RMSLE 0.1031.",
+      "hook": "An end-to-end pipeline that predicts what a house sells for from 79 features — tuned, stacked, and squeezed to a top-tier Kaggle score.",
       "tags": [
         "projects",
         "regression",
@@ -556,6 +582,7 @@
       "path": "vault/wiki/projects/projects.md",
       "title": "Academic and Personal Projects",
       "summary": "Hub for Justin's academic and personal projects across AI, ML, computer vision, and web development; links to a page per project.",
+      "hook": "",
       "tags": [
         "projects",
         "computer-vision",
@@ -597,6 +624,7 @@
       "path": "vault/wiki/projects/robot-localization.md",
       "title": "Robot Localization with Particle Filtering",
       "summary": "Intro to AI project (USF, Fall 2025) implementing Monte Carlo particle-filter localization for Pacman (direct) vs. Ghost (noisy) tracking.",
+      "hook": "How a robot figures out where it is from noisy sensors — thousands of guessing \"particles\" that gradually converge on the truth.",
       "tags": [
         "projects",
         "robotics",
@@ -621,6 +649,7 @@
       "path": "vault/wiki/projects/senior-capstone.md",
       "title": "Senior Capstone",
       "summary": "Justin's undergraduate BSIS Senior Capstone (Spring 2024) at USF — a full-stack PHP/MySQL CRUD application.",
+      "hook": "The full-stack PHP/MySQL web app that capped off my undergraduate degree.",
       "tags": [
         "projects",
         "senior-capstone",
@@ -641,6 +670,7 @@
       "path": "vault/wiki/projects/transformer-rl-agent.md",
       "title": "Transformer-Based Reinforcement Learning Agent: Connect 4",
       "summary": "Deep Learning project (USF, Spring 2026) — a Transformer-based DQN that learns Connect 4 via self-play, benchmarked against MLP DQN, heuristic, random, and a Decision Transformer.",
+      "hook": "A Connect 4 AI that teaches itself to play from scratch, using a transformer's attention to spot board threats no human ever showed it.",
       "tags": [
         "projects",
         "reinforcement-learning",
@@ -665,6 +695,7 @@
       "path": "vault/wiki/projects/uninformed-informed-search.md",
       "title": "Uninformed and Informed Search: Dominoes Puzzle",
       "summary": "Intro to AI project (USF, Fall 2025) comparing Iterative Deepening vs. A* search on dominoes puzzles up to 4x4.",
+      "hook": "Why one smart hint lets A* solve a puzzle that blind search can't even finish before giving up.",
       "tags": [
         "projects",
         "search-algorithms",
@@ -688,6 +719,7 @@
       "path": "vault/wiki/skills/skills-academic-foundations.md",
       "title": "Academic Foundations",
       "summary": "Justin's foundational technical coursework — computer organization, discrete math, information security, databases, networking, and information architecture.",
+      "hook": "",
       "tags": [
         "foundations",
         "computer-organization",
@@ -707,6 +739,7 @@
       "path": "vault/wiki/skills/skills-ai-machine-learning.md",
       "title": "AI & Machine Learning Skills",
       "summary": "Justin's AI/ML skills — deep learning, computer vision, reinforcement learning, gradient boosting, ensembles, and probabilistic AI.",
+      "hook": "",
       "tags": [
         "ai",
         "machine-learning",
@@ -730,6 +763,7 @@
       "path": "vault/wiki/skills/skills-data-science-mathematics.md",
       "title": "Data Science & Mathematics Skills",
       "summary": "Justin's data science and math skills — statistical modeling, regression, feature engineering, Bayesian/Monte Carlo methods, and visualization.",
+      "hook": "",
       "tags": [
         "data-science",
         "statistics",
@@ -749,6 +783,7 @@
       "path": "vault/wiki/skills/skills-software-engineering.md",
       "title": "Software Engineering Skills",
       "summary": "Justin's software engineering skills — Python (primary), SQL, Go, MySQL/MongoDB databases, and Agile tooling.",
+      "hook": "",
       "tags": [
         "software-engineering",
         "python",
@@ -770,6 +805,7 @@
       "path": "vault/wiki/skills/skills-web-development.md",
       "title": "Web Development Skills",
       "summary": "Justin's web development skills — React/JavaScript frontend, Flask/Django/Node/PHP backend, REST APIs, and full-stack development.",
+      "hook": "",
       "tags": [
         "web-development",
         "react",
@@ -794,6 +830,7 @@
       "path": "vault/wiki/skills/skills.md",
       "title": "Technical Skills",
       "summary": "Hub for Justin's technical skills, organized into one page per category.",
+      "hook": "",
       "tags": [
         "skills",
         "python",

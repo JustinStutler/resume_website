@@ -11,8 +11,6 @@ last_updated: 2026-07-10
 ---
 # Software Engineering
 
-Professional experience at MagMutual and academic training:
-
 - **Languages:** Python (primary), SQL, Go
 - **Databases:** MySQL, MongoDB
 - **Tools:** Git, Agile/Scrum, JIRA, Confluence

@@ -1,26 +1,36 @@
 /* wiki.css — self-contained styles for the Wikipedia-style wiki + docked AI chat */
 
 :root {
-    --bg: #f6f7f9;
-    --surface: #ffffff;
-    --ink: #1f2328;
-    --ink-soft: #4a5058;
-    --muted: #6b7280;
-    --border: #e3e6ea;
-    --border-strong: #d0d5db;
-    --link: #2563eb;
-    --link-visited: #6d28d9;
-    --accent: #2563eb;
+    /* Palette mirrors the previous portfolio's clean Gemini-like dark theme. */
+    --bg: #131314;
+    --surface: #1e1f20;
+    --ink: #e8eaed;
+    --ink-soft: #bdc1c6;
+    --muted: #9aa0a6;
+    --border: #2a2b2d;
+    --border-strong: #3c4043;
+    --link: #8ab4f8;
+    --link-visited: #c58af9;
+    --accent: #8ab4f8;
+    --rule: rgba(255, 255, 255, 0.78); /* white dividers under headers + between sections */
     --topbar-h: 56px;
     --dock-bar-h: 62px;
     --maxw: 1000px;
+    --content-w: calc(var(--maxw) - 44px); /* article + chat bar share this width */
 
-    --blue: #2563eb;
-    --green: #16a34a;
-    --amber: #d97706;
-    --purple: #7c3aed;
-    --pink: #db2777;
-    --orange: #ea580c;
+    /* Softer rainbow palette (red → purple), matching the old site's accents. */
+    --red: #d32f2f;
+    --orange: #f57c00;
+    --yellow: #f0c040;
+    --green: #81c995;
+    --blue: #8ab4f8;
+    --purple: #c58af9;
+
+    /* Rainbow-flag gradient: red on top → purple on the bottom (horizontal bands) */
+    --rainbow: linear-gradient(180deg,
+        var(--red), var(--orange), var(--yellow), var(--green), var(--blue), var(--purple));
+    --rainbow-h: linear-gradient(90deg,
+        var(--red), var(--orange), var(--yellow), var(--green), var(--blue), var(--purple));
 }
 
 * { box-sizing: border-box; }
@@ -38,14 +48,13 @@ html, body {
 a { color: var(--link); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* ---------- Top bar ---------- */
+/* ---------- Single main toolbar ---------- */
 .wiki-topbar {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: var(--surface);
+    background: var(--bg);
     border-bottom: 1px solid var(--border);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
 }
 .topbar-inner {
     max-width: var(--maxw);
@@ -53,32 +62,38 @@ a:hover { text-decoration: underline; }
     min-height: var(--topbar-h);
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 8px 18px;
+    gap: 14px;
+    padding: 8px 22px;
     flex-wrap: wrap;
 }
-.site-brand {
-    font-weight: 800;
-    font-size: 1.15rem;
-    color: var(--ink);
-    white-space: nowrap;
-    letter-spacing: -0.01em;
-}
-.site-brand:hover { text-decoration: none; }
-.brand-tag {
-    font-weight: 600;
-    font-size: 0.72rem;
-    color: var(--muted);
-    border: 1px solid var(--border-strong);
-    border-radius: 4px;
-    padding: 1px 5px;
-    vertical-align: middle;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-}
 
+/* Home + history controls */
+.topbar-controls { display: flex; align-items: center; gap: 6px; flex: 0 0 auto; }
+.tb-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    border: 1px solid var(--border-strong);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 0.9rem;
+    line-height: 1;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+}
+.tb-btn:hover { background: var(--surface); border-color: var(--accent); text-decoration: none; }
+.tb-home svg { width: 19px; height: 19px; fill: currentColor; }
+.tb-home:hover { color: var(--accent); }
+
+/* Horizontal section nav */
 .section-nav {
     display: flex;
+    flex-direction: row;
+    align-items: center;
     gap: 4px;
     flex: 1 1 auto;
     flex-wrap: wrap;
@@ -86,24 +101,37 @@ a:hover { text-decoration: underline; }
 .section-nav .sec {
     cursor: pointer;
     font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-    padding: 5px 10px;
-    border-radius: 6px;
-    border-bottom: 2px solid transparent;
+    font-size: 0.95rem;
+    color: var(--c, var(--ink-soft));
+    padding: 5px 10px 4px;
+    border: 2px solid transparent;
+    border-radius: 4px;
     white-space: nowrap;
+    transition: border-color 0.15s;
 }
-.section-nav .sec:hover { background: var(--bg); text-decoration: none; }
-.sec-blue   { --c: var(--blue); }
-.sec-green  { --c: var(--green); }
-.sec-amber  { --c: var(--amber); }
-.sec-purple { --c: var(--purple); }
-.sec-pink   { --c: var(--pink); }
+.sec-red    { --c: var(--red); }
 .sec-orange { --c: var(--orange); }
-.section-nav .sec:hover,
-.section-nav .sec.active { color: var(--c); border-bottom-color: var(--c); }
+.sec-yellow { --c: var(--yellow); }
+.sec-green  { --c: var(--green); }
+.sec-blue   { --c: var(--blue); }
+.sec-purple { --c: var(--purple); }
+/* Selection marker is the colored underline, hover extends to full border. */
+.section-nav .sec:hover { text-decoration: none; border-color: var(--c); }
+.section-nav .sec.active { border-bottom-color: var(--c); }
+/* Hidden until the visitor first navigates into a section (home uses the in-page index). */
+.section-nav.nav-hidden { display: none; }
 
-.search-wrap { position: relative; flex: 0 0 auto; }
+/* First-load reveal: the whole toolbar is collapsed to an empty clickable strip.
+   Clicking the strip (or an in-page "Explore the wiki" link) reveals its contents.
+   Contents keep their layout (min-height) so the strip stays the same height and
+   remains clickable while hidden. `topbar-fade` swaps the instant reveal for a slow
+   2s fade used when arriving via an "Explore the wiki" link. */
+.wiki-topbar.topbar-collapsed { cursor: pointer; }
+.wiki-topbar.topbar-collapsed .topbar-inner { opacity: 0; pointer-events: none; }
+.wiki-topbar.topbar-fade .topbar-inner { transition: opacity 2s ease; }
+
+/* Search — pinned to the top-right of the toolbar */
+.search-wrap { position: relative; flex: 0 0 auto; margin-left: auto; }
 #wiki-search {
     width: 220px;
     max-width: 42vw;
@@ -113,6 +141,7 @@ a:hover { text-decoration: underline; }
     font-size: 0.9rem;
     outline: none;
     background: var(--bg);
+    color: var(--ink);
 }
 #wiki-search:focus { border-color: var(--accent); background: var(--surface); }
 
@@ -127,7 +156,7 @@ a:hover { text-decoration: underline; }
     background: var(--surface);
     border: 1px solid var(--border-strong);
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
     padding: 6px;
     z-index: 60;
 }
@@ -137,19 +166,48 @@ a:hover { text-decoration: underline; }
 .search-item .si-summary { color: var(--muted); font-size: 0.8rem; line-height: 1.35; }
 .search-empty { padding: 12px; color: var(--muted); font-size: 0.88rem; }
 
-/* ---------- Article ---------- */
+/* ---------- Layout (single centered column) ---------- */
 .wiki-main {
     max-width: var(--maxw);
     margin: 0 auto;
-    padding: 26px 22px calc(var(--dock-bar-h) + 40px);
+    padding: 22px 22px calc(var(--dock-bar-h) + 40px);
+    min-width: 0;
 }
 .wiki-article {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 30px 36px 40px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    /* Left accent stripe: solid section color per page (rainbow only on home). */
+    border-left: 4px solid var(--section-color, var(--border-strong));
+    border-radius: 0 12px 12px 0;
+    padding: 28px 34px 40px;
+    box-shadow: none;
 }
+.wiki-article[data-section="academics"]          { --section-color: var(--red); }
+.wiki-article[data-section="career"]             { --section-color: var(--orange); }
+.wiki-article[data-section="projects"]           { --section-color: var(--yellow); }
+.wiki-article[data-section="skills"]             { --section-color: var(--green); }
+.wiki-article[data-section="personal"]           { --section-color: var(--blue); }
+.wiki-article[data-section="about-this-website"] { --section-color: var(--purple); }
+/* Home shows every section, so its stripe is the full rainbow flag — but only on
+   the LEFT border (vertical top→bottom gradient), matching each section's left stripe.
+   border-image-width 0 0 0 4px suppresses the image on the other three sides so they
+   keep the normal 1px solid border instead of outlining the whole article. */
+.wiki-article[data-section="home"] { border-image: var(--rainbow) 1 / 0 0 0 4px; }
+
+/* Section color token, resolved from a node's top-level section (home index, hubs). */
+[data-section-color="academics"]          { --sc: var(--red); }
+[data-section-color="career"]             { --sc: var(--orange); }
+[data-section-color="projects"]           { --sc: var(--yellow); }
+[data-section-color="skills"]             { --sc: var(--green); }
+[data-section-color="personal"]           { --sc: var(--blue); }
+[data-section-color="about-this-website"] { --sc: var(--purple); }
+/* Card accent color — cycled per card (never the page's own section color). */
+[data-card-color="red"]    { --sc: var(--red); }
+[data-card-color="orange"] { --sc: var(--orange); }
+[data-card-color="yellow"] { --sc: var(--yellow); }
+[data-card-color="green"]  { --sc: var(--green); }
+[data-card-color="blue"]   { --sc: var(--blue); }
+[data-card-color="purple"] { --sc: var(--purple); }
 .wiki-article h1 {
     font-family: Georgia, "Times New Roman", serif;
     font-weight: 400;
@@ -157,7 +215,7 @@ a:hover { text-decoration: underline; }
     line-height: 1.2;
     margin: 0 0 6px;
     padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--border);
 }
 .wiki-article h2 {
     font-family: Georgia, "Times New Roman", serif;
@@ -165,7 +223,7 @@ a:hover { text-decoration: underline; }
     font-size: 1.5rem;
     margin: 28px 0 10px;
     padding-bottom: 6px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--border);
 }
 .wiki-article h3 { font-size: 1.15rem; margin: 20px 0 8px; font-weight: 700; }
 .wiki-article h4 { font-size: 1rem; margin: 16px 0 6px; font-weight: 700; color: var(--ink-soft); }
@@ -175,9 +233,12 @@ a:hover { text-decoration: underline; }
 .wiki-article a:visited { color: var(--link-visited); }
 .wiki-article a.wiki-link-missing { color: var(--muted); cursor: default; text-decoration: none; border-bottom: 1px dotted var(--border-strong); }
 .wiki-article code {
-    background: #eef1f4; padding: 1px 5px; border-radius: 4px;
+    background: #30363d; color: #ffd9a8; padding: 1px 6px; border-radius: 4px;
+    border: 1px solid var(--border-strong);
     font-family: "SF Mono", Consolas, Monaco, monospace; font-size: 0.86em;
 }
+/* Keep inline code readable inside table cells (which use the darker --bg). */
+.wiki-article th code, .wiki-article td code { background: #3a4048; }
 .wiki-article pre {
     background: #0f172a; color: #e2e8f0; padding: 14px 16px; border-radius: 10px;
     overflow-x: auto; font-size: 0.85rem;
@@ -190,7 +251,178 @@ a:hover { text-decoration: underline; }
 .wiki-article table { border-collapse: collapse; width: 100%; margin: 0 0 16px; font-size: 0.92rem; }
 .wiki-article th, .wiki-article td { border: 1px solid var(--border-strong); padding: 7px 11px; text-align: left; }
 .wiki-article th { background: var(--bg); font-weight: 700; }
-.wiki-article hr { border: none; border-top: 1px solid var(--border); margin: 22px 0; }
+/* Colored horizontal rules: every header underline (and any real <hr>) across the
+   article is tinted. The first line under the page's main header takes the page's own
+   section color; the rest continue onward through the rainbow. The color is assigned
+   per line in document order by view.js::colorizeRules. !important so the tint wins
+   over the higher-specificity per-header rules below (e.g. the home page's white
+   underlines). Both edges are set so it works for hr (top) and header underlines (bottom). */
+.wiki-article hr { border: none; border-top: 2px solid var(--rule); margin: 22px 0; border-radius: 2px; }
+.wiki-article [data-rule-color="red"]    { border-top-color: var(--red)    !important; border-bottom-color: var(--red)    !important; }
+.wiki-article [data-rule-color="orange"] { border-top-color: var(--orange) !important; border-bottom-color: var(--orange) !important; }
+.wiki-article [data-rule-color="yellow"] { border-top-color: var(--yellow) !important; border-bottom-color: var(--yellow) !important; }
+.wiki-article [data-rule-color="green"]  { border-top-color: var(--green)  !important; border-bottom-color: var(--green)  !important; }
+.wiki-article [data-rule-color="blue"]   { border-top-color: var(--blue)   !important; border-bottom-color: var(--blue)   !important; }
+.wiki-article [data-rule-color="purple"] { border-top-color: var(--purple) !important; border-bottom-color: var(--purple) !important; }
+/* The page's main-title underline is very thick; every other rule stays thin. */
+.wiki-article [data-rule-weight="thick"] { border-top-width: 3px !important; border-bottom-width: 3px !important; padding-bottom: 10px; }
+
+/* ---------- Home index (colored section links, styled like the top nav) ---------- */
+.home-index {
+    clear: both; /* drop below the floated portrait so nothing overlaps */
+    margin: 8px 0 0;
+    padding: 0; /* no dark box — sits flat on the article */
+}
+/* Larger plain white header, set off from the bio by the divider above it, with
+   its own white rule underneath (matches the other section headers). */
+.home-index h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+    color: var(--ink);
+    border: none;
+    border-bottom: 2px solid var(--rule);
+    margin: 0 0 10px;
+    padding: 0 0 8px;
+}
+.home-index ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px 10px; }
+.home-index li { margin: 0; }
+/* Colored label with a permanent colored underline; on hover the underline
+   extends into a full colored rectangle border around the link. */
+.home-index a {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--sc, var(--link));
+    padding: 5px 10px 4px;
+    border: 2px solid transparent;
+    border-bottom-color: var(--sc, var(--link));
+    border-radius: 4px;
+    transition: border-color 0.15s;
+}
+/* Keep each link its section color even after being visited (else it goes purple). */
+.home-index a:visited { color: var(--sc, var(--link)); }
+.home-index a:hover {
+    text-decoration: none;
+    border-color: var(--sc, var(--link));
+}
+
+/* ---------- Home page: white rule beneath every header ---------- */
+/* h1 + the "### Interests:" h3 get the same white underline the section index
+   header uses, so the whole home page reads as cleanly ruled sections. */
+#wiki-article[data-section="home"] .article-body h1 { border-bottom-color: var(--rule); }
+#wiki-article[data-section="home"] .article-body h3 {
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 6px;
+    /* BFC so the rule shrinks beside the floated portrait instead of running
+       under it; the right margin leaves a small gap before the photo. */
+    overflow: hidden;
+    margin-right: 16px;
+}
+/* Keep the portrait modest so it stays within the interests block (the white
+   home-sep divider then lands just below it). */
+#wiki-article[data-section="home"] .wiki-infobox { width: 240px; }
+
+/* ---------- Inline embedded content (full descendant expansion) ---------- */
+.embedded-content { margin-top: 20px; }
+
+/* A hub/section rendered inline: colored heading + its children below. */
+.wiki-embed { margin: 26px 0 8px; }
+.wiki-embed .embed-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: 1.55rem;
+    margin: 0;
+    padding: 2px 0 8px 13px;
+    border-left: 4px solid var(--sc, var(--border-strong));
+    border-bottom: 1px solid var(--border);
+    color: var(--ink);
+}
+.wiki-embed .embed-intro { color: var(--ink-soft); margin: 10px 0 14px; }
+.wiki-embed .embed-children { display: flex; flex-direction: column; }
+@media (min-width: 768px) {
+    .wiki-embed .embed-children { padding-left: 6px; }
+}
+
+/* Vertical card: header (title + PDF top-right) → hook → media → body. Flat, minimal. */
+.wiki-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--sc, var(--border-strong));
+    border-radius: 10px;
+    padding: 18px 22px 20px;
+    margin: 0 0 16px;
+}
+.card-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+}
+.wiki-card .card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--ink);
+    flex: 1 1 auto;
+    min-width: 0;
+}
+.wiki-card .card-summary {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    line-height: 1.5;
+}
+.wiki-card .card-body { margin: 0; }
+.wiki-card .card-body > :first-child { margin-top: 0; }
+.wiki-card .card-body > :last-child { margin-bottom: 0; }
+/* Readable, not-tiny sub-section headings inside a card body. */
+.wiki-card .card-body h2 {
+    font-family: inherit; font-weight: 700; font-size: 1.08rem;
+    margin: 18px 0 8px; padding-bottom: 4px; border-bottom: 1px solid var(--border);
+    color: var(--ink);
+}
+.wiki-card .card-body h3 { font-family: inherit; font-weight: 700; font-size: 0.98rem; margin: 14px 0 6px; color: var(--ink-soft); }
+.wiki-card .card-body h4 { font-family: inherit; font-weight: 700; font-size: 0.92rem; margin: 12px 0 6px; color: var(--ink-soft); }
+
+/* Project media: preview image, sized modestly. */
+.project-media { display: flex; flex-direction: column; gap: 10px; }
+/* Dim the bright white of PDF preview screenshots so they're easier on the eyes. */
+.project-media img {
+    width: 100%; max-width: 460px; border-radius: 8px; border: 1px solid var(--border);
+    opacity: 0.82; filter: brightness(0.94);
+}
+
+/* PDF link button — sits top-right of the project card header. */
+.btn-pdf {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 13px;
+    background: transparent;
+    border: 2.5px solid var(--sc, var(--border-strong));
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--sc, var(--ink));
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s;
+}
+.btn-pdf-icon { flex: 0 0 auto; }
+.btn-pdf:hover { text-decoration: none; background: color-mix(in srgb, var(--sc, var(--accent)) 15%, transparent); }
+
+/* ---------- Collapsible section headers (click title to fold) ---------- */
+.collapse-toggle { cursor: pointer; position: relative; user-select: none; }
+.collapsible-body.collapsed { display: none; }
 
 /* Article image gallery (photos page etc.) */
 .wiki-article img { max-width: 100%; border-radius: 8px; }
@@ -201,7 +433,7 @@ a:hover { text-decoration: underline; }
     float: right;
     width: 270px;
     max-width: 46%;
-    margin: 4px 0 18px 22px;
+    margin: 39px 0 39px 22px;
     background: var(--bg);
     border: 1px solid var(--border-strong);
     border-radius: 10px;
@@ -219,9 +451,6 @@ a:hover { text-decoration: underline; }
 .wiki-infobox dt { font-weight: 700; color: var(--ink); margin-top: 8px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; }
 .wiki-infobox dd { margin: 2px 0 0; color: var(--ink-soft); }
 
-/* ---------- Breadcrumb / footer nav ---------- */
-.wiki-breadcrumb { color: var(--muted); font-size: 0.85rem; margin-bottom: 14px; }
-.wiki-breadcrumb a { color: var(--muted); }
 .wiki-page-error { color: var(--ink-soft); }
 
 /* ---------- Docked AI chat ---------- */
@@ -238,12 +467,12 @@ a:hover { text-decoration: underline; }
 
 .chat-dock-panel {
     width: 100%;
-    max-width: var(--maxw);
+    max-width: var(--content-w); /* same width as the article */
     background: var(--surface);
     border: 1px solid var(--border);
     border-bottom: none;
     border-radius: 14px 14px 0 0;
-    box-shadow: 0 -8px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 -6px 20px rgba(0,0,0,0.28);
     max-height: min(62vh, 560px);
     display: none;
     flex-direction: column;
@@ -258,7 +487,7 @@ a:hover { text-decoration: underline; }
     background: var(--bg);
 }
 .chat-dock-title { font-weight: 700; font-size: 0.92rem; display: flex; align-items: center; gap: 8px; }
-.ai-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
+.ai-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px rgba(88,166,255,0.15); }
 .chat-dock-close { border: none; background: none; cursor: pointer; font-size: 1rem; color: var(--muted); padding: 4px 8px; border-radius: 6px; }
 .chat-dock-close:hover { background: var(--border); color: var(--ink); }
 
@@ -266,15 +495,16 @@ a:hover { text-decoration: underline; }
 
 .chat-dock-bar {
     width: 100%;
-    max-width: var(--maxw);
+    max-width: var(--content-w); /* same width as the article */
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 10px 14px;
     background: var(--surface);
     border: 1px solid var(--border);
+    border-bottom: none;
     border-radius: 14px 14px 0 0;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 -3px 14px rgba(0,0,0,0.22);
 }
 .chat-dock.open .chat-dock-bar { border-radius: 0; box-shadow: none; border-top: 1px solid var(--border); }
 .chat-dock-toggle {
@@ -288,15 +518,18 @@ a:hover { text-decoration: underline; }
 .chat-input-area { flex: 1 1 auto; display: flex; align-items: center; gap: 8px; }
 #user-input {
     flex: 1 1 auto; padding: 11px 14px; border: 1px solid var(--border-strong);
-    border-radius: 22px; font-size: 0.95rem; outline: none; background: var(--bg);
+    border-radius: 22px; font-size: 0.95rem; outline: none; background: var(--bg); color: var(--ink);
 }
 #user-input:focus { border-color: var(--accent); background: var(--surface); }
 #send-btn {
     flex: 0 0 auto; width: 40px; height: 40px; border-radius: 50%;
-    border: none; background: var(--accent); cursor: pointer;
+    border: none; cursor: pointer;
+    /* Vivid full-palette rainbow (diagonal) — crisp, not washed out. */
+    background: linear-gradient(135deg,
+        var(--red), var(--orange), var(--yellow), var(--green), var(--blue), var(--purple));
     display: flex; align-items: center; justify-content: center;
 }
-#send-btn:hover { background: #1d4ed8; }
+#send-btn:hover { filter: brightness(1.1); }
 #send-btn svg { width: 20px; height: 20px; fill: #fff; }
 #send-btn:disabled, #user-input:disabled { opacity: 0.6; cursor: not-allowed; }
 
@@ -321,7 +554,7 @@ a:hover { text-decoration: underline; }
 .message.bot ul, .message.bot ol { margin: 4px 0 8px; padding-left: 20px; }
 .message.bot table { border-collapse: collapse; margin: 6px 0; font-size: 0.86rem; }
 .message.bot th, .message.bot td { border: 1px solid var(--border-strong); padding: 5px 8px; }
-.message.bot code { background: #e6e9ee; padding: 1px 4px; border-radius: 4px; }
+.message.bot code { background: #2a2a2a; padding: 1px 4px; border-radius: 4px; }
 .warm-up-message { font-style: italic; color: var(--muted); background: none !important; border: none !important; }
 
 .loading-dots { display: inline-flex; gap: 4px; padding: 4px 2px; }
@@ -331,12 +564,15 @@ a:hover { text-decoration: underline; }
 @keyframes blink { 0%, 80%, 100% { opacity: 0.25; } 40% { opacity: 1; } }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 720px) {
-    .topbar-inner { gap: 10px; }
-    .section-nav { order: 3; width: 100%; justify-content: flex-start; }
-    .search-wrap { order: 2; margin-left: auto; }
-    #wiki-search { width: 160px; }
-    .wiki-article { padding: 22px 18px 30px; border-radius: 10px; }
+@media (max-width: 768px) {
+    .topbar-inner { gap: 8px; padding: 8px 14px; }
+    .section-nav { order: 3; width: 100%; overflow-x: auto; flex-wrap: nowrap; gap: 2px; }
+    .section-nav .sec { padding: 6px 10px; font-size: 0.88rem; }
+    .search-wrap { order: 2; }
+    #wiki-search { width: 150px; }
+
+    .wiki-main { padding: 16px 14px calc(var(--dock-bar-h) + 40px); }
+    .wiki-article { padding: 22px 18px 30px; }
     .wiki-article h1 { font-size: 1.7rem; }
     .wiki-infobox { float: none; width: 100%; max-width: 100%; margin: 0 0 18px; }
     .message { max-width: 90%; }

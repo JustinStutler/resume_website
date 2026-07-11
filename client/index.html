@@ -10,20 +10,27 @@
 </head>
 
 <body>
-    <!-- Top bar: brand + section nav + search, all on one level (Wikipedia-style) -->
-    <header class="wiki-topbar">
+    <!-- Single main toolbar: home + history controls, horizontal section nav, search (Wikipedia-style) -->
+    <header class="wiki-topbar topbar-collapsed">
         <div class="topbar-inner">
-            <a class="site-brand" href="#/wiki/justin-stutler" data-wiki-id="justin-stutler">
-                Justin&nbsp;Stutler <span class="brand-tag">wiki</span>
-            </a>
+            <div class="topbar-controls">
+                <a class="tb-btn tb-home" href="#/wiki/justin-stutler" data-wiki-id="justin-stutler"
+                    title="Home" aria-label="Home">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M12 3.2 3 10.5V21h6v-6h6v6h6V10.5L12 3.2z" />
+                    </svg>
+                </a>
+                <button class="tb-btn" onclick="window.history.back()" title="Go back" aria-label="Go back">◀</button>
+                <button class="tb-btn" onclick="window.history.forward()" title="Go forward" aria-label="Go forward">▶</button>
+            </div>
 
             <nav class="section-nav" id="section-nav" aria-label="Wiki sections">
-                <a class="sec sec-blue"   data-wiki-id="academics">Academics</a>
-                <a class="sec sec-green"  data-wiki-id="career">Career</a>
-                <a class="sec sec-amber"  data-wiki-id="projects">Projects</a>
-                <a class="sec sec-purple" data-wiki-id="skills">Skills</a>
-                <a class="sec sec-pink"   data-wiki-id="personal">Personal</a>
-                <a class="sec sec-orange" data-wiki-id="about-this-website">About</a>
+                <a class="sec sec-red"    data-wiki-id="academics">Academics</a>
+                <a class="sec sec-orange" data-wiki-id="career">Career</a>
+                <a class="sec sec-yellow" data-wiki-id="projects">Projects</a>
+                <a class="sec sec-green"  data-wiki-id="skills">Skills</a>
+                <a class="sec sec-blue"   data-wiki-id="personal">Personal</a>
+                <a class="sec sec-purple" data-wiki-id="about-this-website">About</a>
             </nav>
 
             <div class="search-wrap">

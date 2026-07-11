@@ -1,0 +1,82 @@
+before begging make a new git branch / fork of this project as this is going to change this entirely and we dont want to mess anything up with our project
+
+changes:
+archive the photo gallery feature
+make set responses more concise and separate them better: for example the how this works includes a journey section that can be its own section instead.
+fix the formatting within the chat so it is fliud - currently forces a format and is too verbose in the title of the format causing a very large title sentence. we can ditch the formatting all together or if you know an easy fix to it fix it.
+
+
+* LARGE UPDATE
+Add a wiki interface that the user can use just like Wikipedia. they should be able to navigate between pages by clicking on links, searchbar for topics at the top, looks and feels like Wikipedia but has the vault information available and sections are organized
+
+the ai chatbar should just naturally move to the bottom of ui, so the user can at any time still access it within the wiki. 
+for now, make the justin page as the main page and the default load page with the chat ui collapsed and integrated at the bottom. 
+
+for the justin home page keep 1 picture in the right corner like Wikipedia has
+
+transfer the style of the original website to the new website:
+dark theme
+colors - keep the academics, career, projects... their main color the whole time. 
+underline the section title when on page (you already do this)
+gradient for title 'justinstutler wiki'
+
+
+
+the Wikipedia pages should have built out sections and visually display the subpages on the main pages. for example, the academics page. when navigated to the user is shown some hyperlinks to Milton high school, ung,  ksu, usf....
+we should display each of those as sections in the pages instead of having the user have to click to another page. the modular design helps our llm understand and navigate and keep context efficient, but our visual for our users should be just like Wikipedia and have sections except i want the user to be able to navigate to just those 
+
+
+
+the projects page needs a redesign. currently a large wall of text. lets introduce cards for each project. the card can contain the image / pdf ui we built out for our previous version of our website. then it should in an organized manner and standardized manner display the project title, course, when i took it, a brief summary, the results, technologies used, what i learned, etc. organized all in a cute card ui. this way users can easily navigate through the information rather than a text wall.
+
+
+
+for the technical skills page group skills by category and color code them using the same color scheme we have been using. each skill category can be a color
+
+
+
+
+update the ai chat formatting so it does not use dashes - or bullets
+instead have it use ### headers to define sections and place information organizes.
+also instruct it to be concise or somehow get it to be less verbose in its responses. 
+
+* remove the see also and instead just allow the model to ask a follow up question related to the query
+
+
+
+clicking on a section should collapse/ expand the section but always display the header for the section. 
+
+for all pages, 
+
+the Wikipedia pages should have built out sections and visually display the subpages on the main pages. for example, the academics page. when navigated to the user is shown some hyperlinks to Milton high school, ung,  ksu, usf....
+we should display each of those as sections in the pages instead of having the user have to click to another page. the modular design helps our llm understand and navigate and keep context efficient, but our visual for our users should be just like Wikipedia and have sections except i want the user to be able to navigate to just those 
+
+
+
+-remove hyperlink on page sections - instead collapse and expand on click
+
+
+
+
+
+for tech skills page, remove coloring on sections
+
+make the submit button have a gradient
+
+
+on academics page, courses and gre-scores are whited out remove special formatting
+
+standardize information on academics page so each school is a card with the gpa in the same places, school name, in same places etc.
+
+
+
+employ the card style layout to the entire website, so that each section is a card and each section can collapse and expand by clicking the title of the card. 
+
+
+add a back and forward button so the user can easily navigate back and forward through their pages they have visited.
+
+move the file link 'justin stutler' > 'academics' > section to its own ui bar that sits above the file read and display ui. put the back and forward buttons on the left of this ui bar.
+
+
+
+move the index sections to a sidebar on the left. remove them from the main display ui. the main display ui should display each page and each page should contain the subpages of information as cards 

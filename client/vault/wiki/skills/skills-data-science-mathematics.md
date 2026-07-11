@@ -11,8 +11,6 @@ last_updated: 2026-07-10
 ---
 # Data Science & Mathematics
 
-Strong statistical foundation from coursework at KSU (Elementary Statistics, Computer Applications of Statistics) and USF (Advanced Stats & Analytics), plus hands-on Kaggle competition experience:
-
 - Statistical Modeling, Regression Analysis (Linear, Lasso, Ridge, SVR)
 - Feature Engineering, Skew Correction (Quantile/Log/Box-Cox transforms)
 - Multicollinearity detection and handling

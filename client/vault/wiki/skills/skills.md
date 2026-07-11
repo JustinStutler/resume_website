@@ -10,11 +10,3 @@ sources: [resume, courses]
 last_updated: 2026-07-10
 ---
 # Technical Skills
-
-Justin's technical skills, organized by category. Each category has its own page.
-
-- **[AI & Machine Learning](skills-ai-machine-learning)** — his primary focus: deep learning, computer vision, reinforcement learning, gradient boosting.
-- **[Data Science & Mathematics](skills-data-science-mathematics)** — statistics, regression, feature engineering, visualization.
-- **[Software Engineering](skills-software-engineering)** — Python, SQL, Go, databases, and professional tooling.
-- **[Web Development](skills-web-development)** — React, Flask/Django, full-stack development.
-- **[Academic Foundations](skills-academic-foundations)** — computing and information-science fundamentals.
