@@ -68,7 +68,9 @@ def check_scope(user_query, client, model_name):
                 {"role": "user", "content": f'User query: "{user_query}"'}
             ]
         )
-        content = response.choices[0].message.content.strip()
+        # free-tier models occasionally return content=None; coalesce so a
+        # blank reply just fails open (in-scope) instead of crashing
+        content = (response.choices[0].message.content or "").strip()
         content = extract_json(content)
         result = json.loads(content)
         return result.get("in_scope", True)

@@ -14,6 +14,9 @@ else:
     client = OpenAI(
         base_url="https://openrouter.ai/api/v1",
         api_key=Config.OPENROUTER_API_KEY,
+        # per-call cap so one hung free-tier call fails as a caught error
+        # instead of stacking up past the gunicorn worker timeout
+        timeout=30.0,
     )
 
 # 2. Config
@@ -94,7 +97,9 @@ User Query: "{user_query}"
             model=MODEL_NAME,
             messages=[{"role": "user", "content": prompt}]
         )
-        content = response.choices[0].message.content.strip()
+        # free-tier models occasionally return content=None; coalesce so we
+        # fall back cleanly instead of crashing on .strip()
+        content = (response.choices[0].message.content or "").strip()
         content = extract_json(content)
         selected = json.loads(content)
 

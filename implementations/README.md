@@ -28,5 +28,6 @@ Rules:
 | 2026-07-10 | [Wikipedia-style wiki interface + docked chat](./2026-07-10-wikipedia-interface/) | Complete |
 | 2026-07-10 | [Wiki overhaul → full-content inline rendering, vertical cards, section colors](./2026-07-10-wiki-overhaul/) | Complete |
 | 2026-07-10 | [Goal verification — `_.txt` requirements audit](./2026-07-10-goal-verification/) | Complete (2 follow-ups) |
+| 2026-07-11 | [Render worker timeout — heavy queries 500](./2026-07-11-render-worker-timeout/) | Fix applied, awaiting redeploy |
 | 2026-07-10 | [Single toolbar + rainbow theme (nav/search/chat rework)](./2026-07-10-toolbar-rainbow-ui/) | Complete |
 | 2026-07-10 | [Home + color + nav polish (card rainbow, Explore header, hide nav on home)](./2026-07-10-home-color-nav-polish/) | Complete |
