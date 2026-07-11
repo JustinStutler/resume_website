@@ -37,7 +37,7 @@ Instead of a full-screen landing page, a dedicated AI chatbot is always accessib
 
 ### LLM Wiki — Knowledge Base
 
-The knowledge base uses what Andrej Karpathy calls an [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — a collection of markdown files organized in an Obsidian vault (`Portfolio_Website_Vault/`). Each page has YAML frontmatter with an `id`, `title`, `tags`, and `type`, making the content structured and easy for the LLM to index and retrieve.
+The knowledge base uses what Andrej Karpathy calls an [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — a collection of markdown files organized in an Obsidian vault (`client/vault/wiki/`). Each page has YAML frontmatter with an `id`, `title`, `tags`, and `type`, making the content structured and easy for the LLM to index and retrieve.
 
 This replaces the original approach where context lived in a handful of plain `.txt` files inside `server/content/`. The old system used a single LLM call to pick from a small, hard-coded list of context groups. It worked, but adding new content meant editing Python code and the rigid structure made it hard to cross-reference topics.
 
