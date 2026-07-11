@@ -13,14 +13,15 @@ last_updated: 2026-07-10
 
 ## Flow
 
-User asks a question / submits a query through the frontend ui
-the frontend communicates with the backend to kick off the query handling process
-the backend makes an api call to openrouter which serves free llms
-the llm is tasks to classify if the query is an appropriate query and ends if not
-the llm processes the query, looks at a map of a structured knowledge base of markdown files, and retrieves relevant context files
-the llm then uses the context to generate its response which allows responses to be grounded in truth
+1. A visitor asks a question through the frontend UI.
+2. The frontend sends the query to the backend to kick off the query-handling process.
+3. The backend makes an API call to OpenRouter, which serves free LLMs.
+4. The LLM is first tasked with classifying whether the query is appropriate, and the process ends early if it is not.
+5. The LLM reads a map of the structured knowledge base of markdown files and retrieves the relevant context pages.
+6. The LLM then uses that context to generate its response, which keeps answers grounded in truth.
 
 ### Failure Cases
 
-If a query is deem inappropriate, the llm will immediately respond with a set response: ""
-If a query is appropriate, but the information needed to respond cannot be found, the model will respond with a set response : ""
+If a query is deemed inappropriate, the LLM immediately responds with a set message: "I'm only able to answer questions about Justin Stutler — his background, education, skills, projects, and experience. Is there something about Justin I can help you with?"
+
+If a query is appropriate but the information needed to answer it cannot be found, the model responds with a set message: "I don't have specific information about that in my knowledge base. You can reach Justin directly at StutlerJustin@gmail.com."
